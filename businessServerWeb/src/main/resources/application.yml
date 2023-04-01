@@ -1,0 +1,35 @@
+#mongodb
+spring:
+#  mongodb连接
+  application:
+    name: spirng-boot-mongodb
+  data:
+    mongodb:
+      host: hadoop201  #同127.0.0.1
+      port: 27017
+      database: movierecommendsystem    #指定操作的数据库
+#  MySQL连接
+  datasource:
+    username: root
+    password: linrushao
+    url: jdbc:mysql://localhost:3306/bigdata?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
+    driver-class-name: com.mysql.jdbc.Driver
+#   Redis连接
+  redis:
+    host: hadoop201
+    port: 6379
+    password:
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1ms
+        max-idle: 500
+        min-idle: 0
+    lettuce:
+      shutdown-timeout: 0ms
+#  elasticsearch连接
+  elasticsearch:
+    rest:
+      uris: hadoop201:9200
+      connection-timeout: 600s
+      read-timeout: 600s

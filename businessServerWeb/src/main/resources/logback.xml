@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender" >
+        <encoder>
+            <pattern>%d{yyy MMM dd HH:mm:ss.SSS} [%thread] %-5level %logger{36}:%L- %msg%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+<!--    //此处为flume日志采集的配置-->
+    <appender name="flume" class="com.teambytes.logback.flume.FlumeLogstashV1Appender">
+        <flumeAgents>
+<!--            //配置flume所在服务器的ip地址以及端口号。如果配置了主机名映射，可以填写主机名.-->
+            hadoop201:44444
+        </flumeAgents>
+        <flumeProperties>
+            connect-timeout=4000;
+            request-timeout=8000
+        </flumeProperties>
+        <batchSize>1</batchSize>
+        <reportingWindow>1</reportingWindow>
+        <additionalAvroHeaders>
+            myHeader=myValue
+        </additionalAvroHeaders>
+        <application>BusinessServerApplication</application>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <!--只要我们想要的部分-->
+            <pattern>%msg%n</pattern>
+        </layout>
+    </appender>
+
+    <!-- 控制台输出日志级别 -->
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+    </root>
+
+    <logger name="com.linrushao.businessserver.controller.UserRatingController" level="INFO">
+<!--        //配置完成之后一定要在此处引入flume配置组件，不然flume接收不到发送的日志。-->
+        <appender-ref ref="flume" />
+    </logger>
+
+</configuration>

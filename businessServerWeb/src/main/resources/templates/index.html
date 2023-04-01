@@ -1,0 +1,430 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>首页</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="keywords" content="My Play Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design"/>
+	<script type="application/x-javascript"> addEventListener("load", function () {
+		setTimeout(hideURLbar, 0);
+	}, false);
+
+	function hideURLbar() {
+		window.scrollTo(0, 1);
+	} </script>
+	<!-- bootstrap -->
+	<link href="/static/css/bootstrap.min.css" th:href="@{../../css/bootstrap.min.css}" rel='stylesheet' type='text/css' media="all"/>
+	<link th:href="@{../../css/bootstrap.css}" rel='stylesheet' type='text/css' media="all"/>
+	<!-- //bootstrap -->
+	<link th:href="@{../../css/dashboard.css}" rel="stylesheet">
+	<!-- Custom Theme files -->
+	<link th:href="@{../../css/style.css}" rel='stylesheet' type='text/css' media="all"/>
+	<script th:src="@{../../js/jquery-1.11.1.min.js}"></script>
+	<!-- 弹出框 -->
+	<link href="/static/css/sweetalert-1.1.3.min.css" th:href="@{../../css/sweetalert-1.1.3.min.css}" rel="stylesheet">
+	<script src="/static/js/sweetalert-1.1.3.min.js" th:src="@{../../js/sweetalert-1.1.3.min.js}"></script>
+
+	<!--start-smoth-scrolling-->
+	<style type="text/css">
+		.zidingyi {
+			height: 90px;
+			overflow: hidden;
+		}
+
+		.zidingyi2 {
+			position: absolute;
+			left: 10px;
+			bottom: 0;
+		}
+
+		.zidingyi3 {
+			position: absolute;
+			right: 10px;
+			bottom: 0;
+		}
+		.carousel-inner img{
+
+			width: 100%;
+		}
+	</style>
+	<!--第二样式-->
+	<!-- //for-mobile-apps -->
+	<link th:href="@{../../css/font-awesome.css}" rel="stylesheet">
+	<link th:href="@{../../css/style2.css}" rel='stylesheet' type='text/css' media="all"/>
+
+	<!--模态窗start-->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<script src="/static/js/jquery.min.js" th:src="@{../../js/jquery.min.js}"></script>
+	<script src="/static/js/bootstrap.min.js" th:src="@{../../js/bootstrap.min.js}"></script>
+	<style>
+
+		#havetags span,
+		#addtags span {
+			display: inline-block;
+			padding: 0 0 0 10px;
+			margin: 2px 5px;
+			border: 1px solid #000;
+		}
+
+		#havetags span::after,
+		#addtags span::after {
+			content: "+";
+			display: inline-block;
+			padding: 0 10px;
+			background-color: #00ffff;
+			margin-left: 5px;
+		}
+
+		#addtags span::after {
+			content: "x";
+		}
+	</style>
+	<!--模态窗end-->
+
+	<!--/web-fonts-->
+	<link href='https://fonts.googleapis.com/css?family=Tangerine:400,700' rel='stylesheet' type='text/css'>
+	<link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900" rel="stylesheet">
+	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+<div th:replace="common/common :: topbar"></div>
+<div th:replace="~{common/common :: #sidebar(activeUri='/')}"></div>
+
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+	<div id="myCarousel" class="carousel slide" data-ride="carousel">
+		<!-- 轮播（Carousel）指标 -->
+		<ol class="carousel-indicators">
+			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+			<li data-target="#myCarousel" data-slide-to="1"></li>
+			<li data-target="#myCarousel" data-slide-to="2"></li>
+			<li data-target="#myCarousel" data-slide-to="3"></li>
+			<li data-target="#myCarousel" data-slide-to="4"></li>
+		</ol>
+		<!-- 轮播（Carousel）项目 -->
+		<div class="carousel-inner" >
+			<div class="item  active">
+				<a th:href="@{'/single/'+${hotMovies.get(0).getMid()}}">
+					<img th:src="'../../images/'+${hotMovies.get(0).getMid()}+'/picture.jpg'"  style="height: 500px"  alt="First slide">
+				</a>
+				<div class="carousel-caption" th:text="${hotMovies.get(0).getName()}">标题 1</div>
+			</div>
+			<div class="item">
+				<a th:href="@{'/single/'+${hotMovies.get(1).getMid()}}">
+					<img th:src="'../../images/'+${hotMovies.get(1).getMid()}+'/picture.jpg'"  style="height: 500px"  alt="First slide">
+				</a>
+				<div class="carousel-caption" th:text="${hotMovies.get(1).getName()}">标题 2</div>
+			</div>
+			<div class="item">
+				<a th:href="@{'/single/'+${hotMovies.get(2).getMid()}}">
+					<img th:src="'../../images/'+${hotMovies.get(2).getMid()}+'/picture.jpg'"  style="height: 500px" alt="First slide">
+				</a>
+				<div class="carousel-caption" th:text="${hotMovies.get(2).getName()}">标题 1</div>
+			</div>
+			<div class="item">
+				<a th:href="@{'/single/'+${hotMovies.get(3).getMid()}}">
+					<img th:src="'../../images/'+${hotMovies.get(3).getMid()}+'/picture.jpg'"  style="height: 500px" alt="First slide">
+				</a>
+				<div class="carousel-caption" th:text="${hotMovies.get(3).getName()}">标题 1</div>
+			</div>
+			<div class="item">
+				<a th:href="@{'/single/'+${hotMovies.get(4).getMid()}}">
+					<img th:src="'../../images/'+${hotMovies.get(4).getMid()}+'/picture.jpg'" style="height: 500px"  alt="First slide">
+				</a>
+				<div class="carousel-caption" th:text="${hotMovies.get(4).getName()}">标题 1</div>
+			</div>
+		</div>
+		<!-- 轮播（Carousel）导航 -->
+		<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+		<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
+	</div>
+</div>
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+	<div class="main-grids">
+		<div class="top-grids">
+			<div class="recommended-info">
+				<div class="heading">
+					<h3>热门电影</h3>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="wthree_agile-requested-movies" th:each="hot:${hotMovies}">
+				<div class="col-md-2 w3l-movie-gride-agile requested-movies">
+					<a th:href="@{'/single/'+${hot.getMid()}}"  class="hvr-sweep-to-bottom"><img
+							th:src="'../../images/'+${hot.getMid()}+'/poster.jpg'" title="Movies Pro"
+							class="img-responsive" alt=" ">
+						<div class="w3l-action-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></div>
+					</a>
+					<div class="zidingyi mid-1 agileits_w3layouts_mid_1_home">
+						<div class="w3l-movie-text">
+							<h6><a th:href="@{'/single/'+${hot.getMid()}}" th:text="${hot.getName()}">Swiss Army Man</a></h6>
+						</div>
+						<div class=" mid-2 agile_mid_2_home">
+							<p class="zidingyi2" th:text="${hot.getShoot()}">2016</p>
+							<div class="zidingyi3 block-stars">
+								<ul class="w3l-ratings" th:if="${hot.getScore()} lt '0.5'">
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+								</ul>
+								<ul class="w3l-ratings" th:if="(${hot.getScore()} ge '0.5') and (${hot.getScore()} lt '1')">
+									<li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+								</ul>
+								<ul class="w3l-ratings" th:if="(${hot.getScore()} ge '1') and (${hot.getScore()} lt '1.5')">
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+								</ul>
+								<ul class="w3l-ratings" th:if="(${hot.getScore()} ge '1.5') and (${hot.getScore()} lt '2')">
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+								</ul>
+								<ul class="w3l-ratings" th:if="${hot.getScore()} ge '2' and ${hot.getScore()} lt '2.5'">
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+								</ul>
+								<ul class="w3l-ratings" th:if="${hot.getScore()} ge '2.5' and ${hot.getScore()} lt '3'">
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+								</ul>
+								<ul class="w3l-ratings" th:if="${hot.getScore()} ge '3' and ${hot.getScore()} lt '3.5'">
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+								</ul>
+								<ul class="w3l-ratings" th:if="${hot.getScore()} ge '3.5' and ${hot.getScore()} lt '4'">
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+								</ul>
+								<ul class="w3l-ratings" th:if="${hot.getScore()} ge '4' and ${hot.getScore()} lt '4.5'">
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+								</ul>
+								<ul class="w3l-ratings" th:if="${hot.getScore()} ge '4.5' and ${hot.getScore()} lt '5'">
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
+								</ul>
+								<ul class="w3l-ratings" th:if="${hot.getScore()} ge '5' ">
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+								</ul>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--footer start-->
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+	<div th:replace="common/footer :: footer"></div>
+</div>
+<!--footer end-->
+<!--模态窗start-->
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="myModalLabel">
+					请选择你喜欢的电影类型
+				</h4>
+			</div>
+			<h3>电影类型</h3>
+			<div id="havetags"></div>
+			<hr/>
+			<h3>你喜欢的类型</h3>
+			<div id="addtags"></div>
+			<div class="modal-footer" style="text-align:center">
+				<button id="btn" type="button" class="btn btn-primary">
+					保存
+				</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<script>
+	$(function () { $('#myModal').modal('hide')});
+</script>
+<!--模态窗end-->
+<script th:src="@{../../js/bootstrap.min.js}"></script>
+<script th:src="@{../../js/LoginAndLogout.js}"></script>
+</body>
+<script>
+	// 拥有的标签
+	var haveArr = ["动作片", "冒险经历", "动画片", "喜剧片", "犯罪片", "纪录片", "喜剧文学", "家庭片", "魔幻片", "历史片", "恐怖片", "音乐片", "悬疑片", "爱情片", "科幻片", "电视电影", "惊悚片", "战争片", "西部片"];
+
+	// 添加的标签
+	var addArr = [];
+
+	/**
+	 * [tagsShow 展示拥有的标签]
+	 * @param  {[String]} haveTagsId [展示拥有标签的HTML标签Id]
+	 * @param  {[String]} addTagsId  [展示添加标签的HTML标签Id]
+	 * @param  {[Array]} haveTags   [拥有标签的数组]
+	 * @param  {[Array]} addTags    [添加标签的数组]
+	 */
+	function tagsShow(haveTagsId, addTagsId, haveTags, addTags) {
+
+		for (var i = 0; i < haveTags.length; i++) {
+
+			document.getElementById(haveTagsId).innerHTML += "<span>" + haveTags[i] + "</span>";
+
+		}
+
+		addTag(haveTagsId, addTagsId, haveArr, addArr);
+
+		for (var i = 0; i < addTags.length; i++) {
+
+			document.getElementById(addTagsId).innerHTML += "<span>" + addTags[i] + "</span>";
+
+		}
+
+		delTag(haveTagsId, addTagsId, haveTags, addTags);
+
+	}
+
+	/**
+	 * 添加标签
+	 * @param  {[String]} haveTagsId [展示拥有标签的HTML标签Id]
+	 * @param  {[String]} addTagsId  [展示添加标签的HTML标签Id]
+	 * @param  {[Array]} haveTags   [拥有标签的数组]
+	 * @param  {[Array]} addTags    [添加标签的数组]
+	 */
+	function addTag(haveTagsId, addTagsId, haveTags, addTags) {
+
+		var len = document.getElementById(haveTagsId).children.length;
+
+		for (var i = 0; i < len; i++) {
+
+			document.getElementById(haveTagsId).children[i].onclick = function () {
+
+				this.remove();
+
+				addTags.push(this.innerHTML);
+
+				document.getElementById(addTagsId).innerHTML += "<span>" + this.innerHTML + "</span>";
+
+				haveTags.splice(haveTags.indexOf(this.innerHTML), 1); // 从数组中删除该元素
+
+				delTag(haveTagsId, addTagsId, haveTags, addTags);
+			}
+
+		}
+
+	}
+
+	/**
+	 * 删除标签
+	 * @param  {[String]} haveTagsId [展示拥有标签的HTML标签Id]
+	 * @param  {[String]} addTagsId  [展示添加标签的HTML标签Id]
+	 * @param  {[Array]} haveTags   [拥有标签的数组]
+	 * @param  {[Array]} addTags    [添加标签的数组]
+	 */
+	function delTag(haveTagsId, addTagsId, haveTags, addTags) {
+
+		var len = document.getElementById(addTagsId).children.length;
+
+		for (var i = 0; i < len; i++) {
+			document.getElementById(addTagsId).children[i].onclick = function () {
+
+				this.remove();
+
+				haveTags.push(this.innerHTML);
+
+				document.getElementById(haveTagsId).innerHTML += "<span>" + this.innerHTML + "</span>";
+
+				addTags.splice(addTags.indexOf(this.innerHTML), 1); // 从数组中删除该元素
+
+				addTag(haveTagsId, addTagsId, haveTags, addTags);
+
+			}
+		}
+	}
+
+	// 展示标签
+	tagsShow('havetags', 'addtags', haveArr, addArr);
+	// 最终数组
+	document.getElementById("btn").onclick = function () {
+		$.ajax({
+			url:"/user/prefgenres",
+			method:"post",
+			data:{
+				"genres":addArr
+			},
+			dataType:"json",
+			success:function (jsons) {
+				if (jsons.state == 200){
+					swal({
+						title: "保存成功",
+						text: "即将为您自动跳转到首页...",
+						type: "success",
+						showConfirmButton:false,
+						timer: 4000,
+					});
+					//动画过渡完跳转
+					setTimeout(function(){
+						window.location.href="/";
+						return false;
+					},1000);
+				}
+			},
+			error:function () {
+				swal({
+					title: "警告",
+					text: "请至少需要选择一个类型！",
+					type: "warning",
+					showConfirmButton:true,
+					confirmButtonText:'确认',
+				});
+				//动画过渡完跳转
+				setTimeout(function() {
+					// window.location.href="/";
+					return false;
+				});
+			}
+		})
+	}
+</script>
+</html>

@@ -1,0 +1,463 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>single</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="keywords" content="My Play Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design"/>
+	<!-- 弹出框 -->
+	<link href="/static/css/sweetalert-1.1.3.min.css" th:href="@{../../css/sweetalert-1.1.3.min.css}" rel="stylesheet">
+	<script src="/static/js/sweetalert-1.1.3.min.js" th:src="@{../../js/sweetalert-1.1.3.min.js}"></script>
+
+	<script type="application/x-javascript"> addEventListener("load", function () {
+		setTimeout(hideURLbar, 0);
+	}, false);
+	function hideURLbar() {
+		window.scrollTo(0, 1);
+	} </script>
+	<!--小星星评分在-->
+	<style>
+		.liclass1{
+			/* 左半边未选中 */
+			width: 14px;
+			height: 28px;
+			float:left;
+			caret-color: transparent;
+			background: url(../../images/star.gif) no-repeat 0px 0px;
+			list-style: none;
+		}
+		.liclass2{
+			/* 右半边未选中 */
+			width: 14px;
+			height: 28px;
+			float:left;
+			caret-color: transparent;
+			background: url(../../images/star.gif) no-repeat -14px 0px;
+			list-style: none;
+		}
+		.liclass3{
+			/* 左半边选中 */
+			width: 14px;
+			height: 28px;
+			float:left;
+			caret-color: transparent;
+			background: url(../../images/star.gif) no-repeat 0px -28px;
+			list-style: none;
+		}
+		.liclass4{
+			/* 右半边选中 */
+			width: 14px;
+			height: 28px;
+			float:left;
+			caret-color: transparent;
+			background: url(../../images/star.gif) no-repeat -14px -28px;
+			list-style: none;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var ulclass = document.querySelector(".ulclass");
+			var lis = ulclass.getElementsByTagName("li");
+			for(var i=0;i<lis.length;i++){
+				//初始化样式
+				if(i%2==0){
+					lis[i].className = "liclass1";
+				} else {
+					lis[i].className = "liclass2";
+				}
+
+				//鼠标悬浮事件
+				lis[i].onmouseover = function(){
+					// console.log(this.id);
+					for(var j=0;j<=Number(this.id);j++){
+						if(j%2==0){
+							lis[j].className="liclass3";
+						} else {
+							lis[j].className="liclass4";
+						}
+					}
+				}
+
+				//鼠标移除的事件
+				lis[i].onmouseout = function(){
+					for(var j=0;j<lis.length;j++){
+						if(j%2==0){
+							lis[j].className="liclass1";
+						} else {
+							lis[j].className="liclass2";
+						}
+					}
+				}
+
+				//鼠标点击的事件
+				//1. 鼠标点击之后，不再更换样式，
+				//2. 并且提示得了几分
+				lis[i].onclick = function(){
+					for(var j=0;j<lis.length;j++){
+						lis[j].onmouseover = null;//悬停的时候不再有操作
+						lis[j].onmouseout = null;//移除的时候也不再有操作了
+						lis[j].onclick = null;//不允许提交第二次了。
+					}
+					$.ajax({
+						url: "/user/rating/"+[[${singlemovies.getMid()}]],
+						type: "get",
+						// 后台除2
+						data: {'score':(Number(this.id)+1),
+						},
+						success:function (json) {
+							if (json.state == 200){
+								swal({
+									title: "评分成功！",
+									text: json.message,
+									type: "success",
+									confirmButtonText:'确定',
+									showConfirmButton:true
+								});
+								// alert(json.message)
+							}
+						},
+						error:function () {
+							swal({
+								title: "评分失败！！",
+								text: "服务器出现未知异常",
+								type:'error',
+								confirmButtonText:'确定',
+								showConfirmButton:true
+							});
+							// alert("服务器出现未知异常，评分失败")
+						}
+					});
+				}
+			}
+		}
+	</script>
+	<!--小星星评分结束-->
+	<!-- bootstrap -->
+	<link th:href="@{../../css/bootstrap.min.css}" rel='stylesheet' type='text/css' media="all"/>
+	<link th:href="@{../../css/bootstrap.css}" rel='stylesheet' type='text/css' media="all"/>
+	<!-- //bootstrap -->
+	<link th:href="@{../../css/dashboard.css}" rel="stylesheet">
+	<!-- Custom Theme files -->
+	<link th:href="@{../../css/style.css}" rel='stylesheet' type='text/css' media="all"/>
+	<script th:src="@{../../js/jquery-1.11.1.min.js}"></script>
+	<style type="text/css">
+		.zidingyi {
+			height: 90px;
+			overflow: hidden;
+		}
+
+		.zidingyi2 {
+			position: absolute;
+			left: 10px;
+			bottom: 0;
+		}
+
+		.zidingyi3 {
+			position: absolute;
+			right: 10px;
+			bottom: 0;
+		}
+		.zidingyi4 {
+			position: absolute;
+			right: 20px;
+			bottom: 0;
+		}
+	</style>
+	<!-- //for-mobile-apps -->
+	<link th:href="@{../../css/font-awesome.css}" rel="stylesheet">
+	<link th:href="@{../../css/style2.css}" rel='stylesheet' type='text/css' media="all"/>
+	<!--/web-fonts-->
+	<!-- fonts -->
+	<link href='#css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+		  rel='stylesheet' type='text/css'>
+	<link href='#css?family=Poiret+One' rel='stylesheet' type='text/css'>
+	<!-- //fonts -->
+</head>
+<body>
+
+<div th:replace="common/common :: topbar"></div>
+<div th:replace="common/common :: #sidebar"></div>
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+	<div class="main-grids">
+		<div class="top-grids" th:each="movie:${singlemovies}">
+			<div class="col-md-10">
+				<figure class="movie-poster"><img th:src="@{'../../images/'+${movie.getMid()}+'/picture.jpg'}" alt="#"></figure>
+			</div>
+			<div class="col-md-2">
+
+			</div>
+			<div class="col-md-12">
+				<h2 th:text="${movie.getName()}">The Croods</h2>
+				<ul th:if="${movie.getScore()} lt '0.5'" class="glyphicon glyphicon-star w3l-ratings"><strong>  评分:</strong>
+					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+				</ul>
+				<ul th:if="(${movie.getScore()} ge '0.5') and (${movie.getScore()} lt '1')" class="glyphicon glyphicon-star w3l-ratings"><strong>  评分:</strong>
+					<li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+				</ul>
+				<ul th:if="(${movie.getScore()} ge '1') and (${movie.getScore()} lt '1.5')" class="glyphicon glyphicon-star w3l-ratings"><strong>  评分:</strong>
+					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+				</ul>
+				<ul th:if="(${movie.getScore()} ge '1.5') and (${movie.getScore()} lt '2')" class="glyphicon glyphicon-star w3l-ratings"><strong>  评分:</strong>
+					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+				</ul>
+				<ul th:if="${movie.getScore()} ge '2' and ${movie.getScore()} lt '2.5'" class="glyphicon glyphicon-star w3l-ratings"><strong>  评分:</strong>
+					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+				</ul>
+				<ul th:if="${movie.getScore()} ge '2.5' and ${movie.getScore()} lt '3'" class="glyphicon glyphicon-star w3l-ratings"><strong>  评分:</strong>
+					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+				</ul>
+				<ul th:if="${movie.getScore()} ge '3' and ${movie.getScore()} lt '3.5'" class="glyphicon glyphicon-star w3l-ratings"><strong>  评分:</strong>
+					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+				</ul>
+				<ul th:if="${movie.getScore()} ge '3.5' and ${movie.getScore()} lt '4'"class="glyphicon glyphicon-star w3l-ratings"><strong>  评分:</strong>
+					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+				</ul>
+				<ul th:if="${movie.getScore()} ge '4' and ${movie.getScore()} lt '4.5'" class="glyphicon glyphicon-star w3l-ratings"><strong>  评分:</strong>
+					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+				</ul>
+				<ul th:if="${movie.getScore()} ge '4.5' and ${movie.getScore()} lt '5'" class="glyphicon glyphicon-star w3l-ratings"><strong>  评分:</strong>
+					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
+				</ul>
+				<ul th:if="${movie.getScore()} ge '5' " class="glyphicon glyphicon-heart w3l-ratings"><strong>  评分:</strong>
+					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+				</ul>
+				<ul>
+					<li class="glyphicon glyphicon-dashboard"><strong>  片长:</strong>
+						<span th:text="${movie.getTimelong()}"></span>
+					</li>
+				</ul>
+				<ul>
+					<li class="glyphicon glyphicon-facetime-video"><strong>  上映日期:</strong>
+						<span th:text="${movie.getIssue()}"></span>
+					</li>
+				</ul>
+				<ul>
+					<li class="glyphicon  glyphicon-sort-by-alphabet-alt"><strong>  语言:</strong>
+						<span th:text="${movie.getLanguage()}"></span>
+					</li>
+				</ul>
+				<ul>
+					<li class="glyphicon glyphicon-list-alt"><strong>  类型:</strong>
+						<span th:text="${movie.getGenres()}"></span>
+					</li>
+				</ul>
+				<ul>
+					<li class="glyphicon glyphicon-user"><strong>  导演:</strong>
+						<span th:text="${movie.getDirectors()}"></span>
+					</li>
+				</ul>
+				<ul>
+					<li class="glyphicon glyphicon-bullhorn"><strong>  演员</strong>
+					</li>
+					<div th:text="${movie.getActors()}"><span style="width:80%"></span></div>
+
+				</ul>
+				<ul th:if="${movie.getDescri()} ne null or ${movie.getDescri()} ne ''">
+					<li class="glyphicon  glyphicon-comment"><strong>  电影简介</strong>
+					</li>
+					<div th:text="${movie.getDescri()}"><span></span></div>
+				</ul>
+				<div id="div_star" class="glyphicon glyphicon-heart">
+					<strong>你的评分:</strong>
+					<ul class="ulclass">
+						<li id="0"></li>
+						<li id="1"></li>
+						<li id="2"></li>
+						<li id="3"></li>
+						<li id="4"></li>
+						<li id="5"></li>
+						<li id="6"></li>
+						<li id="7"></li>
+						<li id="8"></li>
+						<li id="9"></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--/轮播相似推荐-->
+<!--/agileinfo_tabs-->
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"  th:if="${samemovie.size() != 0}">
+	<h3 class="agile_w3_title">  <span>相似电影</span></h3>
+	<!--/movies-->
+	<div class="show-top-grids">
+		<div id="owl-demo" class="owl-carousel owl-theme">
+			<div class="item" th:each="same:${samemovie}" >
+				<div class="w3l-movie-gride-agile w3l-movie-gride-slider ">
+					<a th:href="@{'/single/'+${same.getMid()}}" class="hvr-sweep-to-bottom"><img th:src="@{'../../images/'+${same.getMid()}+'/poster.jpg'}" title="Movies Pro" class="img-responsive" alt=" " />
+						<div class="w3l-action-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></div>
+					</a>
+					<div class="zidingyi mid-1 agileits_w3layouts_mid_1_home">
+						<div class="w3l-movie-text">
+							<h6><a th:href="@{'/single/'+${same.getMid()}}" th:text="${same.getName()}">Storks	</a></h6>
+						</div>
+						<div class="mid-2 agile_mid_2_home" >
+							<p class="zidingyi2" th:text="${same.getShoot()}">2016</p>
+							<div class="zidingyi4 block-stars">
+								<ul class="w3l-ratings" th:if="${same.getScore()} lt '0.5'">
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+								</ul>
+								<ul class="w3l-ratings" th:if="(${same.getScore()} ge '0.5') and (${same.getScore()} lt '1')">
+									<li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+								</ul>
+								<ul class="w3l-ratings" th:if="(${same.getScore()} ge '1') and (${same.getScore()} lt '1.5')">
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+								</ul>
+								<ul class="w3l-ratings" th:if="(${same.getScore()} ge '1.5') and (${same.getScore()} lt '2')">
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+								</ul>
+								<ul class="w3l-ratings" th:if="${same.getScore()} ge '2' and ${same.getScore()} lt '2.5'">
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+								</ul>
+								<ul class="w3l-ratings" th:if="${same.getScore()} ge '2.5' and ${same.getScore()} lt '3'">
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+								</ul>
+								<ul class="w3l-ratings" th:if="${same.getScore()} ge '3' and ${same.getScore()} lt '3.5'">
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+								</ul>
+								<ul class="w3l-ratings" th:if="${same.getScore()} ge '3.5' and ${same.getScore()} lt '4'">
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+								</ul>
+								<ul class="w3l-ratings" th:if="${same.getScore()} ge '4' and ${same.getScore()} lt '4.5'">
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+								</ul>
+								<ul class="w3l-ratings" th:if="${same.getScore()} ge '4.5' and ${same.getScore()} lt '5'">
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
+								</ul>
+								<ul class="w3l-ratings" th:if="${same.getScore()} ge '5' ">
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+								</ul>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--//content-inner-section-->
+
+
+<!--footer start-->
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+	<div th:replace="common/footer :: footer"></div>
+</div>
+<!--底部footer end-->
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script th:src="@{../../js/bootstrap.min.js}"></script>
+<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+<!--Session登录显示-->
+<script th:src="@{../../js/LoginAndLogout.js}"></script>
+<!--轮播-->
+<script th:src="@{../../js/jquery-1.11.1.min.js}"></script>
+<link th:href="@{../../css/owl.carousel.css}" rel="stylesheet" type="text/css" media="all">
+<script th:src="@{../../js/owl.carousel.js}"></script>
+<script>
+	$(document).ready(function() {
+		$("#owl-demo").owlCarousel({
+			autoPlay: 3000, //Set AutoPlay to 3 seconds
+			autoPlay : true,
+			navigation :true,
+			items : 5,
+			itemsDesktop : [640,4],
+			itemsDesktopSmall : [414,3]
+		});
+	});
+</script>
+</body>
+</html>
