@@ -100,15 +100,6 @@ public class MovieGenresControler {
         return "movieGenres/Drama";
     }
 
-    //家庭片
-    @RequestMapping("/Family/{Family}")
-    public String Family(@PathVariable("Family") String Family, Model model) {
-        List<Recommendation> recommendations = movieGenresRecommendationService.getContentBasedGenresRecommendations(new SearchRecommendation(Family));
-        model.addAttribute("success", true);
-        model.addAttribute("Family", movieService.getRecommendeMovies(recommendations));
-        return "movieGenres/Family";
-    }
-
     //魔幻片
     @RequestMapping("/Fantasy/{Fantasy}")
     public String Fantasy(@PathVariable("Fantasy") String Fantasy, Model model) {
@@ -118,24 +109,6 @@ public class MovieGenresControler {
         return "movieGenres/Fantasy";
     }
 
-    //外国片
-    @RequestMapping("/Foreign/{Foreign}")
-    public String Foreign(@PathVariable("Foreign") String Foreign, Model model) {
-        List<Recommendation> recommendations = movieGenresRecommendationService.getContentBasedGenresRecommendations(new SearchRecommendation(Foreign));
-        model.addAttribute("success", true);
-        model.addAttribute("Foreign", movieService.getRecommendeMovies(recommendations));
-        return "movieGenres/Foreign";
-    }
-
-    //历史片
-    @RequestMapping("/History/{History}")
-    public String History(@PathVariable("History") String History, Model model) {
-        List<Recommendation> recommendations = movieGenresRecommendationService.getContentBasedGenresRecommendations(new SearchRecommendation(History));
-        model.addAttribute("success", true);
-        model.addAttribute("History", movieService.getRecommendeMovies(recommendations));
-        return "movieGenres/History";
-    }
-
     //恐怖片
     @RequestMapping("/Horror/{Horror}")
     public String Horror(@PathVariable("Horror") String Horror, Model model) {
@@ -143,15 +116,6 @@ public class MovieGenresControler {
         model.addAttribute("success", true);
         model.addAttribute("Horror", movieService.getRecommendeMovies(recommendations));
         return "movieGenres/Horror";
-    }
-
-    //音乐片
-    @RequestMapping("/Music/{Music}")
-    public String Music(@PathVariable("Music") String Music, Model model) {
-        List<Recommendation> recommendations = movieGenresRecommendationService.getContentBasedGenresRecommendations(new SearchRecommendation(Music));
-        model.addAttribute("success", true);
-        model.addAttribute("Music", movieService.getRecommendeMovies(recommendations));
-        return "movieGenres/Music";
     }
 
     //悬疑片
@@ -180,15 +144,6 @@ public class MovieGenresControler {
         model.addAttribute("success", true);
         model.addAttribute("ScienceFiction", movieService.getRecommendeMovies(recommendations));
         return "movieGenres/ScienceFiction";
-    }
-
-    //电视电影
-    @RequestMapping("/TvMovie/{TvMovie}")
-    public String TvMovie(@PathVariable("TvMovie") String TvMovie, Model model) {
-        List<Recommendation> recommendations = movieGenresRecommendationService.getContentBasedGenresRecommendations(new SearchRecommendation(TvMovie));
-        model.addAttribute("success", true);
-        model.addAttribute("TvMovie", movieService.getRecommendeMovies(recommendations));
-        return "movieGenres/TvMovie";
     }
 
     //惊悚片
