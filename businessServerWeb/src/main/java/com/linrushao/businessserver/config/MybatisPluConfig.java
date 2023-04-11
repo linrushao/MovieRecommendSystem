@@ -1,6 +1,8 @@
 package com.linrushao.businessserver.config;
 
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
+import com.mongodb.client.MongoClient;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,5 +21,4 @@ public class MybatisPluConfig {
     public PaginationInterceptor paginationInterceptor(){
         return new PaginationInterceptor();
     }
-
 }

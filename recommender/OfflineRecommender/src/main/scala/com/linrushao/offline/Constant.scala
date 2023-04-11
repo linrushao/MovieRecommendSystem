@@ -7,12 +7,12 @@ package com.linrushao.offline
  */
 object Constant {
   /**************加载数据表的表名******************/
-  val RATING_COLLECTION_NAME = "Rating"
-  val MOVIES_COLLECTION_NAME = "Movie"
+  val RATING_COLLECTION_NAME = "Ratings"
+  val MOVIES_COLLECTION_NAME = "Movies"
 
   /**************统计的表的名称******************/
-  val USER_RECS_COLLECTION_NAME = "UserRecs"
-  val MOVIE_RECS_COLLECTION_NAME = "MovieRecs"
+  val USER_RECS_COLLECTION_NAME = "UserRecommends"
+  val MOVIE_RECS_COLLECTION_NAME = "MovieRecommends"
 
   /**************电影的最多推荐数目******************/
   val MAX_RATING = 5.0F

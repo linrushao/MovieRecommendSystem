@@ -18,10 +18,10 @@ public class Constant {
     public static final String MONGODB_USER_COLLECTION= "User";
 
     //电影表
-    public static final String MONGODB_MOVIE_COLLECTION = "Movie";
+    public static final String MONGODB_MOVIE_COLLECTION = "Movies";
 
     //评分表
-    public static final String MONGODB_RATING_COLLECTION = "Rating";
+    public static final String MONGODB_RATING_COLLECTION = "Ratings";
 
     //标签表
     public static final String MONGODB_TAG_COLLECTION = "Tag";
@@ -30,7 +30,7 @@ public class Constant {
     public static final String MONGODB_AVERAGE_MOVIES_SCORE_COLLECTION = "AverageMovies";
 
     //电影的相似度矩阵
-    public static final String MONGODB_MOVIE_RECS_COLLECTION = "MovieRecs";
+    public static final String MONGODB_MOVIE_RECS_COLLECTION = "MovieRecommend";
 
     //优质电影表
     public static final String MONGODB_RATE_MORE_MOVIES_COLLECTION = "RateMoreMovies";
@@ -42,7 +42,7 @@ public class Constant {
     public static final String MONGODB_STREAM_RECS_COLLECTION = "StreamRecs";
 
     //用户的推荐矩阵
-    public static final String MONGODB_USER_RECS_COLLECTION = "UserRecs";
+    public static final String MONGODB_USER_RECS_COLLECTION = "UserRecommend";
 
     //电影类别表
     public static final String MONGODB_GENRES_TOP_MOVIES_COLLECTION = "GenresTopMovies";
@@ -52,10 +52,10 @@ public class Constant {
     //************** ELEASTICSEARCH ****************
 
     //ES使用的index
-    public static final String ELEASTICSEARCH_INDEX = "movierecommendsystem";
+    public static final String ELEASTICSEARCH_INDEX = "movierecommendsystemdata";
 
     //ES使用的type
-    public static final String ELEASTICSEARCH_MOVIE_TYPE = "Movie";
+    public static final String ELEASTICSEARCH_MOVIE_TYPE = "Movies";
 
 
     //************** FOR MOVIE RATING ******************
@@ -63,15 +63,15 @@ public class Constant {
     public static final String MOVIE_RATING_PREFIX = "MOVIE_RATING_PREFIX";
 
     //*************** Redis 评分队列大小 ****************
-    public static final int REDIS_MOVIE_RATING_QUEUE_SIZE = 40;
+    public static final int REDIS_MOVIE_RATING_QUEUE_SIZE = 50;
 
     //*************** MOVIES 推荐数目 ****************
 
-    public static final int HOME_MOVIES_ITEM_SIZE = 50;
+    public static final int HOME_MOVIES_ITEM_SIZE = 100;
 
     //*************** ES 查询条数 ****************
 
-    public static final int ES_MOVIES_ITEM_SIZE = 500;
+    public static final int ES_MOVIES_ITEM_SIZE = 100;
 
     //*************** MOVIES 推荐数目结果占比【混合推荐中CF的比例】****************
 

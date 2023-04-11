@@ -183,7 +183,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="main-grids">
 		<div class="top-grids" th:each="movie:${singlemovies}">
 			<div class="col-md-10">
-				<figure class="movie-poster"><img th:src="@{'../../images/'+${movie.getMid()}+'/picture.jpg'}" alt="#"></figure>
+				<figure class="movie-poster"><img th:src="@{'../../imagesData/'+${movie.getMid()}+'.jpg'}" alt="#"></figure>
 			</div>
 			<div class="col-md-2">
 
@@ -331,7 +331,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div id="owl-demo" class="owl-carousel owl-theme">
 			<div class="item" th:each="same:${samemovie}" >
 				<div class="w3l-movie-gride-agile w3l-movie-gride-slider ">
-					<a th:href="@{'/single/'+${same.getMid()}}" class="hvr-sweep-to-bottom"><img th:src="@{'../../images/'+${same.getMid()}+'/poster.jpg'}" title="Movies Pro" class="img-responsive" alt=" " />
+					<a th:href="@{'/single/'+${same.getMid()}}" class="hvr-sweep-to-bottom"><img th:src="@{'../../imagesData/'+${same.getMid()}+'.jpg'}" title="Movies Pro" class="img-responsive" alt=" " />
 						<div class="w3l-action-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></div>
 					</a>
 					<div class="zidingyi mid-1 agileits_w3layouts_mid_1_home">

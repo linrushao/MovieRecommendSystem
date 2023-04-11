@@ -69,7 +69,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="w3l-movie-gride-agile  col-md-3  recommended-grid">
                     <a th:href="@{'/single/'+${crime.getMid()}}" class="hvr-sweep-to-bottom">
                         <img
-                                th:src="'../../images/'+${crime.getMid()}+'/poster.jpg'" title="Movies Pro"
+                                th:src="'../../imagesData/'+${crime.getMid()}+'.jpg'" title="Movies Pro"
                                 class="img-responsive" alt=" ">
                         <div class="w3l-action-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></div>
                     </a>
@@ -166,123 +166,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
     </div>
     <!--快速通道-->
-    <div class="col-md-2 show-grid-right">
-        <h3>快速通道</h3>
-        <div class="show-right-grids">
-            <ul>
-                <li class="tv-img"><a href="#"><img th:src="@{../../images/mv.png}" alt="" /></a></li>
-                <li><a th:href="@{/genres/Action/Action}">动作片</a></li>
-            </ul>
-        </div>
-        <div class="show-right-grids">
-            <ul>
-                <li class="tv-img"><a href="#"><img th:src="@{../../images/mv.png}" alt="" /></a></li>
-                <li><a th:href="@{/genres/Adventure/Adventure}">冒险经历</a></li>
-            </ul>
-        </div>
-        <div class="show-right-grids">
-            <ul>
-                <li class="tv-img"><a href="#"><img th:src="@{../../images/mv.png}" alt="" /></a></li>
-                <li><a th:href="@{/genres/Animation/Animation}">动画片</a></li>
-            </ul>
-        </div>
-        <div class="show-right-grids">
-            <ul>
-                <li class="tv-img"><a href="#"><img th:src="@{../../images/mv.png}" alt="" /></a></li>
-                <li><a th:href="@{/genres/Comedy/Comedy}">喜剧片</a></li>
-            </ul>
-        </div>
-<!--        <div class="show-right-grids">-->
-<!--            <ul>-->
-<!--                <li class="tv-img"><a href="#"><img th:src="@{../../images/mv.png}" alt="" /></a></li>-->
-<!--                <li><a th:href="@{/genres/Crime/Crime}">犯罪片</a></li>-->
-<!--            </ul>-->
-<!--        </div>-->
-        <div class="show-right-grids">
-            <ul>
-                <li class="tv-img"><a href="#"><img th:src="@{../../images/mv.png}" alt="" /></a></li>
-                <li><a th:href="@{/genres/Documentary/Documentary}">纪录片</a></li>
-            </ul>
-        </div>
-        <div class="show-right-grids">
-            <ul>
-                <li class="tv-img"><a href="#"><img th:src="@{../../images/mv.png}" alt="" /></a></li>
-                <li><a th:href="@{/genres/Drama/Drama}">喜剧文学</a></li>
-            </ul>
-        </div>
-<!--        <div class="show-right-grids">-->
-<!--            <ul>-->
-<!--                <li class="tv-img"><a href="#"><img th:src="@{../../images/mv.png}" alt="" /></a></li>-->
-<!--                <li><a th:href="@{/genres/Family/Family}">家庭片</a></li>-->
-<!--            </ul>-->
-<!--        </div>-->
-        <div class="show-right-grids">
-            <ul>
-                <li class="tv-img"><a href="#"><img th:src="@{../../images/mv.png}" alt="" /></a></li>
-                <li><a th:href="@{/genres/Fantasy/Fantasy}">魔幻片</a></li>
-            </ul>
-        </div>
-<!--        <div class="show-right-grids">-->
-<!--            <ul>-->
-<!--                <li class="tv-img"><a href="#"><img th:src="@{../../images/mv.png}" alt="" /></a></li>-->
-<!--                <li><a th:href="@{/genres/History/History}">历史片</a></li>-->
-<!--            </ul>-->
-<!--        </div>-->
-        <div class="show-right-grids">
-            <ul>
-                <li class="tv-img"><a href="#"><img th:src="@{../../images/mv.png}" alt="" /></a></li>
-                <li><a th:href="@{/genres/Horror/Horror}">恐怖片</a></li>
-            </ul>
-        </div>
-<!--        <div class="show-right-grids">-->
-<!--            <ul>-->
-<!--                <li class="tv-img"><a href="#"><img th:src="@{../../images/mv.png}" alt="" /></a></li>-->
-<!--                <li><a th:href="@{/genres/Music/Music}">音乐片</a></li>-->
-<!--            </ul>-->
-<!--        </div>-->
-        <div class="show-right-grids">
-            <ul>
-                <li class="tv-img"><a href="#"><img th:src="@{../../images/mv.png}" alt="" /></a></li>
-                <li><a th:href="@{/genres/Mystery/Mystery}">悬疑片</a></li>
-            </ul>
-        </div>
-        <div class="show-right-grids">
-            <ul>
-                <li class="tv-img"><a href="#"><img th:src="@{../../images/mv.png}" alt="" /></a></li>
-                <li><a th:href="@{/genres/Romance/Romance}">爱情片</a></li>
-            </ul>
-        </div>
-        <div class="show-right-grids">
-            <ul>
-                <li class="tv-img"><a href="#"><img th:src="@{../../images/mv.png}" alt="" /></a></li>
-                <li><a th:href="@{/genres/ScienceFiction/ScienceFiction}">科幻片</a></li>
-            </ul>
-        </div>
-<!--        <div class="show-right-grids">-->
-<!--            <ul>-->
-<!--                <li class="tv-img"><a href="#"><img th:src="@{../../images/mv.png}" alt="" /></a></li>-->
-<!--                <li><a th:href="@{/genres/Tv/Tv}">电影电视</a></li>-->
-<!--            </ul>-->
-<!--        </div>-->
-        <div class="show-right-grids">
-            <ul>
-                <li class="tv-img"><a href="#"><img th:src="@{../../images/mv.png}" alt="" /></a></li>
-                <li><a th:href="@{/genres/Thriller/Thriller}">惊悚片</a></li>
-            </ul>
-        </div>
-        <div class="show-right-grids">
-            <ul>
-                <li class="tv-img"><a href="#"><img th:src="@{../../images/mv.png}" alt="" /></a></li>
-                <li><a th:href="@{/genres/War/War}">战争片</a></li>
-            </ul>
-        </div>
-        <div class="show-right-grids">
-            <ul>
-                <li class="tv-img"><a href="#"><img th:src="@{../../images/mv.png}" alt="" /></a></li>
-                <li><a th:href="@{/genres/Western/Western}">西部片</a></li>
-            </ul>
-        </div>
-    </div>
+    <div th:replace="common/moviesGenres :: moviesGenres"></div>
     <div class="clearfix"> </div>
 </div>
 

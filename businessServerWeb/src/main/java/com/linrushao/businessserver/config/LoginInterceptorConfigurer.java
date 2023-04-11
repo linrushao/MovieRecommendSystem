@@ -42,9 +42,9 @@ public class LoginInterceptorConfigurer implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        //上传的图片在D盘下的img目录下，访问路径如：http://localhost:8081/image/1.jpg
-        //其中image表示访问的前缀。"file:D:/img/"是文件真实的存储路径
-        registry.addResourceHandler("/images/**").addResourceLocations("file:E:/临时资料/movieSystemImages/images/");
+//        上传的图片在D盘下的img目录下，访问路径如：http://localhost:8081/image/1.jpg
+//        其中image表示访问的前缀。"file:D:/img/"是文件真实的存储路径
+        registry.addResourceHandler("/imagesData/**").addResourceLocations("file:E:/临时资料/movieSystemImages/imagesData/");
 
     }
 }

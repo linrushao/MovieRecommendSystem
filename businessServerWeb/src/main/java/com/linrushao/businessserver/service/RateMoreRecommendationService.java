@@ -30,7 +30,6 @@ public class RateMoreRecommendationService {
         // 获取评分最多电影的条目
         MongoCollection<Document> rateMoreMoviesCollection = mongoClient.getDatabase(Constant.MONGODB_DATABASE).getCollection(Constant.MONGODB_RATE_MORE_MOVIES_COLLECTION);
         FindIterable<Document> documents = rateMoreMoviesCollection.find().sort(Sorts.descending("count")).limit(Constant.HOME_MOVIES_ITEM_SIZE);
-
         List<Recommendation> recommendations = new ArrayList<>();
         for (Document document : documents) {
             recommendations.add(new Recommendation(document.getInteger("mid"), 0D));

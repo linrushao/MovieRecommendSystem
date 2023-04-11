@@ -64,13 +64,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="main-grids">
         <div class="top-grids">
             <div class="recommended-info">
-                <h3>查询结果:[[${key}]]</h3>
+                <h3>查询结果</h3>
             </div>
             <div class="wthree_agile-requested-movies" th:each="searchMovie:${SearchMovie}">
                 <div class="w3l-movie-gride-agile  col-md-2  requested-movies">
                     <a th:href="@{'/single/'+${searchMovie.getMid()}}" class="hvr-sweep-to-bottom">
                         <img
-                                th:src="'../../images/'+${searchMovie.getMid()}+'/poster.jpg'" title="Movies Pro"
+                                th:src="'../../imagesData/'+${searchMovie.getMid()}+'.jpg'" title="Movies Pro"
                                 class="img-responsive" alt=" ">
                         <div class="w3l-action-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></div>
                     </a>

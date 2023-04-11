@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+            xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>传记</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="My Play Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design"/>
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
+    <!-- bootstrap -->
+    <link th:href="@{../../css/bootstrap.min.css}" rel='stylesheet' type='text/css' media="all"/>
+    <link th:href="@{../../css/bootstrap.css}" rel='stylesheet' type='text/css' media="all"/>
+    <!-- //bootstrap -->
+    <link th:href="@{../../css/dashboard.css}" rel="stylesheet">
+    <!-- Custom Theme files -->
+    <link th:href="@{../../css/style.css}" rel='stylesheet' type='text/css' media="all"/>
+    <script th:src="@{../../js/jquery-1.11.1.min.js}"></script>
+    <style type="text/css">
+        .zidingyi {
+            height: 90px;
+            overflow: hidden;
+        }
+
+        .zidingyi2 {
+            position: absolute;
+            left: 10px;
+            bottom: 0;
+        }
+
+        .zidingyi4 {
+            position: absolute;
+            right: 20px;
+            bottom: 0;
+        }
+    </style>
+    <!-- //for-mobile-apps -->
+    <link th:href="@{../../css/font-awesome.css}" rel="stylesheet">
+    <link th:href="@{../../css/style2.css}" rel='stylesheet' type='text/css' media="all"/>
+    <!--/web-fonts-->
+    <!-- fonts -->
+    <link href='#css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+          rel='stylesheet' type='text/css'>
+    <link href='#css?family=Poiret+One' rel='stylesheet' type='text/css'>
+    <!-- //fonts -->
+</head>
+<body>
+
+<div th:replace="common/common :: topbar"></div>
+<div th:replace="common/common :: #sidebar(activeUri='/genres/Biography/Biography')"></div>
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <div class="show-top-grids">
+        <div class="col-sm-10 show-grid-left main-grids">
+            <div class="recommended-info">
+                <h3>传记</h3>
+            </div>
+            <div class="wthree_agile-requested-movies" th:each="action:${Biography}">
+                <div class="w3l-movie-gride-agile  col-md-3  recommended-grid">
+                    <a th:href="@{'/single/'+${action.getMid()}}" class="hvr-sweep-to-bottom">
+                        <img
+                                th:src="'../../imagesData/'+${action.getMid()}+'.jpg'" title="Movies Pro"
+                                class="img-responsive" alt=" ">
+                        <div class="w3l-action-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></div>
+                    </a>
+                    <div class="zidingyi mid-1 agileits_w3layouts_mid_1_home">
+                        <div class="w3l-movie-text">
+                            <h6><a  th:href="@{'/single/'+${action.getMid()}}" th:text="${action.getName()}">Swiss Army Man</a></h6>
+                        </div>
+                        <div class=" mid-2 agile_mid_2_home">
+                            <p class="zidingyi2" th:text="${action.getShoot()}">2016</p>
+                            <div class="zidingyi4 block-stars">
+                                <ul class="w3l-ratings" th:if="${action.getScore()} lt '0.5'">
+                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+                                </ul>
+                                <ul class="w3l-ratings" th:if="(${action.getScore()} ge '0.5') and (${action.getScore()} lt '1')">
+                                    <li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+                                </ul>
+                                <ul class="w3l-ratings" th:if="(${action.getScore()} ge '1') and (${action.getScore()} lt '1.5')">
+                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+                                </ul>
+                                <ul class="w3l-ratings" th:if="(${action.getScore()} ge '1.5') and (${action.getScore()} lt '2')">
+                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+                                </ul>
+                                <ul class="w3l-ratings" th:if="${action.getScore()} ge '2' and ${action.getScore()} lt '2.5'">
+                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+                                </ul>
+                                <ul class="w3l-ratings" th:if="${action.getScore()} ge '2.5' and ${action.getScore()} lt '3'">
+                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+                                </ul>
+                                <ul class="w3l-ratings" th:if="${action.getScore()} ge '3' and ${action.getScore()} lt '3.5'">
+                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+                                </ul>
+                                <ul class="w3l-ratings" th:if="${action.getScore()} ge '3.5' and ${action.getScore()} lt '4'">
+                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+                                </ul>
+                                <ul class="w3l-ratings" th:if="${action.getScore()} ge '4' and ${action.getScore()} lt '4.5'">
+                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+                                </ul>
+                                <ul class="w3l-ratings" th:if="${action.getScore()} ge '4.5' and ${action.getScore()} lt '5'">
+                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
+                                </ul>
+                                <ul class="w3l-ratings" th:if="${action.getScore()} ge '5' ">
+                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--快速通道-->
+    <div th:replace="common/moviesGenres :: moviesGenres"></div>
+    <div class="clearfix"> </div>
+</div>
+<!--底部footer start-->
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <div th:replace="common/footer :: footer"></div>
+</div>
+<!--底部footer end-->
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script th:src="@{../../js/bootstrap.min.js}"></script>
+<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+<!--Session登录显示-->
+<script th:src="@{../../js/LoginAndLogout.js}"></script>
+
+</body>

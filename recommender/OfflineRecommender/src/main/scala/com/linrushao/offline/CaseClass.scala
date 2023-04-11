@@ -5,40 +5,45 @@ package com.linrushao.offline
  * @Date 2022/9/13 16:29
  *       Desc
  */
-/**
- * Movie数据集，数据集字段通过分割
- * 151^                          电影的ID
- * Rob Roy (1995)^               电影的名称
- * In the highlands ....^        电影的描述
- * 139 minutes^                  电影的时长
- * August 26, 1997^              电影的发行日期
- * 1995^                         电影的拍摄日期
- * English ^                     电影的语言
- * Action|Drama|Romance|War ^    电影的类型
- * Liam Neeson|Jessica Lange...  电影的演员
- * Michael Caton-Jones           电影的导演
- * tag1|tag2|tag3|....           电影的Tag
- **/
 
-case class Movie( mid: Int,  name: String,  descri: String,  timelong: String,  issue: String,
-                  shoot: String,  language: String,  genres: String,  actors: String,  directors: String)
+
 
 /**
- * Rating数据集，用户对于电影的评分数据集，用，分割
- *
- * 1,           用户的ID
- * 31,          电影的ID
- * 2.5,         用户对于电影的评分
- * 1260759144   用户对于电影评分的时间
+ * Movie Class 电影类
+ * @param mid             电影的ID
+ * @param name            电影的名称
+ * @param actors          电影的演员
+ * @param image           电影封面
+ * @param directors       电影的导演
+ * @param douban_score    豆瓣评分
+ * @param douban_votes    豆瓣投票数
+ * @param genres          电影类别
+ * @param language        电影语言
+ * @param timelong        电影片长
+ * @param regions         制片国家/地区
+ * @param issue           上映日期
+ * @param descri          电影的描述
+ * @param tags            电影标签
+ * @param shoot           年份
+ * @param actor_ids       演员与PERSON_ID的对应关系,多个演员采用“\|”符号分割，格式“演员A:ID\|演员
+ * @param director_ids    导演与PERSON_ID的对应关系,多个导演采用“\|”符号分割，格式“导演A:ID\|导演B:ID”；
  */
+case class Movies(mid: Int,  name: String, actors:String,image:String,directors:String
+                  , douban_score:Double,douban_votes:Int,genres:String,language:String
+                  ,timelong:String,regions:String,issue:String,descri: String, tags:String
+                  , shoot:Int,  actor_ids: String,  director_ids: String)
+
 /**
- *  基于LFM的离线推荐模块
- * @param uid
- * @param mid
- * @param score
- * @param timestamp
+ * 基于LFM的离线推荐模块
+ * Rating Class 电影的评分类
+ * @param rating_id 评分ID
+ * @param user_md5  用户的加密ID
+ * @param uid       用户的ID
+ * @param mid       电影的ID
+ * @param score     用户为该电影的评分
+ * @param timestamp 用户为该电影评分的时间
  */
-case class MovieRating( uid: Int,  mid: Int,  score: Double,  timestamp: Int)
+case class Ratings( rating_id:Int,user_md5: String,uid:Int,  mid: Int,  score: Double,  timestamp: String)
 
 /**
  * 推荐项目
@@ -61,6 +66,11 @@ case class MovieRecommendation(mid: Int, recs: Seq[Recommendation])
  */
 case class UserRecommendation(uid: Int, recs: Seq[Recommendation])
 
+/**
+ * MongoDB 配置对象
+ * @param uri MongoDB连接地址
+ * @param db  操作的MongoDB数据库
+ */
 case class MongoConfig(uri:String, db:String)
 
 // 定义基于预测评分的用户推荐列表

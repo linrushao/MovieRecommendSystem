@@ -21,8 +21,8 @@ import java.util.logging.Logger;
 public class Application {
 
     public static void main(String[] args) {
-        String brokers = "hadoop201:9092";
-        String zookeepers = "hadoop201:2181";
+        String brokers = "master:9092";
+        String zookeepers = "master:2181";
         // 输入和输出的topic
         String from = "log";//product
         String to = "recommender";//consume

@@ -11,7 +11,9 @@ import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
+import org.elasticsearch.common.unit.Fuzziness;
 import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,7 +42,7 @@ public class MovieGenresRecommendationService {
         SearchRequest request1 = new SearchRequest();
         request1.indices(Constant.ELEASTICSEARCH_INDEX);
         // 构建查询的请求体
-        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder().query(QueryBuilders.fuzzyQuery("genres", request.getText())).size(Constant.ES_MOVIES_ITEM_SIZE);
+        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder().query(QueryBuilders.matchQuery("genres", request.getText()).fuzziness(Fuzziness.AUTO)).size(Constant.ES_MOVIES_ITEM_SIZE);
         request1.source(searchSourceBuilder);
         // 查询匹配
         SearchResponse response = null;

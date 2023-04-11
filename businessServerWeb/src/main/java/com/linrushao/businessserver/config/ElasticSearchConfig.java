@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * @Author LRS
  * @Date 2022/9/21 15:23
- * Desc 通过COnfiguration类来实例化Bean
+ * Desc 通过Configuration类来实例化Bean
  */
 
 @Configuration
@@ -23,6 +23,6 @@ public class ElasticSearchConfig {
     @Bean
     public RestHighLevelClient esRestClient(){
         return new RestHighLevelClient(
-                RestClient.builder(new HttpHost("hadoop201", 9200, "http")));
+                RestClient.builder(new HttpHost("localhost", 9200, "http")));
     }
 }

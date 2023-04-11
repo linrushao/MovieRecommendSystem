@@ -5,7 +5,7 @@ spring:
     name: spirng-boot-mongodb
   data:
     mongodb:
-      host: hadoop201  #同127.0.0.1
+      host: localhost  #同127.0.0.1
       port: 27017
       database: movierecommendsystem    #指定操作的数据库
 #  MySQL连接
@@ -16,7 +16,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
 #   Redis连接
   redis:
-    host: hadoop201
+    host: master
     port: 6379
     password:
     jedis:
@@ -30,6 +30,6 @@ spring:
 #  elasticsearch连接
   elasticsearch:
     rest:
-      uris: hadoop201:9200
+      uris: localhost:9200
       connection-timeout: 600s
       read-timeout: 600s

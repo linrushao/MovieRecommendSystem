@@ -107,31 +107,31 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="carousel-inner" >
 			<div class="item  active">
 				<a th:href="@{'/single/'+${hotMovies.get(0).getMid()}}">
-					<img th:src="'../../images/'+${hotMovies.get(0).getMid()}+'/picture.jpg'"  style="height: 500px"  alt="First slide">
+					<img th:src="'../../imagesData/'+${hotMovies.get(0).getMid()}+'.jpg'"  style="height: 500px"  alt="First slide">
 				</a>
 				<div class="carousel-caption" th:text="${hotMovies.get(0).getName()}">标题 1</div>
 			</div>
 			<div class="item">
 				<a th:href="@{'/single/'+${hotMovies.get(1).getMid()}}">
-					<img th:src="'../../images/'+${hotMovies.get(1).getMid()}+'/picture.jpg'"  style="height: 500px"  alt="First slide">
+					<img th:src="'../../imagesData/'+${hotMovies.get(1).getMid()}+'.jpg'"  style="height: 500px"  alt="First slide">
 				</a>
 				<div class="carousel-caption" th:text="${hotMovies.get(1).getName()}">标题 2</div>
 			</div>
 			<div class="item">
 				<a th:href="@{'/single/'+${hotMovies.get(2).getMid()}}">
-					<img th:src="'../../images/'+${hotMovies.get(2).getMid()}+'/picture.jpg'"  style="height: 500px" alt="First slide">
+					<img th:src="'../../imagesData/'+${hotMovies.get(2).getMid()}+'.jpg'"  style="height: 500px" alt="First slide">
 				</a>
 				<div class="carousel-caption" th:text="${hotMovies.get(2).getName()}">标题 1</div>
 			</div>
 			<div class="item">
 				<a th:href="@{'/single/'+${hotMovies.get(3).getMid()}}">
-					<img th:src="'../../images/'+${hotMovies.get(3).getMid()}+'/picture.jpg'"  style="height: 500px" alt="First slide">
+					<img th:src="'../../imagesData/'+${hotMovies.get(3).getMid()}+'.jpg'"  style="height: 500px" alt="First slide">
 				</a>
 				<div class="carousel-caption" th:text="${hotMovies.get(3).getName()}">标题 1</div>
 			</div>
 			<div class="item">
 				<a th:href="@{'/single/'+${hotMovies.get(4).getMid()}}">
-					<img th:src="'../../images/'+${hotMovies.get(4).getMid()}+'/picture.jpg'" style="height: 500px"  alt="First slide">
+					<img th:src="'../../imagesData/'+${hotMovies.get(4).getMid()}+'.jpg'" style="height: 500px"  alt="First slide">
 				</a>
 				<div class="carousel-caption" th:text="${hotMovies.get(4).getName()}">标题 1</div>
 			</div>
@@ -158,9 +158,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="wthree_agile-requested-movies" th:each="hot:${hotMovies}">
 				<div class="col-md-2 w3l-movie-gride-agile requested-movies">
-					<a th:href="@{'/single/'+${hot.getMid()}}"  class="hvr-sweep-to-bottom"><img
-							th:src="'../../images/'+${hot.getMid()}+'/poster.jpg'" title="Movies Pro"
-							class="img-responsive" alt=" ">
+					<a th:href="@{'/single/'+${hot.getMid()}}" class="hvr-sweep-to-bottom">
+						<img
+								th:src="'../../imagesData/'+${hot.getMid()}+'.jpg'" title="Movies Pro"
+								class="img-responsive" alt=" ">
 						<div class="w3l-action-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></div>
 					</a>
 					<div class="zidingyi mid-1 agileits_w3layouts_mid_1_home">
@@ -293,8 +294,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </body>
 <script>
 	// 拥有的标签
-	var haveArr = ["动作片", "冒险经历", "动画片", "喜剧片", "犯罪片", "纪录片", "喜剧文学", "魔幻片", "恐怖片", "悬疑片", "爱情片", "科幻片", "惊悚片", "战争片", "西部片"];
-
+	var haveArr = ["动作","动画","冒险","喜剧","犯罪","奇幻","家庭","传记", "历史","音乐"
+		,"恐怖","歌舞","悬疑","爱情","古装","科幻","运动","惊悚","战争","武侠","剧情"];
 	// 添加的标签
 	var addArr = [];
 

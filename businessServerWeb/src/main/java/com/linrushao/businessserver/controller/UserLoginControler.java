@@ -115,70 +115,7 @@ public class UserLoginControler extends BaseController {
 
         ArrayList<String> genresList = new ArrayList<>();
         for(String genre : genres){
-            switch (genre){
-                case "动作片":
-                    genresList.add("Action");
-                    break;
-                case "冒险经历":
-                    genresList.add("Adventure");
-                    break;
-                case "动画片":
-                    genresList.add("Animation");
-                    break;
-                case "喜剧片":
-                    genresList.add("Comedy");
-                    break;
-                case "犯罪片":
-                    genresList.add("Crime");
-                    break;
-                case "纪录片":
-                    genresList.add("Documentary");
-                    break;
-                case "喜剧文学":
-                    genresList.add("Drama");
-                    break;
-                case "家庭片":
-                    genresList.add("Family");
-                    break;
-                case "魔幻片":
-                    genresList.add("Fantasy");
-                    break;
-                case "外国片":
-                    genresList.add("Action");
-                    break;
-                case "历史片":
-                    genresList.add("History");
-                    break;
-                case "恐怖片":
-                    genresList.add("Horror");
-                    break;
-                case "音乐片":
-                    genresList.add("Music");
-                    break;
-                case "悬疑片":
-                    genresList.add("Mystery");
-                    break;
-                case "爱情片":
-                    genresList.add("Romance");
-                    break;
-                case "科幻片":
-                    genresList.add("Science fiction");
-                    break;
-                case "电视电影":
-                    genresList.add("Tv movie");
-                    break;
-                case "惊悚片":
-                    genresList.add("Thriller");
-                    break;
-                case "战争片":
-                    genresList.add("War");
-                    break;
-                case "西部片":
-                    genresList.add("Western");
-                    break;
-                default:
-                    break;
-            }
+            genresList.add(genre);
         }
 
         return genresList;

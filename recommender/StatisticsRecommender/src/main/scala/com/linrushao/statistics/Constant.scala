@@ -8,8 +8,8 @@ package com.linrushao.statistics
 object Constant {
 
   /**************加载数据表的表名******************/
-  val MONGODB_MOVIE_COLLECTION = "Movie"
-  val MONGODB_RATING_COLLECTION = "Rating"
+  val MONGODB_MOVIE_COLLECTION = "Movies"
+  val MONGODB_RATING_COLLECTION = "Ratings"
 
   /**************统计的表的名称******************/
   //评分最多
