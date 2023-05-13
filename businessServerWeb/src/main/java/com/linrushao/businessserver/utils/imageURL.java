@@ -13,11 +13,11 @@ import java.util.Scanner;
 public class imageURL {
 
     public static void main(String[] args) {
+        int InvalidSum = 0;
         try {
             // 读取文件
-            File file = new File("E:\\比赛\\数据集\\筛选后的数据\\movies.txt.txt");
+            File file = new File("D:\\桌面\\比赛\\数据集\\筛选后的数据\\moviesURLCheck.txt");
             Scanner scanner = new Scanner(file);
-//            ArrayList<String> midlist = new ArrayList<>();
             // 遍历每一行
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
@@ -28,18 +28,18 @@ public class imageURL {
 
                 // 如果URL无效，删除整行数据
                 if (!valid) {
-                    System.out.println("mid:" + parts[0].trim());
+                    InvalidSum += 1;
+//                    System.out.println("mid:" + parts[0].trim());
                     System.out.println("Invalid URL: " + parts[3].trim());
-//                    midlist.add(parts[0].trim());
                 } else {
 //                    System.out.println("Valid URL: " + parts[3].trim());
                     // 如果需要将有效的数据写入新的文件，可以使用下面的代码
-                    FileWriter writer = new FileWriter("E:\\比赛\\数据集\\筛选后的数据\\output.txt", true);
+                    FileWriter writer = new FileWriter("D:\\桌面\\比赛\\数据集\\筛选后的数据\\movies.txt", true);
                     writer.write(line + "\n");
                     writer.close();
                 }
             }
-
+            System.out.println("无效图片总数："+ InvalidSum);
             scanner.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();

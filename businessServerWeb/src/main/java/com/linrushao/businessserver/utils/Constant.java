@@ -11,11 +11,14 @@ public class Constant {
 
     //************** MONGODB 表集合【表】****************
 
-    //数据库名
-    public static final String MONGODB_DATABASE = "movierecommendsystem";
+    //（英文电影）数据库名
+    public static final String MONGODB_DATABASE = "englishmovierecommendsystem";
+
+    //（中文电影）数据库名
+//    public static final String MONGODB_DATABASE = "movierecommendsystem";
 
     //用户表
-    public static final String MONGODB_USER_COLLECTION= "User";
+    public static final String MONGODB_USER_COLLECTION= "Users";
 
     //电影表
     public static final String MONGODB_MOVIE_COLLECTION = "Movies";
@@ -30,7 +33,7 @@ public class Constant {
     public static final String MONGODB_AVERAGE_MOVIES_SCORE_COLLECTION = "AverageMovies";
 
     //电影的相似度矩阵
-    public static final String MONGODB_MOVIE_RECS_COLLECTION = "MovieRecommend";
+    public static final String MONGODB_MOVIE_RECS_COLLECTION = "MovieRecommends";
 
     //优质电影表
     public static final String MONGODB_RATE_MORE_MOVIES_COLLECTION = "RateMoreMovies";
@@ -39,10 +42,10 @@ public class Constant {
     public static final String MONGODB_RATE_MORE_MOVIES_RECENTLY_COLLECTION = "RateMoreRecentlyMovies";
 
     //实时推荐电影表
-    public static final String MONGODB_STREAM_RECS_COLLECTION = "StreamRecs";
+    public static final String MONGODB_STREAM_RECS_COLLECTION = "StreamRecommends";
 
     //用户的推荐矩阵
-    public static final String MONGODB_USER_RECS_COLLECTION = "UserRecommend";
+    public static final String MONGODB_USER_RECS_COLLECTION = "UserRecommends";
 
     //电影类别表
     public static final String MONGODB_GENRES_TOP_MOVIES_COLLECTION = "GenresTopMovies";

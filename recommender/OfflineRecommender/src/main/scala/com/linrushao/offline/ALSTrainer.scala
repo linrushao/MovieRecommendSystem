@@ -79,7 +79,7 @@ object ALSTrainer extends Serializable {
      *iterations number of iterations of ALS
      *lambda     regularization parameter
      */
-    val (rank, iterations, lambda) = (50, 5, 0.01)
+    val (rank, iterations, lambda) = (20, 5, 0.01)
     val model = ALS.train(trainData, rank, iterations, lambda)
 
     implicit val mongoClient = MongoClient(MongoClientURI(mongoConf.uri))

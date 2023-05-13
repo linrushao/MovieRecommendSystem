@@ -146,6 +146,7 @@ object DataLoader {
     params += "es.httpHosts" -> "localhost:9200"
     params += "es.transportHosts" -> "localhost:9300"
     params += "es.index" -> "movierecommendsystemdata"
+//    params += "es.index" -> "englishmovierecommendsystemdata"
     params += "es.cluster.name" -> "es-cluster"
     params += "mongo.uri" -> "mongodb://localhost:27017/movierecommendsystem"
     params += "mongo.db" -> "movierecommendsystem"
@@ -200,7 +201,7 @@ object DataLoader {
     moviesDF.cache()
 
     // 将数据保存到MongoDB
-//    storeDataInMongo(moviesDF, ratingsDF)
+    storeDataInMongo(moviesDF, ratingsDF)
 
     // 保存数据到ES
     storeMoiveDataInES(moviesDF)

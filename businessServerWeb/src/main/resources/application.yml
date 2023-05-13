@@ -7,7 +7,7 @@ spring:
     mongodb:
       host: localhost  #同127.0.0.1
       port: 27017
-      database: movierecommendsystem    #指定操作的数据库
+      database: movierecommendsystem    #指定操作的数据库(中文电影)
 #  MySQL连接
   datasource:
     username: root
