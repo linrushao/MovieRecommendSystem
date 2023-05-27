@@ -6,13 +6,15 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<meta name="keywords" content="My Play Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design"/>
+	<script th:src="@{../../js/jquery-1.11.1.min.js}"></script>
+	<script th:src="@{../../js/jquery.min.js}"></script>
 	<script type="application/x-javascript"> addEventListener("load", function () {
 		setTimeout(hideURLbar, 0);
 	}, false);
 	function hideURLbar() {
 		window.scrollTo(0, 1);
 	} </script>
-	<!--小星星评分在-->
+	<!--小星星评分开始-->
 	<style>
 		.liclass1{
 			/* 左半边未选中 */
@@ -52,7 +54,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		}
 	</style>
 	<script>
-		window.onload = function(){
+		// $(document).ready(function(){
+			// document.getElementById("header").style.color="red";
+		// })
+		$(document).ready(function(){
+		// window.onload = function(){
 			var ulclass = document.querySelector(".ulclass");
 			var lis = ulclass.getElementsByTagName("li");
 			for(var i=0;i<lis.length;i++){
@@ -126,7 +132,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					});
 				}
 			}
-		}
+		})
 	</script>
 	<!--小星星评分结束-->
 	<!-- bootstrap -->
@@ -136,7 +142,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<link th:href="@{../../css/dashboard.css}" rel="stylesheet">
 	<!-- Custom Theme files -->
 	<link th:href="@{../../css/style.css}" rel='stylesheet' type='text/css' media="all"/>
-	<script th:src="@{../../js/jquery-1.11.1.min.js}"></script>
+
 	<style type="text/css">
 		.zidingyi {
 			height: 90px;
@@ -182,13 +188,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	<div class="main-grids">
 		<div class="top-grids" th:each="movie:${singlemovies}">
-			<div class="col-md-10">
+			<div class="col-md-4">
 				<figure class="movie-poster"><img th:src="@{'../../imagesData/'+${movie.getMid()}+'.jpg'}" alt="#"></figure>
 			</div>
-			<div class="col-md-2">
-
-			</div>
-			<div class="col-md-12">
+			<div class="col-md-8">
 				<h2 th:text="${movie.getName()}">The Croods</h2>
 				<ul th:if="${movie.getScore()} lt '0.5'" class="glyphicon glyphicon-star w3l-ratings"><strong>  评分:</strong>
 					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>

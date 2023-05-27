@@ -264,7 +264,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--footer end-->
 <!--模态窗start-->
 <!-- 模态框（Modal） -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="myModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -286,7 +286,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <script>
-	$(function () { $('#myModal').modal('hide')});
+	$(function () {
+		$('#myModal').modal('hide');//手动关闭
+		// $("#myModal").modal({backdrop: 'static', keyboard: false})//手动开启
+	});
 </script>
 <!--模态窗end-->
 <script th:src="@{../../js/bootstrap.min.js}"></script>
