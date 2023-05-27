@@ -158,6 +158,9 @@ object StreamingRecommender {
                       uid: Int,
                       simMovies: scala.collection.Map[Int, scala.collection.immutable.Map[Int, Double]])
                      (implicit mongoConfig: MongoConfig): Array[Int] = {
+
+
+
     // 1. 从相似度矩阵中拿到所有相似的电影
     val allSimMovies = simMovies(mid).toArray
 
@@ -168,6 +171,8 @@ object StreamingRecommender {
       .map {
         item => item.get("mid").toString.toInt
       }
+
+
 
     // 3. 把看过的过滤，得到输出列表
     allSimMovies.filter(x => !ratingExist.contains(x._1))

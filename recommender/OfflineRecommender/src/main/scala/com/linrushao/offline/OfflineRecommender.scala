@@ -34,7 +34,7 @@ object OfflineRecommender extends App {
     .setMaster(params("spark.cores").asInstanceOf[String])
     .set("spark.executor.memory", "6G")
     //将临时计算结果保存在本地
-    .set("spark.local.dir","E:\\TempData")
+    .set("spark.local.dir","D:\\TempData")
 
   implicit val mongoConf = new MongoConfig(params("mongo.uri").asInstanceOf[String],
     params("mongo.db").asInstanceOf[String])

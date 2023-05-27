@@ -14,7 +14,8 @@ import org.elasticsearch.transport.client.PreBuiltTransportClient
 
 import java.net.InetAddress
 import javax.ws.rs.PUT
-
+import java.math.BigInteger
+import java.security.{MessageDigest, NoSuchAlgorithmException}
 object DataLoader {
 
   /**************配置主机名:端口号的正则表达式******************/
@@ -194,6 +195,8 @@ object DataLoader {
     val ratingsDF = ratingRDD.map(line => {
       val x = line.split(",")
       val uidHashCode: Int = x(1).trim.hashCode
+      //将MD5码转换为int类型
+//      var uid: Int = MD5ToIntConverter(x(1))
       Ratings(x(0).toInt, x(1).trim,uidHashCode ,x(2).trim.toInt, x(3).toInt, x(4).trim)
     }).toDF()
 
@@ -213,4 +216,27 @@ object DataLoader {
     //关闭Spark
     spark.close()
   }
+
+  //将md5码转换为int类型
+  def MD5ToIntConverter(md5: String): Int = {
+    try {
+      // 创建MD5哈希算法实例
+      val messageDigest = MessageDigest.getInstance("MD5")
+
+      // 计算MD5哈希值
+      messageDigest.update(md5.getBytes)
+
+      // 将MD5哈希值转换为BigInteger
+      val bigInteger = new BigInteger(1, messageDigest.digest)
+
+      // 将BigInteger转换为int类型
+      bigInteger.intValue()
+      } catch {
+      case e: NoSuchAlgorithmException =>
+        e.printStackTrace()
+        0 // 如果发生异常，返回默认值
+    }
+  }
 }
+
+

@@ -12,10 +12,7 @@ public class Constant {
     //************** MONGODB 表集合【表】****************
 
     //（英文电影）数据库名
-    public static final String MONGODB_DATABASE = "englishmovierecommendsystem";
-
-    //（中文电影）数据库名
-//    public static final String MONGODB_DATABASE = "movierecommendsystem";
+    public static final String MONGODB_DATABASE = "movierecommendsystem";
 
     //用户表
     public static final String MONGODB_USER_COLLECTION= "Users";
