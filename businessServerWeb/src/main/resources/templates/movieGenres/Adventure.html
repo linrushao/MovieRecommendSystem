@@ -23,24 +23,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- Custom Theme files -->
     <link th:href="@{../../css/style.css}" rel='stylesheet' type='text/css' media="all"/>
     <script th:src="@{../../js/jquery-1.11.1.min.js}"></script>
-    <style type="text/css">
-        .zidingyi {
-            height: 90px;
-            overflow: hidden;
-        }
-
-        .zidingyi2 {
-            position: absolute;
-            left: 10px;
-            bottom: 0;
-        }
-
-        .zidingyi3 {
-            position: absolute;
-            right: 10px;
-            bottom: 0;
-        }
-    </style>
+    <!--    自定义样式，调整样式-->
+    <link th:href="@{../../css/custom.css}" rel="stylesheet">
     <!-- //for-mobile-apps -->
     <link th:href="@{../../css/font-awesome.css}" rel="stylesheet">
     <link th:href="@{../../css/style2.css}" rel='stylesheet' type='text/css' media="all"/>
@@ -172,7 +156,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="js/bootstrap.min.js"></script>
+<script th:src="@{../../js/bootstrap.min.js}"></script>
 <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
 <!--Session登录显示-->
 <script th:src="@{../../js/LoginAndLogout.js}"></script>

@@ -193,122 +193,117 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="col-md-8">
 				<h2 th:text="${movie.getName()}">The Croods</h2>
-				<ul th:if="${movie.getScore()} lt '0.5'" class="glyphicon glyphicon-star w3l-ratings"><strong>  评分:</strong>
+				<ul th:if="${movie.getScore()} lt '0.5'" class="glyphicon glyphicon-star w3l-ratings" style="margin: 0.5em"><strong>  评分:</strong>
 					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
 				</ul>
-				<ul th:if="(${movie.getScore()} ge '0.5') and (${movie.getScore()} lt '1')" class="glyphicon glyphicon-star w3l-ratings"><strong>  评分:</strong>
+				<ul th:if="(${movie.getScore()} ge '0.5') and (${movie.getScore()} lt '1')" class="glyphicon glyphicon-star w3l-ratings" style="margin: 0.5em"><strong>  评分:</strong>
 					<li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
 				</ul>
-				<ul th:if="(${movie.getScore()} ge '1') and (${movie.getScore()} lt '1.5')" class="glyphicon glyphicon-star w3l-ratings"><strong>  评分:</strong>
+				<ul th:if="(${movie.getScore()} ge '1') and (${movie.getScore()} lt '1.5')" class="glyphicon glyphicon-star w3l-ratings" style="margin: 0.5em"><strong>  评分:</strong>
 					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
 				</ul>
-				<ul th:if="(${movie.getScore()} ge '1.5') and (${movie.getScore()} lt '2')" class="glyphicon glyphicon-star w3l-ratings"><strong>  评分:</strong>
+				<ul th:if="(${movie.getScore()} ge '1.5') and (${movie.getScore()} lt '2')" class="glyphicon glyphicon-star w3l-ratings" style="margin: 0.5em"><strong>  评分:</strong>
 					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
 				</ul>
-				<ul th:if="${movie.getScore()} ge '2' and ${movie.getScore()} lt '2.5'" class="glyphicon glyphicon-star w3l-ratings"><strong>  评分:</strong>
+				<ul th:if="${movie.getScore()} ge '2' and ${movie.getScore()} lt '2.5'" class="glyphicon glyphicon-star w3l-ratings" style="margin: 0.5em"><strong>  评分:</strong>
 					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
 				</ul>
-				<ul th:if="${movie.getScore()} ge '2.5' and ${movie.getScore()} lt '3'" class="glyphicon glyphicon-star w3l-ratings"><strong>  评分:</strong>
+				<ul th:if="${movie.getScore()} ge '2.5' and ${movie.getScore()} lt '3'" class="glyphicon glyphicon-star w3l-ratings" style="margin: 0.5em"><strong>  评分:</strong>
 					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
 				</ul>
-				<ul th:if="${movie.getScore()} ge '3' and ${movie.getScore()} lt '3.5'" class="glyphicon glyphicon-star w3l-ratings"><strong>  评分:</strong>
+				<ul th:if="${movie.getScore()} ge '3' and ${movie.getScore()} lt '3.5'" class="glyphicon glyphicon-star w3l-ratings" style="margin: 0.5em"><strong>  评分:</strong>
 					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
 				</ul>
-				<ul th:if="${movie.getScore()} ge '3.5' and ${movie.getScore()} lt '4'"class="glyphicon glyphicon-star w3l-ratings"><strong>  评分:</strong>
+				<ul th:if="${movie.getScore()} ge '3.5' and ${movie.getScore()} lt '4'"class="glyphicon glyphicon-star w3l-ratings" style="margin: 0.5em"><strong>  评分:</strong>
 					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
 				</ul>
-				<ul th:if="${movie.getScore()} ge '4' and ${movie.getScore()} lt '4.5'" class="glyphicon glyphicon-star w3l-ratings"><strong>  评分:</strong>
+				<ul th:if="${movie.getScore()} ge '4' and ${movie.getScore()} lt '4.5'" class="glyphicon glyphicon-star w3l-ratings" style="margin: 0.5em"><strong>  评分:</strong>
 					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
 				</ul>
-				<ul th:if="${movie.getScore()} ge '4.5' and ${movie.getScore()} lt '5'" class="glyphicon glyphicon-star w3l-ratings"><strong>  评分:</strong>
+				<ul th:if="${movie.getScore()} ge '4.5' and ${movie.getScore()} lt '5'" class="glyphicon glyphicon-star w3l-ratings" style="margin: 0.5em"><strong>  评分:</strong>
 					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
 				</ul>
-				<ul th:if="${movie.getScore()} ge '5' " class="glyphicon glyphicon-heart w3l-ratings"><strong>  评分:</strong>
+				<ul th:if="${movie.getScore()} ge '5' " class="glyphicon glyphicon-heart w3l-ratings" style="margin: 0.5em"><strong>  评分:</strong>
 					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
 					<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
 				</ul>
-				<ul>
+				<ul style="margin: 0.5em">
 					<li class="glyphicon glyphicon-dashboard"><strong>  片长:</strong>
 						<span th:text="${movie.getTimelong()}"></span>
 					</li>
 				</ul>
-				<ul>
+				<ul style="margin: 0.5em">
 					<li class="glyphicon glyphicon-facetime-video"><strong>  上映日期:</strong>
 						<span th:text="${movie.getIssue()}"></span>
 					</li>
 				</ul>
-				<ul>
+				<ul style="margin: 0.5em">
 					<li class="glyphicon  glyphicon-sort-by-alphabet-alt"><strong>  语言:</strong>
 						<span th:text="${movie.getLanguage()}"></span>
 					</li>
 				</ul>
-				<ul>
+				<ul style="margin: 0.5em">
 					<li class="glyphicon glyphicon-list-alt"><strong>  类型:</strong>
 						<span th:text="${movie.getGenres()}"></span>
 					</li>
 				</ul>
-				<ul>
+				<ul style="margin: 0.5em">
 					<li class="glyphicon glyphicon-user"><strong>  导演:</strong>
 						<span th:text="${movie.getDirectors()}"></span>
 					</li>
 				</ul>
-				<ul>
+				<ul style="margin: 0.5em">
 					<li class="glyphicon glyphicon-bullhorn"><strong>  演员</strong>
 					</li>
-					<div th:text="${movie.getActors()}"><span style="width:80%"></span></div>
+					<div th:text="${movie.getActors()}" style="margin: 0.5em"><span style="width:80%"></span></div>
 
 				</ul>
-				<ul th:if="${movie.getDescri()} ne null or ${movie.getDescri()} ne ''">
-					<li class="glyphicon  glyphicon-comment"><strong>  电影简介</strong>
-					</li>
-					<div th:text="${movie.getDescri()}"><span></span></div>
-				</ul>
-				<div id="div_star" class="glyphicon glyphicon-heart">
+				<div id="div_star" class="glyphicon glyphicon-heart" style="margin: 0.5em">
 					<strong>你的评分:</strong>
-					<ul class="ulclass">
+					<ul class="ulclass" style="margin: 0.5em">
 						<li id="0"></li>
 						<li id="1"></li>
 						<li id="2"></li>
@@ -321,6 +316,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<li id="9"></li>
 					</ul>
 				</div>
+			</div>
+			<div class="col-md-12">
+				<ul th:if="${movie.getDescri()} ne null or ${movie.getDescri()} ne ''" style="margin: 0.5em">
+					<li class="glyphicon  glyphicon-comment"><strong>  电影简介</strong>
+					</li>
+					<div th:text="${movie.getDescri()}" style="margin: 0.5em"><span></span></div>
+				</ul>
 			</div>
 		</div>
 	</div>

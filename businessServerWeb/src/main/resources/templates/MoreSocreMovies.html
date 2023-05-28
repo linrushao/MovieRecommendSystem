@@ -23,22 +23,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- Custom Theme files -->
     <link th:href="@{../../css/style.css}" rel='stylesheet' type='text/css' media="all"/>
     <script th:src="@{../../js/jquery-1.11.1.min.js}"></script>
-    <style type="text/css">
-        .zidingyi {
-            height: 90px;
-            overflow: hidden;
-        }
-        .zidingyi2 {
-            position: absolute;
-            left: 10px;
-            bottom: 0;
-        }
-        .zidingyi3 {
-            position: absolute;
-            right: 10px;
-            bottom: 0;
-        }
-    </style>
+    <!--    自定义样式，调整样式-->
+    <link th:href="@{../../css/custom.css}" rel="stylesheet">
     <!-- //for-mobile-apps -->
     <link th:href="@{../../css/font-awesome.css}" rel="stylesheet">
     <link th:href="@{../../css/style2.css}" rel='stylesheet' type='text/css' media="all"/>
@@ -63,99 +49,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="recommended-info">
                 <h3>评分最多</h3>
             </div>
-            <div class="wthree_agile-requested-movies" th:each="MoreSocreMovie:${MoreSocreMovies}">
+            <div class="wthree_agile-requested-movies" th:each="moviedata:${MoreSocreMovies}">
                 <div class="col-md-2 w3l-movie-gride-agile requested-movies">
-                    <a th:href="@{'/single/'+${MoreSocreMovie.getMid()}}" class="hvr-sweep-to-bottom">
+                    <a th:href="@{'/single/'+${moviedata.getMid()}}" class="hvr-sweep-to-bottom">
                     <img
-                            th:src="'../../imagesData/'+${MoreSocreMovie.getMid()}+'.jpg'" title="Movies Pro"
+                            th:src="'../../imagesData/'+${moviedata.getMid()}+'.jpg'" title="Movies Pro"
                             class="img-responsive" alt=" ">
                         <div class="w3l-action-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></div>
                     </a>
                     <div class="zidingyi mid-1 agileits_w3layouts_mid_1_home">
                         <div class="w3l-movie-text">
-                            <h6><a th:href="@{'/single/'+${MoreSocreMovie.getMid()}}" th:text="${MoreSocreMovie.getName()}">Swiss Army Man</a></h6>
+                            <h6><a th:href="@{'/single/'+${moviedata.getMid()}}" th:text="${moviedata.getName()}">Swiss Army Man</a></h6>
                         </div>
                         <div class=" mid-2 agile_mid_2_home">
-                            <p class="zidingyi2" th:text="${MoreSocreMovie.getShoot()}">2016</p>
-                            <div class="zidingyi3 block-stars">
-                                <ul class="w3l-ratings" th:if="${MoreSocreMovie.getScore()} lt '0.5'">
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                </ul>
-                                <ul class="w3l-ratings" th:if="(${MoreSocreMovie.getScore()} ge '0.5') and (${MoreSocreMovie.getScore()} lt '1')">
-                                    <li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                </ul>
-                                <ul class="w3l-ratings" th:if="(${MoreSocreMovie.getScore()} ge '1') and (${MoreSocreMovie.getScore()} lt '1.5')">
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                </ul>
-                                <ul class="w3l-ratings" th:if="(${MoreSocreMovie.getScore()} ge '1.5') and (${MoreSocreMovie.getScore()} lt '2')">
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                </ul>
-                                <ul class="w3l-ratings" th:if="${MoreSocreMovie.getScore()} ge '2' and ${MoreSocreMovie.getScore()} lt '2.5'">
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                </ul>
-                                <ul class="w3l-ratings" th:if="${MoreSocreMovie.getScore()} ge '2.5' and ${MoreSocreMovie.getScore()} lt '3'">
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                </ul>
-                                <ul class="w3l-ratings" th:if="${MoreSocreMovie.getScore()} ge '3' and ${MoreSocreMovie.getScore()} lt '3.5'">
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                </ul>
-                                <ul class="w3l-ratings" th:if="${MoreSocreMovie.getScore()} ge '3.5' and ${MoreSocreMovie.getScore()} lt '4'">
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                </ul>
-                                <ul class="w3l-ratings" th:if="${MoreSocreMovie.getScore()} ge '4' and ${MoreSocreMovie.getScore()} lt '4.5'">
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                </ul>
-                                <ul class="w3l-ratings" th:if="${MoreSocreMovie.getScore()} ge '4.5' and ${MoreSocreMovie.getScore()} lt '5'">
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
-                                </ul>
-                                <ul class="w3l-ratings" th:if="${MoreSocreMovie.getScore()} ge '5' ">
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                </ul>
-                            </div>
+                            <p class="zidingyi2" th:text="${moviedata.getShoot()}">2016</p>
+                            <div th:replace="common/star_score :: star_score"></div>
                             <div class="clearfix"></div>
                         </div>
                     </div>

@@ -23,24 +23,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- Custom Theme files -->
     <link th:href="@{../../css/style.css}" rel='stylesheet' type='text/css' media="all"/>
     <script th:src="@{../../js/jquery-1.11.1.min.js}"></script>
-    <style type="text/css">
-        .zidingyi {
-            height: 90px;
-            overflow: hidden;
-        }
-
-        .zidingyi2 {
-            position: absolute;
-            left: 10px;
-            bottom: 0;
-        }
-
-        .zidingyi4 {
-            position: absolute;
-            right: 20px;
-            bottom: 0;
-        }
-    </style>
+    <!--    自定义样式，调整样式-->
+    <link th:href="@{../../css/custom.css}" rel="stylesheet">
     <!-- //for-mobile-apps -->
     <link th:href="@{../../css/font-awesome.css}" rel="stylesheet">
     <link th:href="@{../../css/style2.css}" rel='stylesheet' type='text/css' media="all"/>
@@ -57,10 +41,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div th:replace="common/common :: #sidebar(activeUri='/genres/Action/Action')"></div>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     <div class="show-top-grids">
-        <div class="col-sm-10 show-grid-left main-grids">
-            <div class="recommended-info">
-                <h3>动作片</h3>
-            </div>
+        <div class="col-sm-10 show-grid-left main-grids"><div class="recommended-info">
+            <h3>动作片</h3>
+        </div>
             <div class="wthree_agile-requested-movies" th:each="action:${Action}">
                 <div class="w3l-movie-gride-agile  col-md-3  recommended-grid">
                     <a th:href="@{'/single/'+${action.getMid()}}" class="hvr-sweep-to-bottom">
@@ -178,4 +161,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--Session登录显示-->
 <script th:src="@{../../js/LoginAndLogout.js}"></script>
 
+<script type="text/javascript">
+    $("#btn-shows").click(function() {
+        $.ajax({
+            url: "/offline",
+            type: "get",
+            success: function(json) {
+            }
+        });
+    });
+</script>
 </body>

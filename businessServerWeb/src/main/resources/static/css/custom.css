@@ -1,0 +1,22 @@
+.zidingyi {
+    height: 90px;
+    overflow: hidden;
+}
+
+.zidingyi2 {
+    position: absolute;
+    left: 10px;
+    bottom: 0;
+}
+
+.zidingyi3 {
+    position: absolute;
+    right: 20px;
+    bottom: 0;
+}
+
+.zidingyi4 {
+ position: absolute;
+            right: 20px;
+         bottom: 0;
+      }
