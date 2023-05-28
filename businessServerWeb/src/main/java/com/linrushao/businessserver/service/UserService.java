@@ -54,9 +54,11 @@ public class UserService {
         String md5Password = getMd5Password(request.getPassword(), salt);
 
         user.setUsername(username);
-        user.setPassword(md5Password);
+        user.setPassword(request.getPassword());
+        user.setMd5Password(md5Password);
         user.setFirst(true);
         user.setSalt(salt);
+
         user.setTimestamp(System.currentTimeMillis());
         try {
             getUserCollection().insertOne(Document.parse(objectMapper.writeValueAsString(user)));
@@ -102,7 +104,7 @@ public class UserService {
         // 调用getMd5Password()方法，将参数password和salt结合起来进行加密
         String md5Password = getMd5Password(request.getPassword(), salt);
         // 判断查询结果中的密码，与以上加密得到的密码是否不一致
-        if (!result.getPassword().equals(md5Password)) {
+        if (!result.getMd5Password().equals(md5Password)) {
 //            throw new PasswordNotMatchException("密码验证失败的错误");
             return null;
         }

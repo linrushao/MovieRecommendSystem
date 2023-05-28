@@ -44,99 +44,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="col-sm-10 show-grid-left main-grids"><div class="recommended-info">
             <h3>冒险片</h3>
         </div>
-            <div class="wthree_agile-requested-movies" th:each="adventure:${Adventure}">
+            <div class="wthree_agile-requested-movies" th:each="moviedata:${Adventure}">
                 <div class="w3l-movie-gride-agile  col-md-3  recommended-grid">
-                    <a th:href="@{'/single/'+${adventure.getMid()}}" class="hvr-sweep-to-bottom">
+                    <a th:href="@{'/single/'+${moviedata.getMid()}}" class="hvr-sweep-to-bottom">
                         <img
-                                th:src="'../../imagesData/'+${adventure.getMid()}+'.jpg'" title="Movies Pro"
+                                th:src="'../../imagesData/'+${moviedata.getMid()}+'.jpg'" title="Movies Pro"
                                 class="img-responsive" alt=" ">
                         <div class="w3l-action-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></div>
                     </a>
                     <div class="zidingyi mid-1 agileits_w3layouts_mid_1_home">
                         <div class="w3l-movie-text">
-                            <h6><a  th:href="@{'/single/'+${adventure.getMid()}}" th:text="${adventure.getName()}">Swiss Army Man</a></h6>
+                            <h6><a  th:href="@{'/single/'+${moviedata.getMid()}}" th:text="${moviedata.getName()}">Swiss Army Man</a></h6>
                         </div>
                         <div class=" mid-2 agile_mid_2_home">
-                            <p class="zidingyi2" th:text="${adventure.getShoot()}">2016</p>
-                            <div class="zidingyi4 block-stars">
-                                <ul class="w3l-ratings" th:if="${adventure.getScore()} lt '0.5'">
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                </ul>
-                                <ul class="w3l-ratings" th:if="(${adventure.getScore()} ge '0.5') and (${adventure.getScore()} lt '1')">
-                                    <li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                </ul>
-                                <ul class="w3l-ratings" th:if="(${adventure.getScore()} ge '1') and (${adventure.getScore()} lt '1.5')">
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                </ul>
-                                <ul class="w3l-ratings" th:if="(${adventure.getScore()} ge '1.5') and (${adventure.getScore()} lt '2')">
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                </ul>
-                                <ul class="w3l-ratings" th:if="${adventure.getScore()} ge '2' and ${adventure.getScore()} lt '2.5'">
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                </ul>
-                                <ul class="w3l-ratings" th:if="${adventure.getScore()} ge '2.5' and ${adventure.getScore()} lt '3'">
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                </ul>
-                                <ul class="w3l-ratings" th:if="${adventure.getScore()} ge '3' and ${adventure.getScore()} lt '3.5'">
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                </ul>
-                                <ul class="w3l-ratings" th:if="${adventure.getScore()} ge '3.5' and ${adventure.getScore()} lt '4'">
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                </ul>
-                                <ul class="w3l-ratings" th:if="${adventure.getScore()} ge '4' and ${adventure.getScore()} lt '4.5'">
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-                                </ul>
-                                <ul class="w3l-ratings" th:if="${adventure.getScore()} ge '4.5' and ${adventure.getScore()} lt '5'">
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
-                                </ul>
-                                <ul class="w3l-ratings" th:if="${adventure.getScore()} ge '5' ">
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                </ul>
-                            </div>
+                            <p class="zidingyi2" th:text="${moviedata.getShoot()}">2016</p>
+                            <div th:replace="common/star_score :: star_score"></div>
                             <div class="clearfix"></div>
                         </div>
                     </div>

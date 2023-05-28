@@ -16,6 +16,16 @@ public class User {
 
     private String password;
 
+    private String md5Password;
+
+    public String getMd5Password() {
+        return md5Password;
+    }
+
+    public void setMd5Password(String md5Password) {
+        this.md5Password = md5Password;
+    }
+
     private boolean first;
 
     private long timestamp;

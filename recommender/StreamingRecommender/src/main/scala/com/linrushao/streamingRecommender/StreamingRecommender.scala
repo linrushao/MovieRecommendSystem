@@ -95,7 +95,7 @@ object StreamingRecommender {
               //匹配算法匹配到一样类型的就执行下一步
           case (uid, mid, score, timestamp) => {
             println("评分数据来了! >>>>>>>>>>>>>>>>")
-            println("用户ID："+uid+"电影ID:"+mid+"\n"+"评分分数：" + score)
+            println("用户ID："+uid+"电影ID:"+mid+" "+"\n"+"评分分数：" + score)
 
             // 1. 从redis里获取当前用户最近的K次评分，保存成Array[(mid, score)]
             val userRecentlyRatings = getUserRecentlyRating(MAX_USER_RATINGS_NUM, uid, ConnHelper.jedis)
@@ -106,7 +106,7 @@ object StreamingRecommender {
             // 3. 对每个备选电影，计算推荐优先级，得到当前用户的实时推荐列表，Array[(mid, score)]
             val streamRecs = computeMovieScores(candidateMovies, userRecentlyRatings, simMovieMatrixBroadCast.value)
 
-            println("推荐电影：")
+            println("推荐前10部电影：")
             streamRecs.take(10).foreach(
               x=>println("电影ID："+x._1,"电影评分："+x._2)
             )
@@ -119,7 +119,7 @@ object StreamingRecommender {
     // 开始接收和处理数据
     ssc.start()
 
-    println(">>>>>>>>>>>>>>> 流式计算开始!")
+    println("Spark Stream流式计算开始!>>>>>>>>>>>>>>> ")
 
     ssc.awaitTermination()
 

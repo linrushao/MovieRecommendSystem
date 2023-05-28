@@ -41,6 +41,6 @@ public class Application {
                 .addSink("SINK", to, "PROCESS");
         KafkaStreams streams = new KafkaStreams(builder, config);
         streams.start();
-        System.out.println("Kafka stream started!>>>>>>>>>>>");
+        System.out.println("Kafka Stream 开始!>>>>>>>>>>>");
     }
 }
