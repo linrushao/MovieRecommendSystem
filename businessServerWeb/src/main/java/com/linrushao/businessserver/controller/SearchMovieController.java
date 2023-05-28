@@ -36,6 +36,7 @@ public class SearchMovieController {
     public String getSearchMovies(@RequestParam("query") String query, Model model) {
         List<Recommendation> recommendations = elasticsearchFullTextSearchService.getContentBasedSearchRecommendations(new SearchRecommendation(query));
         model.addAttribute("success", true);
+        model.addAttribute("key",query);
         model.addAttribute("SearchMovie", movieService.getRecommendeMovies(recommendations));
         return "searchMovie";
     }

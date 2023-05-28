@@ -76,16 +76,42 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 															  aria-hidden="true"></span>实时推荐</a></li>
 		  <li class="nav-link" th:class="${activeUri=='/morescoremovie'?'nav-link active':'nav-link'}"><a th:href="@{/morescoremovie}" class="sub-icon"><span class="glyphicon glyphicon-home glyphicon-hourglass"
 															   aria-hidden="true"></span>评分最多</a></li>
-		  <li><a href="#" class="menu1"><span class="glyphicon glyphicon-film" aria-hidden="true"></span>电影分类<span
-				  class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></li>
-			  <ul class="cl-effect-2">
+		  <li th:class="${activeUri=='/genres'?'nav-link active':'nav-link'}">
+			  <a href="#" class="menu1">
+				  <span class="glyphicon glyphicon-film" aria-hidden="true"></span>电影分类
+				  <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+			  </a>
+			  <ul class="cl-effect-2" style="max-height: 150px; overflow-y: auto; overflow-x: hidden;">
 				  <li class="nav-link" th:class="${activeUri=='/genres/Action/Action'?'nav-link active':'nav-link'}"><a th:href="@{/genres/Action/Action}">动作片</a></li>
 				  <li class="nav-link" th:class="${activeUri=='/genres/Adventure/Adventure'?'nav-link active':'nav-link'}"><a th:href="@{/genres/Adventure/Adventure}">冒险片</a></li>
 				  <li class="nav-link" th:class="${activeUri=='/genres/Animation/Animation'?'nav-link active':'nav-link'}"><a th:href="@{/genres/Animation/Animation}">动画片</a></li>
+				  <li class="nav-link" th:class="${activeUri=='/genres/Biography/Biography'?'nav-link active':'nav-link'}"><a th:href="@{/genres/Biography/Biography}">传记</a></li>
 				  <li class="nav-link" th:class="${activeUri=='/genres/Comedy/Comedy'?'nav-link active':'nav-link'}"><a th:href="@{/genres/Comedy/Comedy}">喜剧片</a></li>
+				  <li class="nav-link" th:class="${activeUri=='/genres/Costume/Costume'?'nav-link active':'nav-link'}"><a th:href="@{/genres/Costume/Costume}">古装</a></li>
 				  <li class="nav-link" th:class="${activeUri=='/genres/Crime/Crime'?'nav-link active':'nav-link'}"><a th:href="@{/genres/Crime/Crime}">犯罪片</a></li>
 				  <li class="nav-link" th:class="${activeUri=='/genres/Documentary/Documentary'?'nav-link active':'nav-link'}"><a th:href="@{/genres/Documentary/Documentary}">纪录片</a></li>
+				  <li class="nav-link" th:class="${activeUri=='/genres/Drama/Drama'?'nav-link active':'nav-link'}"><a th:href="@{/genres/Drama/Drama}">喜剧文学</a></li>
+				  <li class="nav-link" th:class="${activeUri=='/genres/Family/Family'?'nav-link active':'nav-link'}"><a th:href="@{/genres/Family/Family}">家庭片</a></li>
+				  <li class="nav-link" th:class="${activeUri=='/genres/Fantasy/Fantasy'?'nav-link active':'nav-link'}"><a th:href="@{/genres/Fantasy/Fantasy}">奇幻片</a></li>
+				  <li class="nav-link" th:class="${activeUri=='/genres/History/History'?'nav-link active':'nav-link'}"><a th:href="@{/genres/History/History}">历史片</a></li>
+				  <li class="nav-link" th:class="${activeUri=='/genres/Horror/Horror'?'nav-link active':'nav-link'}"><a th:href="@{/genres/Horror/Horror}">恐怖片</a></li>
+				  <li class="nav-link" th:class="${activeUri=='/genres/Music/Music'?'nav-link active':'nav-link'}"><a th:href="@{/genres/Music/Music}">音乐片</a></li>
+				  <li class="nav-link" th:class="${activeUri=='/genres/Mystery/Mystery'?'nav-link active':'nav-link'}"><a th:href="@{/genres/Mystery/Mystery}">悬疑片</a></li>
+				  <li class="nav-link" th:class="${activeUri=='/genres/Plot/Plot'?'nav-link active':'nav-link'}"><a th:href="@{/genres/Plot/Plot}">剧情</a></li>
+				  <li class="nav-link" th:class="${activeUri=='/genres/Romance/Romance'?'nav-link active':'nav-link'}"><a th:href="@{/genres/Romance/Romance}">爱情片</a></li>
+				  <li class="nav-link" th:class="${activeUri=='/genres/ScienceFiction/ScienceFiction'?'nav-link active':'nav-link'}"><a th:href="@{/genres/ScienceFiction/ScienceFiction}">科幻片</a></li>
+				  <li class="nav-link" th:class="${activeUri=='/genres/SingingAndDancing/SingingAndDancing'?'nav-link active':'nav-link'}"><a th:href="@{/genres/SingingAndDancing/SingingAndDancing}">歌舞</a></li>
+				  <li class="nav-link" th:class="${activeUri=='/genres/Sports/Sports'?'nav-link active':'nav-link'}"><a th:href="@{/genres/Sports/Sports}">运动片</a></li>
+				  <li class="nav-link" th:class="${activeUri=='/genres/Swordsmen/Swordsmen'?'nav-link active':'nav-link'}"><a th:href="@{/genres/Swordsmen/Swordsmen}">武侠</a></li>
+				  <li class="nav-link" th:class="${activeUri=='/genres/Thriller/Thriller'?'nav-link active':'nav-link'}"><a th:href="@{/genres/Thriller/Thriller}">惊悚片</a></li>
+				  <li class="nav-link" th:class="${activeUri=='/genres/War/War'?'nav-link active':'nav-link'}"><a th:href="@{/genres/War/War}">战争片</a></li>
+				  <li class="nav-link" th:class="${activeUri=='/genres/Western/Western'?'nav-link active':'nav-link'}"><a th:href="@{/genres/Western/Western}">西部片</a></li>
+
 			  </ul>
+		  </li>
+
+
+
 			  <!-- script-for-menu -->
 			  <script>
 				  $("li a.menu1").click(function () {
