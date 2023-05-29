@@ -1,18 +1,10 @@
-package com.linrushao
-
-import java.util.Date
+package com.linrushao.scalamodel
 
 /**
- * @Author LRS
- * @Date 2022/10/19 14:48
- *       Desc
+ * @Author LinRuShao
+ * @Date 2023/5/29 16:18
  */
-/**
- * MongoDB 配置对象
- * @param uri MongoDB连接地址
- * @param db  操作的MongoDB数据库
- */
-case class MongoConfig(uri: String, db: String)
+
 
 /**
  * Movie Class 电影类
@@ -40,6 +32,7 @@ case class Movies(mid: Int,  name: String, actors:String,image:String,directors:
                   , shoot:Int,  actor_ids: String,  director_ids: String)
 
 /**
+ * 基于LFM的离线推荐模块
  * Rating Class 电影的评分类
  * @param rating_id 评分ID
  * @param user_md5  用户的加密ID
@@ -58,4 +51,43 @@ case class Ratings( rating_id:Int,user_md5: String,uid:Int,  mid: Int,  score: D
  * @param clustername    集群名称，默认elasticsearch
  */
 case class ESConfig(httpHosts: String, transportHosts: String, index: String, clustername: String)
+
+
+/**
+ * 定义一个基准推荐对象
+ * 推荐项目
+ * @param mid  项目ID
+ * @param score    推荐分数
+ */
+case class Recommendation(mid: Int, score: Double)
+
+/**
+ * 电影相似推荐
+ * @param mid 电影ID
+ * @param recs 相似的电影集合
+ */
+case class MovieRecommendation(mid: Int, recs: Seq[Recommendation])
+
+/**
+ * 用户的电影推荐
+ * @param uid 用户ID
+ * @param recs 用户的推荐电影集合
+ */
+case class UserRecommendation(uid: Int, recs: Seq[Recommendation])
+
+/**
+ * MongoDB 配置对象
+ * @param uri MongoDB连接地址
+ * @param db  操作的MongoDB数据库
+ */
+case class MongoConfig(uri:String, db:String)
+
+// 定义基于预测评分的用户推荐列表
+case class UserRecs( uid: Int, recs: Seq[Recommendation] )
+
+// 定义基于LFM电影特征向量的电影相似度列表
+case class MovieRecs( mid: Int, recs: Seq[Recommendation] )
+
+// 定义电影类别top10推荐对象
+case class GenresRecommendation(genres: String, recs: Seq[Recommendation])
 

@@ -1,15 +1,15 @@
 package com.linrushao.streamingRecommender
 
-import com.linrushao.streamingRecommender.Constant.{MAX_SIM_MOVIES_NUM, MAX_USER_RATINGS_NUM, MONGODB_MOVIE_RECS_COLLECTION, MONGODB_RATING_COLLECTION, MONGODB_STREAM_RECS_COLLECTION}
+import com.linrushao.scalamodel.{MongoConfig, MovieRecs}
 import com.mongodb.casbah.Imports.{MongoClient, MongoClientURI}
 import com.mongodb.casbah.commons.MongoDBObject
 import org.apache.kafka.common.serialization.StringDeserializer
-import org.apache.log4j.{Level, Logger}
 import org.apache.spark.SparkConf
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.streaming.kafka010.{ConsumerStrategies, KafkaUtils, LocationStrategies}
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 import redis.clients.jedis.Jedis
+import com.linrushao.javamodel.Constant._
 
 /**
  * @Author LRS

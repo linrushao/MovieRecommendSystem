@@ -2,7 +2,7 @@ package com.linrushao.businessserver.service;
 
 import com.linrushao.businessserver.entity.movieEntity.MovieMidRecommendation;
 import com.linrushao.businessserver.entity.movieEntity.Recommendation;
-import com.linrushao.businessserver.utils.Constant;
+import com.linrushao.javamodel.Constant;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import org.bson.Document;

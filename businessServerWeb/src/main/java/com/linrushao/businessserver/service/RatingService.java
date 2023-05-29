@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.linrushao.businessserver.entity.mainEntity.Rating;
 import com.linrushao.businessserver.entity.mainEntity.User;
 import com.linrushao.businessserver.entity.movieEntity.MovieRating;
-import com.linrushao.businessserver.utils.Constant;
+import com.linrushao.javamodel.Constant;
 import com.linrushao.businessserver.utils.RedisUtil;
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.FindIterable;
@@ -15,8 +15,6 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.util.JSON;
 import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;

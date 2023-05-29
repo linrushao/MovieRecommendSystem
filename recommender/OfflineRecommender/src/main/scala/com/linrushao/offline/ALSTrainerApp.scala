@@ -1,11 +1,12 @@
 package com.linrushao.offline
 
 import breeze.numerics.sqrt
-import com.linrushao.offline.Constant.{MOVIES_COLLECTION_NAME, RATING_COLLECTION_NAME}
+import com.linrushao.scalamodel.MongoConfig
 import org.apache.spark.SparkConf
 import org.apache.spark.mllib.recommendation.{ALS, MatrixFactorizationModel, Rating}
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.SparkSession
+import com.linrushao.javamodel.Constant._
 
 /**
  * @Author LRS
@@ -78,7 +79,7 @@ object ALSTrainerApp{
 
     val ratings = spark.read
       .option("uri", mongoConf.uri)
-      .option("collection", RATING_COLLECTION_NAME)
+      .option("collection", MONGODB_RATING_COLLECTION)
       .format("com.mongodb.spark.sql")
       .load()
       .select($"mid",$"uid",$"score")
@@ -92,7 +93,7 @@ object ALSTrainerApp{
 
     val movies = spark.read
       .option("uri", mongoConf.uri)
-      .option("collection", MOVIES_COLLECTION_NAME)
+      .option("collection", MONGODB_MOVIE_COLLECTION)
       .format("com.mongodb.spark.sql")
       .load()
       .select($"mid")

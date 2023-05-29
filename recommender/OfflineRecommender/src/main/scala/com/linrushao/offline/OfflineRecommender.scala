@@ -1,8 +1,8 @@
 package com.linrushao.offline
 
-
-import com.linrushao.offline.Constant.MAX_RECOMMENDATIONS
+import com.linrushao.scalamodel.MongoConfig
 import org.apache.spark.SparkConf
+import com.linrushao.javamodel.Constant._
 
 /**
  * @Author LRS

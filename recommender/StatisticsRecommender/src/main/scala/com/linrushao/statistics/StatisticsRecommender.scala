@@ -1,10 +1,10 @@
 package com.linrushao.statistics
 
-import com.linrushao.statistics.Constant.{AVERAGE_MOVIES, GENRES_TOP_MOVIES, MONGODB_MOVIE_COLLECTION, MONGODB_RATING_COLLECTION, MOVIE_GENRES_TOP, RATE_MORE_MOVIES, RATE_MORE_RECENTLY_MOVIES}
+import com.linrushao.scalamodel.{GenresRecommendation, MongoConfig, Movies, Ratings, Recommendation}
 import org.apache.spark.SparkConf
 import org.apache.spark.sql.{DataFrame, SparkSession}
-import java.text.SimpleDateFormat
-import java.util.Date
+import com.linrushao.javamodel.Constant._
+
 
 /**
  * @Author LRS
@@ -124,17 +124,17 @@ object StatisticsRecommender {
      * 保存到mongodb
      */
     // 1. 历史热门统计，历史评分数据最多
-    storeDFInMongoDB(rateMoreDF, RATE_MORE_MOVIES)
-    println(RATE_MORE_MOVIES+"表数据保存成功")
+    storeDFInMongoDB(rateMoreDF, MONGODB_RATE_MORE_MOVIES_COLLECTION)
+    println(MONGODB_RATE_MORE_MOVIES_COLLECTION+"表数据保存成功")
 //    2. 近期热门统计
-    storeDFInMongoDB(rateMoreRecentlyMoviesDF, RATE_MORE_RECENTLY_MOVIES)
-    println(RATE_MORE_RECENTLY_MOVIES+"表数据保存成功")
+    storeDFInMongoDB(rateMoreRecentlyMoviesDF, MONGODB_RATE_MORE_MOVIES_RECENTLY_COLLECTION)
+    println(MONGODB_RATE_MORE_MOVIES_RECENTLY_COLLECTION+"表数据保存成功")
     // 3. 优质电影统计，统计电影的平均评分
-    storeDFInMongoDB(averageMoviesDF, AVERAGE_MOVIES)
-    println(AVERAGE_MOVIES+"表数据保存成功")
+    storeDFInMongoDB(averageMoviesDF, MONGODB_AVERAGE_MOVIES_SCORE_COLLECTION)
+    println(MONGODB_AVERAGE_MOVIES_SCORE_COLLECTION+"表数据保存成功")
     // 4. 各类别电影Top统计
-    storeDFInMongoDB(genresTopMoviesDF, GENRES_TOP_MOVIES)
-    println(GENRES_TOP_MOVIES+"表数据保存成功")
+    storeDFInMongoDB(genresTopMoviesDF, MONGODB_GENRES_TOP_MOVIES_COLLECTION)
+    println(MONGODB_GENRES_TOP_MOVIES_COLLECTION+"表数据保存成功")
 
     //去除缓存
     ratings.unpersist()

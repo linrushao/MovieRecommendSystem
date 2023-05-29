@@ -1,7 +1,6 @@
 package com.linrushao.businessserver.controller;
 
 import com.linrushao.businessserver.service.MovieService;
-import com.linrushao.businessserver.utils.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

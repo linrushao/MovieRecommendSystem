@@ -1,5 +1,6 @@
 package com.linrushao
-import com.linrushao.Constant.{ES_MOVIE_TYPE_NAME, MOVIES_COLLECTION_NAME, ORIGINAL_MOVIE_DATA_PATH, ORIGINAL_RATING_DATA_PATH, RATINGS_COLLECTION_NAME}
+
+import com.linrushao.scalamodel.{ESConfig, MongoConfig, Movies, Ratings}
 import com.mongodb.casbah.commons.MongoDBObject
 import com.mongodb.casbah.{MongoClient, MongoClientURI}
 import org.apache.spark.SparkConf
@@ -9,13 +10,14 @@ import org.elasticsearch.action.admin.indices.delete.DeleteIndexRequest
 import org.elasticsearch.action.admin.indices.exists.indices.IndicesExistsRequest
 import org.elasticsearch.common.settings.Settings
 import org.elasticsearch.common.transport.TransportAddress
-import org.elasticsearch.common.xcontent.XContentType
 import org.elasticsearch.transport.client.PreBuiltTransportClient
-
-import java.net.InetAddress
-import javax.ws.rs.PUT
+import com.linrushao.javamodel.Constant._
 import java.math.BigInteger
+import java.net.InetAddress
 import java.security.{MessageDigest, NoSuchAlgorithmException}
+
+
+
 object DataLoader {
 
   /**************配置主机名:端口号的正则表达式******************/
@@ -32,16 +34,16 @@ object DataLoader {
     val mongoClient = MongoClient(MongoClientURI(mongoConf.uri))
 
     // 删除Movies的Collection
-    mongoClient(mongoConf.db)(MOVIES_COLLECTION_NAME).dropCollection()
+    mongoClient(mongoConf.db)(MONGODB_MOVIE_COLLECTION).dropCollection()
 
     // 删除Ratings的Collection
-    mongoClient(mongoConf.db)(RATINGS_COLLECTION_NAME).dropCollection()
+    mongoClient(mongoConf.db)(MONGODB_RATING_COLLECTION).dropCollection()
 
     //将Movies数据集写入到MongoDB
     movies
       .write
       .option("uri", mongoConf.uri)
-      .option("collection", MOVIES_COLLECTION_NAME)
+      .option("collection", MONGODB_MOVIE_COLLECTION)
       .mode("overwrite")
       .format("com.mongodb.spark.sql")
       .save()
@@ -49,15 +51,15 @@ object DataLoader {
     //将Ratings数据集写入到MongoDB
     ratings
       .write.option("uri", mongoConf.uri)
-      .option("collection", RATINGS_COLLECTION_NAME)
+      .option("collection", MONGODB_RATING_COLLECTION)
       .mode("overwrite")
       .format("com.mongodb.spark.sql")
       .save()
 
     //创建索引
-    mongoClient(mongoConf.db)(MOVIES_COLLECTION_NAME).createIndex(MongoDBObject("mid" -> 1))
-    mongoClient(mongoConf.db)(RATINGS_COLLECTION_NAME).createIndex(MongoDBObject("mid" -> 1))
-    mongoClient(mongoConf.db)(RATINGS_COLLECTION_NAME).createIndex(MongoDBObject("uid" -> 1))
+    mongoClient(mongoConf.db)(MONGODB_MOVIE_COLLECTION).createIndex(MongoDBObject("mid" -> 1))
+    mongoClient(mongoConf.db)(MONGODB_RATING_COLLECTION).createIndex(MongoDBObject("mid" -> 1))
+    mongoClient(mongoConf.db)(MONGODB_RATING_COLLECTION).createIndex(MongoDBObject("uid" -> 1))
 
     print("成功将数据保存到MongoDB中！！！")
     //关闭MongoDB的连接
@@ -126,7 +128,7 @@ object DataLoader {
       )).actionGet()
 
     // 电影数据写出时的Type名称【表】
-    val movieTypeName = s"$indexName/$ES_MOVIE_TYPE_NAME"
+    val movieTypeName = s"$indexName/$ELEASTICSEARCH_MOVIE_TYPE"
 
     // 将Movie信息保存到ES
     movies

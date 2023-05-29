@@ -1,12 +1,13 @@
 package com.linrushao.offline
 
-import com.linrushao.offline.Constant.{MOVIES_COLLECTION_NAME, MOVIE_RECS_COLLECTION_NAME, RATING_COLLECTION_NAME, USER_RECS_COLLECTION_NAME}
+import com.linrushao.scalamodel.{MongoConfig, MovieRecommendation, Recommendation, UserRecommendation}
 import com.mongodb.casbah.commons.MongoDBObject
 import com.mongodb.casbah.{MongoClient, MongoClientURI}
 import org.apache.spark.SparkConf
 import org.apache.spark.mllib.recommendation.{ALS, MatrixFactorizationModel, Rating}
 import org.apache.spark.sql.{Dataset, SparkSession}
 import org.jblas.DoubleMatrix
+import com.linrushao.javamodel.Constant._
 
 /**
  * @Author LRS
@@ -36,7 +37,7 @@ object ALSTrainer extends Serializable {
      */
     val ratings = spark.read
       .option("uri", mongoConf.uri)
-      .option("collection", RATING_COLLECTION_NAME)
+      .option("collection", MONGODB_RATING_COLLECTION)
       .format("com.mongodb.spark.sql")
       .load()
       .select($"mid", $"uid", $"score")
@@ -56,7 +57,7 @@ object ALSTrainer extends Serializable {
      */
     val movies = spark.read
       .option("uri", mongoConf.uri)
-      .option("collection", MOVIES_COLLECTION_NAME)
+      .option("collection", MONGODB_MOVIE_COLLECTION)
       .format("com.mongodb.spark.sql")
       .load()
       .select($"mid")
@@ -147,7 +148,7 @@ object ALSTrainer extends Serializable {
     /**
      * 保存数据之前先删除原先的数据库集合
      */
-    mongoClient(mongoConf.db)(USER_RECS_COLLECTION_NAME).dropCollection()
+    mongoClient(mongoConf.db)(MONGODB_USER_RECS_COLLECTION).dropCollection()
 
     /**
      * 保存数据到mongodb中
@@ -155,12 +156,12 @@ object ALSTrainer extends Serializable {
     recommendations
       .write
       .option("uri", mongoConf.uri)
-      .option("collection", USER_RECS_COLLECTION_NAME)
+      .option("collection", MONGODB_USER_RECS_COLLECTION)
       .mode("overwrite")
       .format("com.mongodb.spark.sql")
       .save
     //这是下标由1开始
-    mongoClient(mongoConf.db)(USER_RECS_COLLECTION_NAME).createIndex(MongoDBObject("uid" -> 1))
+    mongoClient(mongoConf.db)(MONGODB_USER_RECS_COLLECTION).createIndex(MongoDBObject("uid" -> 1))
   }
 
   /**
@@ -217,18 +218,18 @@ object ALSTrainer extends Serializable {
     /**
      * 保存数据之前先判断删除原先的数据库集合
      */
-    mongoClient(mongoConf.db)(MOVIE_RECS_COLLECTION_NAME).dropCollection()
+    mongoClient(mongoConf.db)(MONGODB_MOVIE_RECS_COLLECTION).dropCollection()
     /**
      * 保存数据到mongodb中
      */
     movieRecommendation.write
       .option("uri", mongoConf.uri)
-      .option("collection", MOVIE_RECS_COLLECTION_NAME)
+      .option("collection", MONGODB_MOVIE_RECS_COLLECTION)
       .mode("overwrite")
       .format("com.mongodb.spark.sql")
       .save
     //这是下标由1开始
-    mongoClient(mongoConf.db)(MOVIE_RECS_COLLECTION_NAME).createIndex(MongoDBObject("mid" -> 1))
+    mongoClient(mongoConf.db)(MONGODB_MOVIE_RECS_COLLECTION).createIndex(MongoDBObject("mid" -> 1))
   }
 
   /**

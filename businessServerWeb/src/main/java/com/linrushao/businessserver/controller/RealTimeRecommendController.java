@@ -2,12 +2,11 @@ package com.linrushao.businessserver.controller;
 
 import com.linrushao.businessserver.entity.mainEntity.Movie;
 import com.linrushao.businessserver.entity.mainEntity.User;
-import com.linrushao.businessserver.entity.movieEntity.MovieMidRecommendation;
 import com.linrushao.businessserver.entity.movieEntity.Recommendation;
 import com.linrushao.businessserver.entity.movieEntity.TopGenresRecommendation;
 import com.linrushao.businessserver.entity.movieEntity.UserRecommendation;
 import com.linrushao.businessserver.service.*;
-import com.linrushao.businessserver.utils.Constant;
+import com.linrushao.javamodel.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

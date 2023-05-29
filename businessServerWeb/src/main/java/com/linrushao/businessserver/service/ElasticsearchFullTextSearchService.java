@@ -2,7 +2,7 @@ package com.linrushao.businessserver.service;
 
 import com.linrushao.businessserver.entity.movieEntity.Recommendation;
 import com.linrushao.businessserver.entity.movieEntity.SearchRecommendation;
-import com.linrushao.businessserver.utils.Constant;
+import com.linrushao.javamodel.Constant;
 import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.RequestOptions;

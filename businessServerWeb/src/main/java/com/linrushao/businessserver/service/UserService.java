@@ -7,7 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.linrushao.businessserver.entity.mainEntity.User;
 import com.linrushao.businessserver.entity.userEntity.UserLogin;
 import com.linrushao.businessserver.entity.userEntity.UserRegister;
-import com.linrushao.businessserver.utils.Constant;
+import com.linrushao.javamodel.Constant;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;

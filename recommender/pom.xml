@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>MovieRecommendSystem</artifactId>
-        <groupId>org.example</groupId>
+        <groupId>com.linrushao</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -27,6 +27,7 @@
     </properties>
 
     <dependencyManagement>
+
         <dependencies>
             <!-- 引入 Spark 相关的 Jar 包 -->
             <dependency>
@@ -63,6 +64,12 @@
                 <groupId>org.apache.spark</groupId>
                 <artifactId>spark-hive_2.12</artifactId>
                 <version>${spark.version}</version>
+            </dependency>
+            <!--引入核心模型-->
+            <dependency>
+                <groupId>com.linrushao</groupId>
+                <artifactId>CoreModel</artifactId>
+                <version>1.0-SNAPSHOT</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
