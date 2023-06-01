@@ -1,10 +1,13 @@
 package com.linrushao.businessserver.entity.mainEntity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
 import java.util.List;
 
+
+@Document(collection = "Users")
 public class User {
 
     @JsonIgnore

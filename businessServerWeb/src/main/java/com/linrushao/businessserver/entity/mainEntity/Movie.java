@@ -2,8 +2,9 @@ package com.linrushao.businessserver.entity.mainEntity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-
+@Document(collection = "Movies")
 public class Movie {
 
     @JsonIgnore
