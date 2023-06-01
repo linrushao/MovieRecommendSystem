@@ -1,7 +1,6 @@
 package com.linrushao.businessserver.service;
 
 import com.linrushao.businessserver.entity.movieEntity.Recommendation;
-import com.linrushao.javamodel.Constant;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
@@ -12,6 +11,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.linrushao.businessserver.utils.Constant.*;
 
 /**
  * @Author LinRuShao
@@ -28,8 +29,8 @@ public class HomeHotRecommendationsService {
      */
     public List<Recommendation> getHotRecommendations() {
         // 获取热门电影的条目
-        MongoCollection<Document> rateMoreMoviesRecentlyCollection = mongoClient.getDatabase(Constant.MONGODB_DATABASE).getCollection(Constant.MONGODB_RATE_MORE_MOVIES_RECENTLY_COLLECTION);
-        FindIterable<Document> documents = rateMoreMoviesRecentlyCollection.find().sort(Sorts.descending("yeahmonth")).limit(Constant.REDIS_MOVIE_RATING_QUEUE_SIZE);
+        MongoCollection<Document> rateMoreMoviesRecentlyCollection = mongoClient.getDatabase(MONGODB_DATABASE).getCollection(MONGODB_RATE_MORE_MOVIES_RECENTLY_COLLECTION);
+        FindIterable<Document> documents = rateMoreMoviesRecentlyCollection.find().sort(Sorts.descending("yeahmonth")).limit(REDIS_MOVIE_RATING_QUEUE_SIZE);
         List<Recommendation> recommendations = new ArrayList<>();
         for (Document document : documents) {
             recommendations.add(new Recommendation(document.getInteger("mid"), 0D));

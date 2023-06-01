@@ -5,7 +5,7 @@ import com.linrushao.businessserver.entity.movieEntity.MovieRating;
 import com.linrushao.businessserver.service.MovieService;
 import com.linrushao.businessserver.service.RatingService;
 import com.linrushao.businessserver.service.UserService;
-import com.linrushao.javamodel.Constant;
+import com.linrushao.businessserver.utils.Constant;
 import com.linrushao.businessserver.utils.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

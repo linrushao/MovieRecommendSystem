@@ -3,7 +3,6 @@ package com.linrushao.businessserver.service;
 import com.linrushao.businessserver.entity.movieEntity.Recommendation;
 import com.linrushao.businessserver.entity.movieEntity.SearchRecommendation;
 import com.linrushao.businessserver.entity.movieEntity.TopGenresRecommendation;
-import com.linrushao.javamodel.Constant;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.model.Filters;
 import org.bson.Document;
@@ -19,6 +18,8 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.List;
+
+import static com.linrushao.businessserver.utils.Constant.*;
 
 /**
  * @Author LinRuShao
@@ -39,9 +40,9 @@ public class MovieGenresRecommendationService {
     public List<Recommendation> getContentBasedGenresRecommendations(SearchRecommendation request) {
         // 创建搜索请求对象
         SearchRequest request1 = new SearchRequest();
-        request1.indices(Constant.ELEASTICSEARCH_INDEX);
+        request1.indices(ELEASTICSEARCH_INDEX);
         // 构建查询的请求体
-        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder().query(QueryBuilders.matchQuery("genres", request.getText()).fuzziness(Fuzziness.AUTO)).size(Constant.ES_MOVIES_ITEM_SIZE);
+        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder().query(QueryBuilders.matchQuery("genres", request.getText()).fuzziness(Fuzziness.AUTO)).size(ES_MOVIES_ITEM_SIZE);
         request1.source(searchSourceBuilder);
         // 查询匹配
         SearchResponse response = null;
@@ -57,7 +58,7 @@ public class MovieGenresRecommendationService {
      * 冷启动问题，用户刚注册时获取填写的类别，选择一种类别进行电影的推荐
      */
     public List<Recommendation> getTopGenresRecommendations(TopGenresRecommendation request){
-        Document genresTopMovies = mongoClient.getDatabase(Constant.MONGODB_DATABASE).getCollection(Constant.MONGODB_GENRES_TOP_MOVIES_COLLECTION)
+        Document genresTopMovies = mongoClient.getDatabase(MONGODB_DATABASE).getCollection(MONGODB_GENRES_TOP_MOVIES_COLLECTION)
                 .find(Filters.eq("genres",request.getGenres())).first();
         return movieService.parseRecs(genresTopMovies);
     }

@@ -6,7 +6,7 @@ import com.linrushao.businessserver.entity.movieEntity.Recommendation;
 import com.linrushao.businessserver.entity.movieEntity.TopGenresRecommendation;
 import com.linrushao.businessserver.entity.movieEntity.UserRecommendation;
 import com.linrushao.businessserver.service.*;
-import com.linrushao.javamodel.Constant;
+import com.linrushao.businessserver.utils.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

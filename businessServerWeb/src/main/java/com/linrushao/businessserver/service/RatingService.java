@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.linrushao.businessserver.entity.mainEntity.Rating;
 import com.linrushao.businessserver.entity.mainEntity.User;
 import com.linrushao.businessserver.entity.movieEntity.MovieRating;
-import com.linrushao.javamodel.Constant;
+import com.linrushao.businessserver.utils.Constant;
 import com.linrushao.businessserver.utils.RedisUtil;
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.FindIterable;

@@ -6,7 +6,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.linrushao.businessserver.entity.mainEntity.Tag;
-import com.linrushao.javamodel.Constant;
+import com.linrushao.businessserver.utils.Constant;
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.FindIterable;
 
