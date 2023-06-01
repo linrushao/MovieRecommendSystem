@@ -12,6 +12,7 @@
     <modules>
         <module>recommender</module>
         <module>CoreModel</module>
+        <module>businessServerWeb</module>
     </modules>
     <!--版本控制-->
     <properties>
