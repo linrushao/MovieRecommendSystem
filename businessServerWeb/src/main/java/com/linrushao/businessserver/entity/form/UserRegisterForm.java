@@ -1,4 +1,4 @@
-package com.linrushao.businessserver.entity.userEntity;
+package com.linrushao.businessserver.entity.form;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserRegister {
+public class UserRegisterForm {
     private String username;
     private String password;
 }

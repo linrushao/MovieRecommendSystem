@@ -1,4 +1,4 @@
-package com.linrushao.businessserver.entity.mainEntity;
+package com.linrushao.businessserver.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;

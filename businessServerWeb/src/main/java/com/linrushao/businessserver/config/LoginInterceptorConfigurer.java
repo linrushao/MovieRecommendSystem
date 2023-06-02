@@ -1,6 +1,6 @@
 package com.linrushao.businessserver.config;
 
-import com.linrushao.businessserver.interceptor.LoginInterceptor;
+import com.linrushao.businessserver.utils.LoginInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;

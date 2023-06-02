@@ -1,6 +1,6 @@
 package com.linrushao.businessserver.mapper;
 
-import com.linrushao.businessserver.entity.mainEntity.User;
+import com.linrushao.businessserver.entity.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 /**

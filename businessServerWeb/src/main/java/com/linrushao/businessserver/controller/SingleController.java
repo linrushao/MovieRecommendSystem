@@ -1,10 +1,10 @@
 package com.linrushao.businessserver.controller;
 
-import com.linrushao.businessserver.entity.mainEntity.Movie;
-import com.linrushao.businessserver.entity.movieEntity.MovieMidRecommendation;
-import com.linrushao.businessserver.entity.movieEntity.Recommendation;
+import com.linrushao.businessserver.entity.Movie;
+import com.linrushao.businessserver.entity.form.MovieMidRecommendation;
+import com.linrushao.businessserver.entity.form.Recommendation;
+import com.linrushao.businessserver.service.MovieRecommendationService;
 import com.linrushao.businessserver.service.MovieService;
-import com.linrushao.businessserver.service.SimilarMovieRecommendationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,7 +24,7 @@ public class SingleController {
     @Autowired
     private MovieService movieService;
     @Autowired
-    private SimilarMovieRecommendationService similarMovieRecommendationService;
+    private MovieRecommendationService movieRecommendationService;
 
     /**
      * 获取单个电影的信息
@@ -43,7 +43,7 @@ public class SingleController {
         model.addAttribute("singlemovies",byMID);
 
         //获取详细页面的相似电影
-        List<Recommendation> recommendations = similarMovieRecommendationService.getSimilarMovieRecommendations(new MovieMidRecommendation(mid));
+        List<Recommendation> recommendations = movieRecommendationService.getSimilarMovieRecommendations(new MovieMidRecommendation(mid));
         List<Movie> recommendeMovies = movieService.getRecommendeMovies(recommendations);
         model.addAttribute("samemovie",recommendeMovies);
         return "single";

@@ -1,4 +1,4 @@
-package com.linrushao.businessserver.entity.mainEntity;
+package com.linrushao.businessserver.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -12,6 +12,21 @@ public class User {
 
     @JsonIgnore
     private String _id;
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "_id='" + _id + '\'' +
+                ", uid=" + uid +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", md5Password='" + md5Password + '\'' +
+                ", first=" + first +
+                ", timestamp=" + timestamp +
+                ", salt='" + salt + '\'' +
+                ", prefGenres=" + prefGenres +
+                '}';
+    }
 
     private int uid;
 

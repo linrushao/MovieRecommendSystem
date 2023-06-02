@@ -1,8 +1,8 @@
 package com.linrushao.businessserver.controller;
 
-import com.linrushao.businessserver.entity.movieEntity.Recommendation;
+import com.linrushao.businessserver.entity.form.Recommendation;
+import com.linrushao.businessserver.service.MovieRecommendationService;
 import com.linrushao.businessserver.service.MovieService;
-import com.linrushao.businessserver.service.RateMoreRecommendationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,12 +21,12 @@ public class MoreSocreMoviesController {
      * 评分最多
      */
     @Autowired
-    private RateMoreRecommendationService rateMoreRecommendationService;
+    private MovieRecommendationService movieRecommendationService;
     @Autowired
     private MovieService movieService;
     @RequestMapping( "/morescoremovie")
     public String getRateMoreMovies( Model model) {
-        List<Recommendation> socreRecommendations = rateMoreRecommendationService.getRateMoreRecommendations();
+        List<Recommendation> socreRecommendations = movieRecommendationService.getRateMoreRecommendations();
         model.addAttribute("MoreSocreMovies", movieService.getRecommendeMovies(socreRecommendations));
         return "MoreSocreMovies";
     }

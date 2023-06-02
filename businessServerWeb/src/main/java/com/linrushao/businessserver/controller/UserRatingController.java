@@ -1,7 +1,7 @@
 package com.linrushao.businessserver.controller;
 
-import com.linrushao.businessserver.entity.mainEntity.User;
-import com.linrushao.businessserver.entity.movieEntity.MovieRating;
+import com.linrushao.businessserver.entity.User;
+import com.linrushao.businessserver.entity.form.UserMovieRatingForm;
 import com.linrushao.businessserver.service.MovieService;
 import com.linrushao.businessserver.service.RatingService;
 import com.linrushao.businessserver.service.UserService;
@@ -43,7 +43,7 @@ public class UserRatingController {
     public JsonResult<Void> rateToMovie(@PathVariable("mid") int mid, @RequestParam("score") Double score,HttpSession session) {
         Object username = session.getAttribute("username");
         User user = userService.findByUsername(String.valueOf(username));
-        MovieRating request = new MovieRating(user.getUid(), mid, score);
+        UserMovieRatingForm request = new UserMovieRatingForm(user.getUid(), mid, score);
         boolean complete = ratingService.movieRating(request);
 //        boolean complete = true;
         //埋点日志

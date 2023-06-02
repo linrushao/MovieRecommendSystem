@@ -1,4 +1,4 @@
-package com.linrushao.businessserver.entity.userEntity;
+package com.linrushao.businessserver.entity.form;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
  * Desc
  */
 @Data
-public class UserLogin {
+public class UserLoginForm {
     private String username;
     private int uid;
     private String password;
@@ -18,15 +18,15 @@ public class UserLogin {
     public String getUsername() {
         return username;
     }
-    public UserLogin(){}
+    public UserLoginForm(){}
 
-    public UserLogin(String username, int uid, String password) {
+    public UserLoginForm(String username, int uid, String password) {
         this.username = username;
         this.uid = uid;
         this.password = password;
     }
 
-    public UserLogin(String username, String password) {
+    public UserLoginForm(String username, String password) {
         this.username = username;
         this.password = password;
     }

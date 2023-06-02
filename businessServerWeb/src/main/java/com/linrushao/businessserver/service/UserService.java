@@ -1,8 +1,8 @@
 package com.linrushao.businessserver.service;
 
-import com.linrushao.businessserver.entity.mainEntity.User;
-import com.linrushao.businessserver.entity.userEntity.UserLogin;
-import com.linrushao.businessserver.entity.userEntity.UserRegister;
+import com.linrushao.businessserver.entity.User;
+import com.linrushao.businessserver.entity.form.UserLoginForm;
+import com.linrushao.businessserver.entity.form.UserRegisterForm;
 import com.mongodb.client.MongoCollection;
 import org.bson.Document;
 
@@ -16,10 +16,10 @@ public interface UserService {
     MongoCollection<Document> getUserCollection();
 
     //用户注册
-    boolean registerUser(UserRegister request);
+    boolean registerUser(UserRegisterForm request);
 
     //用户登录
-    User loginUser(UserLogin request);
+    User loginUser(UserLoginForm request);
 
     //根据用户名查找用户
     User findByUsername(String username);

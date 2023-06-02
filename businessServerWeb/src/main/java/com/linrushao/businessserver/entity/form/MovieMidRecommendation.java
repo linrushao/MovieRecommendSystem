@@ -1,4 +1,4 @@
-package com.linrushao.businessserver.entity.movieEntity;
+package com.linrushao.businessserver.entity.form;
 
 /**
  * @Author LinRuShao

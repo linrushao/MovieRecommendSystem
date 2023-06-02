@@ -4,9 +4,9 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.linrushao.businessserver.entity.mainEntity.User;
-import com.linrushao.businessserver.entity.userEntity.UserLogin;
-import com.linrushao.businessserver.entity.userEntity.UserRegister;
+import com.linrushao.businessserver.entity.User;
+import com.linrushao.businessserver.entity.form.UserLoginForm;
+import com.linrushao.businessserver.entity.form.UserRegisterForm;
 import com.linrushao.businessserver.mapper.UserMapper;
 import com.linrushao.businessserver.service.UserService;
 import com.linrushao.businessserver.utils.Constant;
@@ -56,7 +56,7 @@ public class UserServiceImpl implements UserService {
      * @return
      */
     @Override
-    public boolean registerUser(UserRegister request) {
+    public boolean registerUser(UserRegisterForm request) {
         User user = new User();
         // 根据参数user对象获取注册的用户名
         String username = request.getUsername();
@@ -86,7 +86,7 @@ public class UserServiceImpl implements UserService {
      * @return
      */
     @Override
-    public User loginUser(UserLogin request) {
+    public User loginUser(UserLoginForm request) {
         // 调用userMapper的findByUsername()方法，根据参数username查询用户数据
         User result = findByUsername(request.getUsername());
         if (null == result || result.equals("")) {

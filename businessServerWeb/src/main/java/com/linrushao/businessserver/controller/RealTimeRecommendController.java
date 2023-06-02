@@ -1,10 +1,10 @@
 package com.linrushao.businessserver.controller;
 
-import com.linrushao.businessserver.entity.mainEntity.Movie;
-import com.linrushao.businessserver.entity.mainEntity.User;
-import com.linrushao.businessserver.entity.movieEntity.Recommendation;
-import com.linrushao.businessserver.entity.movieEntity.TopGenresRecommendation;
-import com.linrushao.businessserver.entity.movieEntity.UserRecommendation;
+import com.linrushao.businessserver.entity.Movie;
+import com.linrushao.businessserver.entity.User;
+import com.linrushao.businessserver.entity.form.Recommendation;
+import com.linrushao.businessserver.entity.form.MovieGenresForm;
+import com.linrushao.businessserver.entity.form.UserRecommendationForm;
 import com.linrushao.businessserver.service.*;
 import com.linrushao.businessserver.utils.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,9 +30,8 @@ public class RealTimeRecommendController {
     @Autowired
     private MovieService movieService;
     @Autowired
-    private RealTimeRecommendationService realTimeRecommendationService;
-    @Autowired
-    private MovieGenresRecommendationService movieGenresRecommendationService;
+    private MovieRecommendationService movieRecommendationService;
+
 
     /**
      * 实时推荐 + 内容推荐
@@ -44,10 +43,10 @@ public class RealTimeRecommendController {
     public String realTimeRecommend(HttpSession session, Model model) {
         Object username = session.getAttribute("username");
         User user = userService.findByUsername(String.valueOf(username));
-        List<Recommendation> recommendations = realTimeRecommendationService.getHybridRecommendations(new UserRecommendation(user.getUid()));
+        List<Recommendation> recommendations = movieRecommendationService.getHybridRecommendations(new UserRecommendationForm(user.getUid()));
         if (recommendations.size() == 0) {
             String randomGenres = user.getPrefGenres().get(new Random().nextInt(user.getPrefGenres().size()));
-            recommendations = movieGenresRecommendationService.getTopGenresRecommendations(new TopGenresRecommendation(randomGenres.split(" ")[0], Constant.REDIS_MOVIE_RATING_QUEUE_SIZE));
+            recommendations = movieRecommendationService.getTopGenresRecommendations(new MovieGenresForm(randomGenres.split(" ")[0], Constant.REDIS_MOVIE_RATING_QUEUE_SIZE));
         }
         List<Movie> hybirdRecommendeMovies = movieService.getHybirdRecommendeMovies(recommendations);
 

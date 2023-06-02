@@ -1,9 +1,11 @@
-package com.linrushao.businessserver.entity.mainEntity;
+package com.linrushao.businessserver.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 
+@Document(collection = "Ratings")
 public class Rating {
 
     @JsonIgnore

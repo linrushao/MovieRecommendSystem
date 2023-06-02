@@ -1,7 +1,7 @@
 package com.linrushao.businessserver.controller;
 
-import com.linrushao.businessserver.entity.mainEntity.User;
-import com.linrushao.businessserver.entity.userEntity.UserLogin;
+import com.linrushao.businessserver.entity.User;
+import com.linrushao.businessserver.entity.form.UserLoginForm;
 import com.linrushao.businessserver.service.UserService;
 import com.linrushao.businessserver.utils.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +35,7 @@ public class UserLoginControler extends BaseController {
                                   @RequestParam("password") String password,
                                   HttpSession session) {
         // 调用业务对象的方法执行登录，并获取返回值
-        User data = userService.loginUser(new UserLogin(username, password));
+        User data = userService.loginUser(new UserLoginForm(username, password));
         if (null == data) {
             JsonResult<User> userJsonResult = new JsonResult<>();
             userJsonResult.setState(500);

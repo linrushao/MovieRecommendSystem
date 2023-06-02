@@ -1,6 +1,6 @@
 package com.linrushao.businessserver.controller;
 
-import com.linrushao.businessserver.entity.movieEntity.*;
+import com.linrushao.businessserver.entity.form.Recommendation;
 import com.linrushao.businessserver.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,7 +19,7 @@ import java.util.List;
 public class HomeMoviesController {
 
     @Autowired
-    private HomeHotRecommendationsService homeHotRecommendationsService;
+    private MovieRecommendationService movieRecommendationService;
     @Autowired
     private MovieService movieService;
 
@@ -28,7 +28,7 @@ public class HomeMoviesController {
         /**
          * 获取热门推荐
          */
-        List<Recommendation> hotRecommendations = homeHotRecommendationsService.getHotRecommendations();
+        List<Recommendation> hotRecommendations = movieRecommendationService.getHotRecommendations();
         model.addAttribute("hotMovies", movieService.getRecommendeMovies(hotRecommendations));
         return "index";
     }

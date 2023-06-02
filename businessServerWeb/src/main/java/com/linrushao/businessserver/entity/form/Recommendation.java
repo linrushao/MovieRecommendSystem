@@ -1,4 +1,4 @@
-package com.linrushao.businessserver.entity.movieEntity;
+package com.linrushao.businessserver.entity.form;
 
 /**
  * 推荐项目的包装
@@ -8,9 +8,10 @@ public class Recommendation {
     // 电影ID
     private int mid;
 
-    // 电影的推荐得分
+    //电影评分
     private Double score;
 
+    // 电影的推荐得分
     public Recommendation() {
     }
 

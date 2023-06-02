@@ -1,6 +1,6 @@
 package com.linrushao.businessserver.controller;
 
-import com.linrushao.businessserver.entity.userEntity.UserRegister;
+import com.linrushao.businessserver.entity.form.UserRegisterForm;
 import com.linrushao.businessserver.service.UserService;
 import com.linrushao.businessserver.utils.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,7 +51,7 @@ public class UserRegisterController extends BaseController {
             userJsonResult.setMessage("两次输入的密码不一致！");
             return userJsonResult;
         }
-        userService.registerUser(new UserRegister(username, password));
+        userService.registerUser(new UserRegisterForm(username, password));
         userJsonResult.setState(200);
         userJsonResult.setMessage("成功注册");
         return userJsonResult;

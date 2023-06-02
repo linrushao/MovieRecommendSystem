@@ -1,4 +1,4 @@
-package com.linrushao.businessserver.interceptor;
+package com.linrushao.businessserver.utils;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;

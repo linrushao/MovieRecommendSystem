@@ -1,8 +1,8 @@
 package com.linrushao.businessserver.controller;
 
-import com.linrushao.businessserver.entity.movieEntity.Recommendation;
-import com.linrushao.businessserver.entity.movieEntity.SearchRecommendation;
-import com.linrushao.businessserver.service.ElasticsearchFullTextSearchService;
+import com.linrushao.businessserver.entity.form.Recommendation;
+import com.linrushao.businessserver.entity.form.MovieSearchForm;
+import com.linrushao.businessserver.service.ElasticsearchSearchService;
 import com.linrushao.businessserver.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,7 +24,7 @@ public class SearchMovieController {
     @Autowired
     private MovieService movieService;
     @Autowired
-    private ElasticsearchFullTextSearchService elasticsearchFullTextSearchService;
+    private ElasticsearchSearchService elasticsearchSearchService;
 
     /**
      * 模糊查询电影
@@ -34,7 +34,7 @@ public class SearchMovieController {
      */
     @RequestMapping( "/search")
     public String getSearchMovies(@RequestParam("query") String query, Model model) {
-        List<Recommendation> recommendations = elasticsearchFullTextSearchService.getContentBasedSearchRecommendations(new SearchRecommendation(query));
+        List<Recommendation> recommendations = elasticsearchSearchService.getContentBasedSearchRecommendations(new MovieSearchForm(query));
         model.addAttribute("success", true);
         model.addAttribute("key",query);
         model.addAttribute("SearchMovie", movieService.getRecommendeMovies(recommendations));

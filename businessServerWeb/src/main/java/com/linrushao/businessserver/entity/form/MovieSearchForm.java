@@ -1,9 +1,9 @@
-package com.linrushao.businessserver.entity.movieEntity;
+package com.linrushao.businessserver.entity.form;
 
-public class SearchRecommendation {
+public class MovieSearchForm {
     private String text;
 
-    public SearchRecommendation(String text) {
+    public MovieSearchForm(String text) {
         this.text = text;
     }
 

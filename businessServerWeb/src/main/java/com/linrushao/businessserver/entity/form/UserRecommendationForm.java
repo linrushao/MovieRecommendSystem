@@ -1,9 +1,9 @@
-package com.linrushao.businessserver.entity.movieEntity;
+package com.linrushao.businessserver.entity.form;
 
-public class UserRecommendation {
+public class UserRecommendationForm {
     private int uid;
 
-    public UserRecommendation(int uid) {
+    public UserRecommendationForm(int uid) {
         this.uid = uid;
     }
 

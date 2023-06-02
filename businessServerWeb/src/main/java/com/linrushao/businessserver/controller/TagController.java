@@ -1,7 +1,7 @@
 package com.linrushao.businessserver.controller;
 
-import com.linrushao.businessserver.entity.mainEntity.Tag;
-import com.linrushao.businessserver.entity.mainEntity.User;
+import com.linrushao.businessserver.entity.Tag;
+import com.linrushao.businessserver.entity.User;
 import com.linrushao.businessserver.service.RatingService;
 import com.linrushao.businessserver.service.TagService;
 import com.linrushao.businessserver.service.UserService;

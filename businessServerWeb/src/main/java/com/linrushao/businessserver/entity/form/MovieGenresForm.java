@@ -1,10 +1,10 @@
-package com.linrushao.businessserver.entity.movieEntity;
+package com.linrushao.businessserver.entity.form;
 
-public class TopGenresRecommendation {
+public class MovieGenresForm {
 
     private String genres;
 
-    public TopGenresRecommendation(String genres, int sum) {
+    public MovieGenresForm(String genres, int sum) {
         this.genres = genres;
     }
 

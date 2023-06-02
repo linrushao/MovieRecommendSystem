@@ -1,8 +1,8 @@
 package com.linrushao.businessserver.controller;
 
-import com.linrushao.businessserver.entity.movieEntity.Recommendation;
-import com.linrushao.businessserver.entity.movieEntity.SearchRecommendation;
-import com.linrushao.businessserver.service.MovieGenresRecommendationService;
+import com.linrushao.businessserver.entity.form.Recommendation;
+import com.linrushao.businessserver.entity.form.MovieSearchForm;
+import com.linrushao.businessserver.service.MovieRecommendationService;
 import com.linrushao.businessserver.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +22,7 @@ import java.util.List;
 public class MovieGenresController {
 
     @Autowired
-    private MovieGenresRecommendationService movieGenresRecommendationService;
+    private MovieRecommendationService movieRecommendationService;
     @Autowired
     private MovieService movieService;
 
@@ -39,7 +39,7 @@ public class MovieGenresController {
     @RequestMapping("/Action/{Action}")
     public String Action(@PathVariable("Action") String Action, Model model) {
         Action = "动作";
-        List<Recommendation> recommendations = movieGenresRecommendationService.getContentBasedGenresRecommendations(new SearchRecommendation(Action));
+        List<Recommendation> recommendations = movieRecommendationService.getContentBasedGenresRecommendations(new MovieSearchForm(Action));
         model.addAttribute("success", true);
         model.addAttribute("Action", movieService.getRecommendeMovies(recommendations));
         return "movieGenres/Action";
@@ -49,7 +49,7 @@ public class MovieGenresController {
     @RequestMapping("/Animation/{Animation}")
     public String Animation(@PathVariable("Animation") String Animation, Model model) {
         Animation="动画";
-        List<Recommendation> recommendations = movieGenresRecommendationService.getContentBasedGenresRecommendations(new SearchRecommendation(Animation));
+        List<Recommendation> recommendations = movieRecommendationService.getContentBasedGenresRecommendations(new MovieSearchForm(Animation));
         model.addAttribute("success", true);
         model.addAttribute("Animation", movieService.getRecommendeMovies(recommendations));
         return "movieGenres/Animation";
@@ -59,7 +59,7 @@ public class MovieGenresController {
     @RequestMapping("/Adventure/{Adventure}")
     public String Adventure(@PathVariable("Adventure") String Adventure, Model model) {
         Adventure= "冒险";
-        List<Recommendation> recommendations = movieGenresRecommendationService.getContentBasedGenresRecommendations(new SearchRecommendation(Adventure));
+        List<Recommendation> recommendations = movieRecommendationService.getContentBasedGenresRecommendations(new MovieSearchForm(Adventure));
         model.addAttribute("success", true);
         model.addAttribute("Adventure", movieService.getRecommendeMovies(recommendations));
         return "movieGenres/Adventure";
@@ -71,7 +71,7 @@ public class MovieGenresController {
     @RequestMapping("/Comedy/{Comedy}")
     public String Comedy(@PathVariable("Comedy") String Comedy, Model model) {
         Comedy="喜剧";
-        List<Recommendation> recommendations = movieGenresRecommendationService.getContentBasedGenresRecommendations(new SearchRecommendation(Comedy));
+        List<Recommendation> recommendations = movieRecommendationService.getContentBasedGenresRecommendations(new MovieSearchForm(Comedy));
         model.addAttribute("success", true);
         model.addAttribute("Comedy", movieService.getRecommendeMovies(recommendations));
         return "movieGenres/Comedy";
@@ -82,7 +82,7 @@ public class MovieGenresController {
     @RequestMapping("/Crime/{Crime}")
     public String Crime(@PathVariable("Crime") String Crime, Model model) {
         Crime="犯罪";
-        List<Recommendation> recommendations = movieGenresRecommendationService.getContentBasedGenresRecommendations(new SearchRecommendation(Crime));
+        List<Recommendation> recommendations = movieRecommendationService.getContentBasedGenresRecommendations(new MovieSearchForm(Crime));
         model.addAttribute("success", true);
         model.addAttribute("Crime", movieService.getRecommendeMovies(recommendations));
         return "movieGenres/Crime";
@@ -92,7 +92,7 @@ public class MovieGenresController {
     @RequestMapping("/Fantasy/{Fantasy}")
     public String Fantasy(@PathVariable("Fantasy") String Fantasy, Model model) {
         Fantasy="奇幻";
-        List<Recommendation> recommendations = movieGenresRecommendationService.getContentBasedGenresRecommendations(new SearchRecommendation(Fantasy));
+        List<Recommendation> recommendations = movieRecommendationService.getContentBasedGenresRecommendations(new MovieSearchForm(Fantasy));
         model.addAttribute("success", true);
         model.addAttribute("Fantasy", movieService.getRecommendeMovies(recommendations));
         return "movieGenres/Fantasy";
@@ -102,7 +102,7 @@ public class MovieGenresController {
     @RequestMapping("/Family/{Family}")
     public String Family(@PathVariable("Family") String Family, Model model) {
         Family="家庭";
-        List<Recommendation> recommendations = movieGenresRecommendationService.getContentBasedGenresRecommendations(new SearchRecommendation(Family));
+        List<Recommendation> recommendations = movieRecommendationService.getContentBasedGenresRecommendations(new MovieSearchForm(Family));
         model.addAttribute("success", true);
         model.addAttribute("Family", movieService.getRecommendeMovies(recommendations));
         return "movieGenres/Family";
@@ -112,7 +112,7 @@ public class MovieGenresController {
     @RequestMapping("/Biography/{Biography}")
     public String Biography(@PathVariable("Biography") String Biography, Model model) {
         Biography="传记";
-        List<Recommendation> recommendations = movieGenresRecommendationService.getContentBasedGenresRecommendations(new SearchRecommendation(Biography));
+        List<Recommendation> recommendations = movieRecommendationService.getContentBasedGenresRecommendations(new MovieSearchForm(Biography));
         model.addAttribute("success", true);
         model.addAttribute("Biography", movieService.getRecommendeMovies(recommendations));
         return "movieGenres/Biography";
@@ -122,7 +122,7 @@ public class MovieGenresController {
     @RequestMapping("/History/{History}")
     public String History(@PathVariable("History") String History, Model model) {
         History="历史";
-        List<Recommendation> recommendations = movieGenresRecommendationService.getContentBasedGenresRecommendations(new SearchRecommendation(History));
+        List<Recommendation> recommendations = movieRecommendationService.getContentBasedGenresRecommendations(new MovieSearchForm(History));
         model.addAttribute("success", true);
         model.addAttribute("History", movieService.getRecommendeMovies(recommendations));
         return "movieGenres/History";
@@ -131,7 +131,7 @@ public class MovieGenresController {
     @RequestMapping("/Music/{Music}")
     public String Music(@PathVariable("Music") String Music, Model model) {
         Music="音乐";
-        List<Recommendation> recommendations = movieGenresRecommendationService.getContentBasedGenresRecommendations(new SearchRecommendation(Music));
+        List<Recommendation> recommendations = movieRecommendationService.getContentBasedGenresRecommendations(new MovieSearchForm(Music));
         model.addAttribute("success", true);
         model.addAttribute("Music", movieService.getRecommendeMovies(recommendations));
         return "movieGenres/Music";
@@ -140,7 +140,7 @@ public class MovieGenresController {
     @RequestMapping("/Horror/{Horror}")
     public String Horror(@PathVariable("Horror") String Horror, Model model) {
         Horror="恐怖";
-        List<Recommendation> recommendations = movieGenresRecommendationService.getContentBasedGenresRecommendations(new SearchRecommendation(Horror));
+        List<Recommendation> recommendations = movieRecommendationService.getContentBasedGenresRecommendations(new MovieSearchForm(Horror));
         model.addAttribute("success", true);
         model.addAttribute("Horror", movieService.getRecommendeMovies(recommendations));
         return "movieGenres/Horror";
@@ -150,7 +150,7 @@ public class MovieGenresController {
     @RequestMapping("/SingingAndDancing/{SingingAndDancing}")
     public String SingingAndDancing(@PathVariable("SingingAndDancing") String SingingAndDancing, Model model) {
         SingingAndDancing="歌舞";
-        List<Recommendation> recommendations = movieGenresRecommendationService.getContentBasedGenresRecommendations(new SearchRecommendation(SingingAndDancing));
+        List<Recommendation> recommendations = movieRecommendationService.getContentBasedGenresRecommendations(new MovieSearchForm(SingingAndDancing));
         model.addAttribute("success", true);
         model.addAttribute("SingingAndDancing", movieService.getRecommendeMovies(recommendations));
         return "movieGenres/SingingAndDancing";
@@ -159,7 +159,7 @@ public class MovieGenresController {
     @RequestMapping("/Mystery/{Mystery}")
     public String Mystery(@PathVariable("Mystery") String Mystery, Model model) {
         Mystery="悬疑";
-        List<Recommendation> recommendations = movieGenresRecommendationService.getContentBasedGenresRecommendations(new SearchRecommendation(Mystery));
+        List<Recommendation> recommendations = movieRecommendationService.getContentBasedGenresRecommendations(new MovieSearchForm(Mystery));
         model.addAttribute("success", true);
         model.addAttribute("Mystery", movieService.getRecommendeMovies(recommendations));
         return "movieGenres/Mystery";
@@ -168,7 +168,7 @@ public class MovieGenresController {
     @RequestMapping("/Romance/{Romance}")
     public String Romance(@PathVariable("Romance") String Romance, Model model) {
         Romance="爱情";
-        List<Recommendation> recommendations = movieGenresRecommendationService.getContentBasedGenresRecommendations(new SearchRecommendation(Romance));
+        List<Recommendation> recommendations = movieRecommendationService.getContentBasedGenresRecommendations(new MovieSearchForm(Romance));
         model.addAttribute("success", true);
         model.addAttribute("Romance", movieService.getRecommendeMovies(recommendations));
         return "movieGenres/Romance";
@@ -177,7 +177,7 @@ public class MovieGenresController {
     @RequestMapping("/Costume/{Costume}")
     public String Costume(@PathVariable("Costume") String Costume, Model model) {
         Costume="古装";
-        List<Recommendation> recommendations = movieGenresRecommendationService.getContentBasedGenresRecommendations(new SearchRecommendation(Costume));
+        List<Recommendation> recommendations = movieRecommendationService.getContentBasedGenresRecommendations(new MovieSearchForm(Costume));
         model.addAttribute("success", true);
         model.addAttribute("Costume", movieService.getRecommendeMovies(recommendations));
         return "movieGenres/Costume";
@@ -186,7 +186,7 @@ public class MovieGenresController {
     @RequestMapping("/ScienceFiction/{ScienceFiction}")
     public String ScienceFiction(@PathVariable("ScienceFiction") String ScienceFiction, Model model) {
         ScienceFiction="科幻";
-        List<Recommendation> recommendations = movieGenresRecommendationService.getContentBasedGenresRecommendations(new SearchRecommendation(ScienceFiction));
+        List<Recommendation> recommendations = movieRecommendationService.getContentBasedGenresRecommendations(new MovieSearchForm(ScienceFiction));
         model.addAttribute("success", true);
         model.addAttribute("ScienceFiction", movieService.getRecommendeMovies(recommendations));
         return "movieGenres/ScienceFiction";
@@ -195,7 +195,7 @@ public class MovieGenresController {
     @RequestMapping("/Sports/{Sports}")
     public String Sports(@PathVariable("Sports") String Sports, Model model) {
         Sports="运动";
-        List<Recommendation> recommendations = movieGenresRecommendationService.getContentBasedGenresRecommendations(new SearchRecommendation(Sports));
+        List<Recommendation> recommendations = movieRecommendationService.getContentBasedGenresRecommendations(new MovieSearchForm(Sports));
         model.addAttribute("success", true);
         model.addAttribute("Sports", movieService.getRecommendeMovies(recommendations));
         return "movieGenres/Sports";
@@ -204,7 +204,7 @@ public class MovieGenresController {
     @RequestMapping("/Thriller/{Thriller}")
     public String Thriller(@PathVariable("Thriller") String Thriller, Model model) {
         Thriller="惊悚";
-        List<Recommendation> recommendations = movieGenresRecommendationService.getContentBasedGenresRecommendations(new SearchRecommendation(Thriller));
+        List<Recommendation> recommendations = movieRecommendationService.getContentBasedGenresRecommendations(new MovieSearchForm(Thriller));
         model.addAttribute("success", true);
         model.addAttribute("Thriller", movieService.getRecommendeMovies(recommendations));
         return "movieGenres/Thriller";
@@ -213,7 +213,7 @@ public class MovieGenresController {
     @RequestMapping("/War/{War}")
     public String War(@PathVariable("War") String War, Model model) {
         War="战争";
-        List<Recommendation> recommendations = movieGenresRecommendationService.getContentBasedGenresRecommendations(new SearchRecommendation(War));
+        List<Recommendation> recommendations = movieRecommendationService.getContentBasedGenresRecommendations(new MovieSearchForm(War));
         model.addAttribute("success", true);
         model.addAttribute("War", movieService.getRecommendeMovies(recommendations));
         return "movieGenres/War";
@@ -222,7 +222,7 @@ public class MovieGenresController {
     @RequestMapping("/Swordsmen/{Swordsmen}")
     public String Documentary(@PathVariable("Swordsmen") String Swordsmen, Model model) {
         Swordsmen="武侠";
-        List<Recommendation> recommendations = movieGenresRecommendationService.getContentBasedGenresRecommendations(new SearchRecommendation(Swordsmen));
+        List<Recommendation> recommendations = movieRecommendationService.getContentBasedGenresRecommendations(new MovieSearchForm(Swordsmen));
         model.addAttribute("success", true);
         model.addAttribute("Swordsmen", movieService.getRecommendeMovies(recommendations));
         return "movieGenres/Swordsmen";
@@ -231,7 +231,7 @@ public class MovieGenresController {
     @RequestMapping("/Plot/{Plot}")
     public String Plot(@PathVariable("Plot") String Plot, Model model) {
         Plot="剧情";
-        List<Recommendation> recommendations = movieGenresRecommendationService.getContentBasedGenresRecommendations(new SearchRecommendation(Plot));
+        List<Recommendation> recommendations = movieRecommendationService.getContentBasedGenresRecommendations(new MovieSearchForm(Plot));
         model.addAttribute("success", true);
         model.addAttribute("Plot", movieService.getRecommendeMovies(recommendations));
         return "movieGenres/Plot";

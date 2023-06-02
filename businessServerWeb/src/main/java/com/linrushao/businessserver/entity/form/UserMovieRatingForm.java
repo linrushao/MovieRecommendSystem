@@ -1,6 +1,6 @@
-package com.linrushao.businessserver.entity.movieEntity;
+package com.linrushao.businessserver.entity.form;
 
-public class MovieRating {
+public class UserMovieRatingForm {
 
     private int uid;
 
@@ -8,7 +8,7 @@ public class MovieRating {
 
     private Double score;
 
-    public MovieRating(int uid, int mid, Double score) {
+    public UserMovieRatingForm(int uid, int mid, Double score) {
         this.uid = uid;
         this.mid = mid;
         this.score = score;
