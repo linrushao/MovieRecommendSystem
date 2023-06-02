@@ -34,7 +34,7 @@ public class SearchMovieController {
      */
     @RequestMapping( "/search")
     public String getSearchMovies(@RequestParam("query") String query, Model model) {
-        List<Recommendation> recommendations = elasticsearchSearchService.getContentBasedSearchRecommendations(new MovieSearchForm(query));
+        List<Recommendation> recommendations = elasticsearchSearchService.getContentBasedSearchRecommendations(query);
         model.addAttribute("success", true);
         model.addAttribute("key",query);
         model.addAttribute("SearchMovie", movieService.getRecommendeMovies(recommendations));

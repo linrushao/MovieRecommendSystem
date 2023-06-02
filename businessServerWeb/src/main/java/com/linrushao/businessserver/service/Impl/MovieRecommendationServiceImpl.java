@@ -115,15 +115,6 @@ public class MovieRecommendationServiceImpl implements MovieRecommendationServic
         return movieService.parseRecs(genresTopMovies);
     }
 
-    /**
-     * 混合推荐
-     * @param request
-     * @return
-     */
-    @Override
-    public List<Recommendation> getHybridRecommendations(UserRecommendationForm request) {
-        return findHybridRecommendations(request.getUid());
-    }
 
     /**
      * 混合推荐算法【获取ALS离线电影推荐结果+获取当前用户的实时推荐】
@@ -131,11 +122,11 @@ public class MovieRecommendationServiceImpl implements MovieRecommendationServic
      * @return
      */
     @Override
-    public List<Recommendation> findHybridRecommendations(int Uid) {
+    public List<Recommendation> getHybridRecommendations(int Uid) {
         List<Recommendation> hybridRecommendations = new ArrayList<>();
 
         //获取电影相似度集合【获取ALS离线电影推荐结果】
-        List<Recommendation> cfRecs = findUserCFRecs(Uid);
+        List<Recommendation> cfRecs = getUserCFRecommdations(Uid);
         for (Recommendation recommendation : cfRecs) {
             hybridRecommendations.add(new Recommendation(recommendation.getMid(),
                     recommendation.getScore() * Constant.USERCF_RATING_FACTOR));
@@ -169,7 +160,7 @@ public class MovieRecommendationServiceImpl implements MovieRecommendationServic
      * @return
      */
     @Override
-    public List<Recommendation> findUserCFRecs(int uid) {
+    public List<Recommendation> getUserCFRecommdations(int uid) {
         MongoCollection<Document> movieRecsCollection = mongoClient.getDatabase(Constant.MONGODB_DATABASE).getCollection(Constant.MONGODB_USER_RECS_COLLECTION);
         Document userRecs = movieRecsCollection.find(new Document("uid", uid)).first();
         return movieService.parseRecs(userRecs);
@@ -187,15 +178,6 @@ public class MovieRecommendationServiceImpl implements MovieRecommendationServic
         return movieService.parseRecs(streamRecs);
     }
 
-    /**
-     * 协同过滤推荐【用户电影矩阵】
-     * @param request
-     * @return
-     */
-    @Override
-    public List<Recommendation> getUserCFilteringRecommendations(UserRecommendationForm request) {
-        return findUserCFRecs(request.getUid());
-    }
 
     /**
      * 电影相似度【电影详细页面中的相似电影】【电影相似度矩阵+ES相似内容推荐】
@@ -206,7 +188,7 @@ public class MovieRecommendationServiceImpl implements MovieRecommendationServic
     public List<Recommendation> getSimilarMovieRecommendations(MovieMidRecommendation request) {
         List<Recommendation> SimilarMovieRecommendations = new ArrayList<>();
         // 获取基于内容推荐的推荐结果
-        List<Recommendation> cbRecs = findContentBasedMoreLikeThisRecommendations(request.getMid());
+        List<Recommendation> cbRecs = getContentBasedMoreLikeThisRecommendations(request.getMid());
         for (Recommendation recommendation : cbRecs) {
             SimilarMovieRecommendations.add(new Recommendation(recommendation.getMid(), recommendation.getScore() * Constant.ES_RATING_FACTOR));
         }
@@ -223,15 +205,6 @@ public class MovieRecommendationServiceImpl implements MovieRecommendationServic
 
     /**
      * 基于内容的推荐算法[详细页面中的相似推荐]
-     * @param request
-     * @return
-     */
-    @Override
-    public List<Recommendation> getContentBasedMoreLikeThisRecommendations(MovieMidRecommendation request) {
-        return findContentBasedMoreLikeThisRecommendations(request.getMid());
-    }
-
-    /**
      * 基于内容的推荐算法[moreLikeThisQuery实现基于内容的推荐]
      * 此查询查找与指定的文本，文档或文档集类似的文档
      * 基于内容的推荐通常是给定一篇文档信息
@@ -244,7 +217,7 @@ public class MovieRecommendationServiceImpl implements MovieRecommendationServic
      * @return
      */
     @Override
-    public List<Recommendation> findContentBasedMoreLikeThisRecommendations(int mid) {
+    public List<Recommendation> getContentBasedMoreLikeThisRecommendations(int mid) {
         // 创建搜索请求对象
         SearchRequest request = new SearchRequest(Constant.ELEASTICSEARCH_INDEX);
         // 构建查询的请求体
@@ -278,16 +251,5 @@ public class MovieRecommendationServiceImpl implements MovieRecommendationServic
         Document movieRecs = movieRecsCollection.find(new Document("mid", mid)).first();
         return movieService.parseRecs(movieRecs);
     }
-
-    /**
-     * 协同过滤推荐【电影相似性】
-     * @param request
-     * @return
-     */
-    @Override
-    public List<Recommendation> getCollaborativeFilteringRecommendations(MovieMidRecommendation request) {
-        return findMovieCFRecs(request.getMid());
-    }
-
 
 }

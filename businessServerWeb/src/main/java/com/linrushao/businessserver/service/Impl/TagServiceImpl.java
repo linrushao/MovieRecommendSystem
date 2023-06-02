@@ -20,6 +20,7 @@ import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.common.xcontent.XContentFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -30,6 +31,7 @@ import java.util.Map;
  * @Author linrushao
  * @Date 2023-06-02
  */
+@Service
 public class TagServiceImpl implements TagService {
 
     @Autowired
@@ -100,8 +102,6 @@ public class TagServiceImpl implements TagService {
         } catch (Exception e) {
             e.printStackTrace();
         }
-//        GetResponse getResponse = esClient.prepareGet(Constant.ELEASTICSEARCH_INDEX,Constant.ELEASTICSEARCH_MOVIE_TYPE,String.valueOf(tag.getMid())).get();
-//        Object value = getResponse.getSourceAsMap().get("tags");
         Object value = map.get("tags");
         UpdateRequest updateRequest = new UpdateRequest(Constant.ELEASTICSEARCH_INDEX, Constant.ELEASTICSEARCH_MOVIE_TYPE, String.valueOf(tag.getMid()));
 
@@ -113,7 +113,6 @@ public class TagServiceImpl implements TagService {
             }
 
             esClient.update(updateRequest, RequestOptions.DEFAULT);
-//            esClient.update(updateRequest).get();
         } catch (IOException e) {
             e.printStackTrace();
         }

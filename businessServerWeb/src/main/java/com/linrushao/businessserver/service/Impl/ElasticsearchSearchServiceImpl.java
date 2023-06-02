@@ -46,22 +46,12 @@ public class ElasticsearchSearchServiceImpl implements ElasticsearchSearchServic
     }
 
     /**
-     * 基于内容查询电影
-     * @param request
-     * @return
-     */
-    @Override
-    public List<Recommendation> getContentBasedSearchRecommendations(MovieSearchForm request) {
-        return findContentBasedSearchRecommendations(request.getText());
-    }
-
-    /**
-     * 全文检索
+     * 全文检索[基于内容查询电影]
      * @param text 需要检索的内容
      * @return
      */
     @Override
-    public List<Recommendation> findContentBasedSearchRecommendations(String text) {
+    public List<Recommendation> getContentBasedSearchRecommendations(String text) {
         // 创建搜索请求对象
         SearchRequest request = new SearchRequest();
         request.indices(Constant.ELEASTICSEARCH_INDEX);
@@ -72,10 +62,6 @@ public class ElasticsearchSearchServiceImpl implements ElasticsearchSearchServic
                 .size(Constant.HOME_MOVIES_ITEM_SIZE);
         request.source(searchSourceBuilder);
 
-        // 构建查询的请求体,multiMatchQuery模糊匹配
-//        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder()
-//                .query(QueryBuilders.multiMatchQuery(text, "name","actors").analyzer("ik_smart")).size(Constant.ES_MOVIES_ITEM_SIZE);
-//        request.source(searchSourceBuilder);
         // 查询匹配
         SearchResponse response = null;
         try {

@@ -43,7 +43,7 @@ public class RealTimeRecommendController {
     public String realTimeRecommend(HttpSession session, Model model) {
         Object username = session.getAttribute("username");
         User user = userService.findByUsername(String.valueOf(username));
-        List<Recommendation> recommendations = movieRecommendationService.getHybridRecommendations(new UserRecommendationForm(user.getUid()));
+        List<Recommendation> recommendations = movieRecommendationService.getHybridRecommendations(user.getUid());
         if (recommendations.size() == 0) {
             String randomGenres = user.getPrefGenres().get(new Random().nextInt(user.getPrefGenres().size()));
             recommendations = movieRecommendationService.getTopGenresRecommendations(new MovieGenresForm(randomGenres.split(" ")[0], Constant.REDIS_MOVIE_RATING_QUEUE_SIZE));
