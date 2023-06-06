@@ -8,6 +8,14 @@ public class Recommendation {
     // 电影ID
     private int mid;
 
+    @Override
+    public String toString() {
+        return "Recommendation{" +
+                "mid=" + mid +
+                ", score=" + score +
+                '}';
+    }
+
     //电影评分
     private Double score;
 

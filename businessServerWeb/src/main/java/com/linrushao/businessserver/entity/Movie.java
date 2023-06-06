@@ -28,6 +28,31 @@ public class Movie {
     private String director_ids;
     private Double score;
 
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "_id='" + _id + '\'' +
+                ", mid=" + mid +
+                ", name='" + name + '\'' +
+                ", actors='" + actors + '\'' +
+                ", image='" + image + '\'' +
+                ", directors='" + directors + '\'' +
+                ", douban_score=" + douban_score +
+                ", douban_votes=" + douban_votes +
+                ", genres='" + genres + '\'' +
+                ", language='" + language + '\'' +
+                ", timelong='" + timelong + '\'' +
+                ", regions='" + regions + '\'' +
+                ", issue='" + issue + '\'' +
+                ", descri='" + descri + '\'' +
+                ", tags='" + tags + '\'' +
+                ", shoot='" + shoot + '\'' +
+                ", actor_ids='" + actor_ids + '\'' +
+                ", director_ids='" + director_ids + '\'' +
+                ", score=" + score +
+                '}';
+    }
+
     public String get_id() {
         return _id;
     }

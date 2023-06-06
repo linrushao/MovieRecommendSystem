@@ -55,8 +55,12 @@ public class MovieRecommendationServiceImpl implements MovieRecommendationServic
     @Override
     public List<Recommendation> getHotRecommendations() {
         // 获取热门电影的条目
-        MongoCollection<Document> rateMoreMoviesRecentlyCollection = mongoClient.getDatabase(MONGODB_DATABASE).getCollection(MONGODB_RATE_MORE_MOVIES_RECENTLY_COLLECTION);
-        FindIterable<Document> documents = rateMoreMoviesRecentlyCollection.find().sort(Sorts.descending("yeahmonth")).limit(REDIS_MOVIE_RATING_QUEUE_SIZE);
+        MongoCollection<Document> rateMoreMoviesRecentlyCollection = mongoClient
+                .getDatabase(MONGODB_DATABASE)
+                .getCollection(MONGODB_RATE_MORE_MOVIES_RECENTLY_COLLECTION);
+        FindIterable<Document> documents = rateMoreMoviesRecentlyCollection
+                .find().sort(Sorts.descending("yeahmonth"))
+                .limit(REDIS_MOVIE_RATING_QUEUE_SIZE);
         List<Recommendation> recommendations = new ArrayList<>();
         for (Document document : documents) {
             recommendations.add(new Recommendation(document.getInteger("mid"), 0D));
@@ -71,8 +75,12 @@ public class MovieRecommendationServiceImpl implements MovieRecommendationServic
     @Override
     public List<Recommendation> getRateMoreRecommendations() {
         // 获取评分最多电影的条目
-        MongoCollection<Document> rateMoreMoviesCollection = mongoClient.getDatabase(Constant.MONGODB_DATABASE).getCollection(Constant.MONGODB_RATE_MORE_MOVIES_COLLECTION);
-        FindIterable<Document> documents = rateMoreMoviesCollection.find().sort(Sorts.descending("count")).limit(Constant.HOME_MOVIES_ITEM_SIZE);
+        MongoCollection<Document> rateMoreMoviesCollection = mongoClient
+                .getDatabase(Constant.MONGODB_DATABASE)
+                .getCollection(Constant.MONGODB_RATE_MORE_MOVIES_COLLECTION);
+        FindIterable<Document> documents = rateMoreMoviesCollection.find()
+                .sort(Sorts.descending("count"))
+                .limit(Constant.HOME_MOVIES_ITEM_SIZE);
         List<Recommendation> recommendations = new ArrayList<>();
         for (Document document : documents) {
             recommendations.add(new Recommendation(document.getInteger("mid"), 0D));
@@ -91,7 +99,9 @@ public class MovieRecommendationServiceImpl implements MovieRecommendationServic
         SearchRequest request1 = new SearchRequest();
         request1.indices(ELEASTICSEARCH_INDEX);
         // 构建查询的请求体
-        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder().query(QueryBuilders.matchQuery("genres", request.getText()).fuzziness(Fuzziness.AUTO)).size(ES_MOVIES_ITEM_SIZE);
+        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder()
+                .query(QueryBuilders.matchQuery("genres", request.getText())
+                        .fuzziness(Fuzziness.AUTO)).size(ES_MOVIES_ITEM_SIZE);
         request1.source(searchSourceBuilder);
         // 查询匹配
         SearchResponse response = null;
@@ -110,8 +120,11 @@ public class MovieRecommendationServiceImpl implements MovieRecommendationServic
      */
     @Override
     public List<Recommendation> getTopGenresRecommendations(MovieGenresForm request) {
-        Document genresTopMovies = mongoClient.getDatabase(MONGODB_DATABASE).getCollection(MONGODB_GENRES_TOP_MOVIES_COLLECTION)
-                .find(Filters.eq("genres",request.getGenres())).first();
+        Document genresTopMovies = mongoClient
+                .getDatabase(MONGODB_DATABASE)
+                .getCollection(MONGODB_GENRES_TOP_MOVIES_COLLECTION)
+                .find(Filters.eq("genres",request.getGenres()))
+                .first();
         return movieService.parseRecs(genresTopMovies);
     }
 
@@ -135,7 +148,8 @@ public class MovieRecommendationServiceImpl implements MovieRecommendationServic
         //获得实时推荐结果【获取当前用户的实时推荐 】
         List<Recommendation> streamRecs = findStreamRecs(Uid);
         for (Recommendation recommendation : streamRecs) {
-            hybridRecommendations.add(new Recommendation(recommendation.getMid(), recommendation.getScore() * Constant.STREAM_RATING_FACTOR));
+            hybridRecommendations.add(new Recommendation(recommendation.getMid(),
+                    recommendation.getScore() * Constant.STREAM_RATING_FACTOR));
         }
 
         Collections.sort(hybridRecommendations, new Comparator<Recommendation>() {
@@ -161,7 +175,9 @@ public class MovieRecommendationServiceImpl implements MovieRecommendationServic
      */
     @Override
     public List<Recommendation> getUserCFRecommdations(int uid) {
-        MongoCollection<Document> movieRecsCollection = mongoClient.getDatabase(Constant.MONGODB_DATABASE).getCollection(Constant.MONGODB_USER_RECS_COLLECTION);
+        MongoCollection<Document> movieRecsCollection = mongoClient
+                .getDatabase(Constant.MONGODB_DATABASE)
+                .getCollection(Constant.MONGODB_USER_RECS_COLLECTION);
         Document userRecs = movieRecsCollection.find(new Document("uid", uid)).first();
         return movieService.parseRecs(userRecs);
     }
@@ -173,7 +189,9 @@ public class MovieRecommendationServiceImpl implements MovieRecommendationServic
      */
     @Override
     public List<Recommendation> findStreamRecs(int uid) {
-        MongoCollection<Document> streamRecsCollection = mongoClient.getDatabase(Constant.MONGODB_DATABASE).getCollection(Constant.MONGODB_STREAM_RECS_COLLECTION);
+        MongoCollection<Document> streamRecsCollection = mongoClient
+                .getDatabase(Constant.MONGODB_DATABASE)
+                .getCollection(Constant.MONGODB_STREAM_RECS_COLLECTION);
         Document streamRecs = streamRecsCollection.find(new Document("uid", uid)).first();
         return movieService.parseRecs(streamRecs);
     }
@@ -223,7 +241,8 @@ public class MovieRecommendationServiceImpl implements MovieRecommendationServic
         // 构建查询的请求体
         SearchSourceBuilder searchBuilder = new SearchSourceBuilder();
 
-        MoreLikeThisQueryBuilder moreLikeThisQueryBuilder = QueryBuilders.moreLikeThisQuery(new MoreLikeThisQueryBuilder.Item[]{new MoreLikeThisQueryBuilder.Item(Constant.ELEASTICSEARCH_INDEX, Constant.ELEASTICSEARCH_MOVIE_TYPE, String.valueOf(mid))});
+        MoreLikeThisQueryBuilder moreLikeThisQueryBuilder = QueryBuilders
+                .moreLikeThisQuery(new MoreLikeThisQueryBuilder.Item[]{new MoreLikeThisQueryBuilder.Item(Constant.ELEASTICSEARCH_INDEX, Constant.ELEASTICSEARCH_MOVIE_TYPE, String.valueOf(mid))});
 
         searchBuilder.query(moreLikeThisQueryBuilder);
         searchBuilder.timeout(new TimeValue(60, TimeUnit.SECONDS));

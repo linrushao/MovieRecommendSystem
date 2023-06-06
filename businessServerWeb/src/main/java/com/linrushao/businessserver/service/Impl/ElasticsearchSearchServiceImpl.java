@@ -1,7 +1,6 @@
 package com.linrushao.businessserver.service.Impl;
 
 import com.linrushao.businessserver.entity.form.Recommendation;
-import com.linrushao.businessserver.entity.form.MovieSearchForm;
 import com.linrushao.businessserver.service.ElasticsearchSearchService;
 import com.linrushao.businessserver.utils.Constant;
 import org.elasticsearch.action.search.SearchRequest;

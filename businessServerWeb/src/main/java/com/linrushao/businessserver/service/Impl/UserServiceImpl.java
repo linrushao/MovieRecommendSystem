@@ -36,9 +36,6 @@ public class UserServiceImpl implements UserService {
 
     private MongoCollection<Document> userCollection;
 
-    @Autowired
-    private UserMapper userMapper;
-
     /**
      * 获取数据库和数据库中User表集合
      * @return
