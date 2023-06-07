@@ -6,14 +6,8 @@ package com.linrushao.businessserver.utils;
  * Desc 常量设置
  */
 public class Constant {
-
-    /**************加载数据的路径******************/
-    // [mid,name,actors,image,directors,douban_score,douban_votes,genres,language,timelong,regions,issue,descri,tags,shoot,actor_ids,director_ids]
-    public static final String ORIGINAL_MOVIE_DATA_PATH = "D:\\CODE\\JavaCODE\\MovieRecommendSystem\\recommender\\dataloader\\src\\main\\resources\\movies.txt";
-
-    // [rating_id,userId,movieId,rating,timestamp]
-    public static final String ORIGINAL_RATING_DATA_PATH = "D:\\CODE\\JavaCODE\\MovieRecommendSystem\\recommender\\dataloader\\src\\main\\resources\\ratings.txt";
-
+    //**************拦截器中的图片路径****************
+    public static final String INTERCEPTIR_IMAGES_PATH="file:E:/movieSystemImages/imagesData/";
     //************** MONGODB 表集合【表】****************
     //（英文电影）数据库名
     public static final String MONGODB_DATABASE = "movierecommendsystem";
@@ -68,18 +62,6 @@ public class Constant {
     //*************** MOVIES 推荐数目 ****************
     // 首页电影
     public static final int HOME_MOVIES_ITEM_SIZE = 100;
-
-    // 电影的每个类别genres中设置的Top条数
-    public static final int  MOVIE_GENRES_TOP = 30;
-
-    // 最大推荐数目
-    public static final int MAX_RECOMMENDATIONS = 200;
-
-    //获取redis用户最近的K次评分
-    public static final int MAX_USER_RATINGS_NUM = 100;
-
-    //从相似度矩阵中取出当前电影最相似的N个电影
-    public static final int MAX_SIM_MOVIES_NUM = 100;
 
     //*************** ES 查询条数 ****************
 

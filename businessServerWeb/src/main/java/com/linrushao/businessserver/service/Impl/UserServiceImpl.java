@@ -7,7 +7,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.linrushao.businessserver.entity.User;
 import com.linrushao.businessserver.entity.form.UserLoginForm;
 import com.linrushao.businessserver.entity.form.UserRegisterForm;
-import com.linrushao.businessserver.mapper.UserMapper;
 import com.linrushao.businessserver.service.UserService;
 import com.linrushao.businessserver.utils.Constant;
 import com.mongodb.client.MongoClient;
