@@ -172,8 +172,6 @@ object StreamingRecommender {
         item => item.get("mid").toString.toInt
       }
 
-
-
     // 3. 把看过的过滤，得到输出列表
     allSimMovies.filter(x => !ratingExist.contains(x._1))
       .sortWith(_._2 > _._2)
