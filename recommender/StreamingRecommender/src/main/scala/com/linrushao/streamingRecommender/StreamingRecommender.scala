@@ -10,6 +10,7 @@ import org.apache.spark.streaming.kafka010.{ConsumerStrategies, KafkaUtils, Loca
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 import redis.clients.jedis.Jedis
 import com.linrushao.javamodel.Constant._
+import com.linrushao.scalamodel.ConfigParams.params
 
 /**
  * @Author LRS
@@ -28,14 +29,8 @@ object StreamingRecommender {
   def main(args: Array[String]): Unit = {
 
     //Logger.getLogger("org.apache.spark").setLevel(Level.ERROR)
-    val config = Map(
-      "spark.cores" -> "local[*]",
-      "mongo.uri" -> "mongodb://localhost:27017/movierecommendsystem",
-      "mongo.db" -> "movierecommendsystem",
-      "kafka.topic" -> "recommender"
-    )
 
-    val sparkConf = new SparkConf().setMaster(config("spark.cores")).setAppName("StreamingRecommender")
+    val sparkConf = new SparkConf().setMaster(params("spark.cores").asInstanceOf[String]).setAppName("StreamingRecommender")
 
     // 创建一个SparkSession
     val spark = SparkSession.builder().config(sparkConf).getOrCreate()
@@ -46,7 +41,7 @@ object StreamingRecommender {
 
     import spark.implicits._
 
-    implicit val mongoConfig = MongoConfig(config("mongo.uri"), config("mongo.db"))
+    implicit val mongoConfig = MongoConfig(params("mongo.uri").asInstanceOf[String], params("mongo.db").asInstanceOf[String])
 
     // 加载电影相似度矩阵数据，把它广播出去
     val simMovieMatrix = spark.read
@@ -74,7 +69,7 @@ object StreamingRecommender {
     // 通过kafka创建一个DStream
     val kafkaStream = KafkaUtils.createDirectStream[String, String](ssc,
       LocationStrategies.PreferConsistent,
-      ConsumerStrategies.Subscribe[String, String](Array(config("kafka.topic")), kafkaParam)
+      ConsumerStrategies.Subscribe[String, String](Array(params("kafka.topic").asInstanceOf[String]), kafkaParam)
     )
 
     //从Kafka中读取数据（消费者），将读取到的数据进行处理
@@ -92,10 +87,10 @@ object StreamingRecommender {
     ratingStream.foreachRDD {
       rdds =>
         rdds.foreach {
-              //匹配算法匹配到一样类型的就执行下一步
+          //匹配算法匹配到一样类型的就执行下一步
           case (uid, mid, score, timestamp) => {
             println("评分数据来了! >>>>>>>>>>>>>>>>")
-            println("用户ID："+uid+"电影ID:"+mid+" "+"\n"+"评分分数：" + score)
+            println("用户ID：" + uid + "电影ID:" + mid + " " + "\n" + "评分分数：" + score)
 
             // 1. 从redis里获取当前用户最近的K次评分，保存成Array[(mid, score)]
             val userRecentlyRatings = getUserRecentlyRating(MAX_USER_RATINGS_NUM, uid, ConnHelper.jedis)
@@ -108,7 +103,7 @@ object StreamingRecommender {
 
             println("推荐前10部电影：")
             streamRecs.take(10).foreach(
-              x=>println("电影ID："+x._1,"电影评分："+x._2)
+              x => println("电影ID：" + x._1, "电影评分：" + x._2)
             )
 
             // 4. 把推荐数据保存到mongodb
@@ -126,13 +121,15 @@ object StreamingRecommender {
   }
 
   // redis操作返回的是java类，为了用map操作需要引入转换类
+
   import scala.collection.JavaConversions._
 
   /**
    * 获取近时间来用户的评分数据
-   * @param num  评分数量
-   * @param uid  用户ID
-   * @param jedis  redis的配置，连接redis
+   *
+   * @param num   评分数量
+   * @param uid   用户ID
+   * @param jedis redis的配置，连接redis
    * @return
    */
   def getUserRecentlyRating(num: Int, uid: Int, jedis: Jedis): Array[(Int, Double)] = {
@@ -147,6 +144,7 @@ object StreamingRecommender {
 
   /**
    * 获取跟当前电影做相似的num个电影，作为备选电影
+   *
    * @param num       相似电影的数量
    * @param mid       当前电影ID
    * @param uid       当前评分用户ID
@@ -158,7 +156,6 @@ object StreamingRecommender {
                       uid: Int,
                       simMovies: scala.collection.Map[Int, scala.collection.immutable.Map[Int, Double]])
                      (implicit mongoConfig: MongoConfig): Array[Int] = {
-
 
 
     // 1. 从相似度矩阵中拿到所有相似的电影

@@ -12,18 +12,21 @@ import org.elasticsearch.common.settings.Settings
 import org.elasticsearch.common.transport.TransportAddress
 import org.elasticsearch.transport.client.PreBuiltTransportClient
 import com.linrushao.javamodel.Constant._
+import com.linrushao.scalamodel.ConfigParams.params
+
 import java.math.BigInteger
 import java.net.InetAddress
 import java.security.{MessageDigest, NoSuchAlgorithmException}
 
 
-
 object DataLoader {
 
-  /**************配置主机名:端口号的正则表达式******************/
+  /** ************配置主机名:端口号的正则表达式***************** */
   val ES_HOST_PORT_REGEX = "(.+):(\\d+)".r
+
   /**
    * 保存数据到MongoDB
+   *
    * @param movies    电影数据集
    * @param ratings   评分数据集
    * @param mongoConf MongoDB的配置
@@ -113,12 +116,12 @@ object DataLoader {
     // 声明写出时的ES配置信息
     val movieOptions = Map(
       "es.nodes" -> esConf.httpHosts,
-      "es.mapping.date.rich"->"false",//在命令行提交时设置spark.es.mapping.date.rich为false生效，可以不解析为date，直接返回string
+      "es.mapping.date.rich" -> "false", //在命令行提交时设置spark.es.mapping.date.rich为false生效，可以不解析为date，直接返回string
       "es.http.timeout" -> "100m",
       "es.mapping.id" -> "mid")
     //     创建Index
     esClient.admin().indices().create(new CreateIndexRequest(indexName)
-    //设置默认分词器为ik，可以模糊查询中文
+      //设置默认分词器为ik，可以模糊查询中文
       .settings(Settings.builder()
         .put("index.number_of_shards", 1)
         .put("index.number_of_replicas", 1)
@@ -143,16 +146,6 @@ object DataLoader {
 
   def main(args: Array[String]): Unit = {
 
-    //创建全局配置
-    val params = scala.collection.mutable.Map[String, Any]()
-    params += "spark.cores" -> "local[*]"
-    params += "es.httpHosts" -> "localhost:9200"
-    params += "es.transportHosts" -> "localhost:9300"
-    params += "es.index" -> "movierecommendsystemdata"
-//    params += "es.index" -> "englishmovierecommendsystemdata"
-    params += "es.cluster.name" -> "es-cluster"
-    params += "mongo.uri" -> "mongodb://localhost:27017/movierecommendsystem"
-    params += "mongo.db" -> "movierecommendsystem"
 
     // 声明Spark的配置信息
     val conf = new SparkConf().setAppName("DataLoader")
@@ -184,22 +177,22 @@ object DataLoader {
     // 加载Ratings数据集
     val ratingRDD = spark.sparkContext.textFile(ORIGINAL_RATING_DATA_PATH)
 
-     //mid: Int,  name: String, actors:String,image:String,directors:String, douban_score:Double,douban_votes:Int,genres:String,language:String,timelong:String,regions:String,issue:String,descri: String, tags:String, shoot:Int,  actor_ids: String,  director_ids: String
+    //mid: Int,  name: String, actors:String,image:String,directors:String, douban_score:Double,douban_votes:Int,genres:String,language:String,timelong:String,regions:String,issue:String,descri: String, tags:String, shoot:Int,  actor_ids: String,  director_ids: String
     // 将movie电影RDD转换为DataFrame
     val moviesDF = movieRDD.map(line => {
       val x = line.split("\\^\\^")
       val moviesName: String = x(1).trim.split(" - ")(0)
-      Movies(x(0).trim.toInt,moviesName, x(2).trim, x(3).trim, x(4).trim, x(5).trim.toDouble, x(6).trim.toInt, x(7).trim, x(8).trim, x(9).trim, x(10).trim, x(11).trim, x(12).trim, x(13).trim, x(14).trim.toInt, x(15).trim, x(16).trim)
+      Movies(x(0).trim.toInt, moviesName, x(2).trim, x(3).trim, x(4).trim, x(5).trim.toDouble, x(6).trim.toInt, x(7).trim, x(8).trim, x(9).trim, x(10).trim, x(11).trim, x(12).trim, x(13).trim, x(14).trim.toInt, x(15).trim, x(16).trim)
     }).toDF()
 
-     //rating_id:Int,uid: String,  mid: Int,  score: Double,  timestamp: String
+    //rating_id:Int,uid: String,  mid: Int,  score: Double,  timestamp: String
     // 将rating评分RDD转换为DataFrame
     val ratingsDF = ratingRDD.map(line => {
       val x = line.split(",")
       val uidHashCode: Int = x(1).trim.hashCode
       //将MD5码转换为int类型
-//      var uid: Int = MD5ToIntConverter(x(1))
-      Ratings(x(0).toInt, x(1).trim,uidHashCode ,x(2).trim.toInt, x(3).toInt, x(4).trim)
+      //      var uid: Int = MD5ToIntConverter(x(1))
+      Ratings(x(0).toInt, x(1).trim, uidHashCode, x(2).trim.toInt, x(3).toInt, x(4).trim)
     }).toDF()
 
     //缓存,可以让程序能快速运行
@@ -233,7 +226,7 @@ object DataLoader {
 
       // 将BigInteger转换为int类型
       bigInteger.intValue()
-      } catch {
+    } catch {
       case e: NoSuchAlgorithmException =>
         e.printStackTrace()
         0 // 如果发生异常，返回默认值

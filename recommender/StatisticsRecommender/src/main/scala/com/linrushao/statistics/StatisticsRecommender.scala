@@ -4,6 +4,7 @@ import com.linrushao.scalamodel.{GenresRecommendation, MongoConfig, Movies, Rati
 import org.apache.spark.SparkConf
 import org.apache.spark.sql.{DataFrame, SparkSession}
 import com.linrushao.javamodel.Constant._
+import com.linrushao.scalamodel.ConfigParams.params
 
 
 /**
@@ -15,19 +16,12 @@ object StatisticsRecommender {
 
   def main(args: Array[String]): Unit = {
 
-    val config = Map(
-//      "spark.cores" -> "spark://hadoop201:7077",
-      "spark.cores" -> "local[*]",
-      "mongo.uri" -> "mongodb://localhost:27017/movierecommendsystem",
-      "mongo.db" -> "movierecommendsystem"
-    )
-
     /**
      * 创建一个sparkConf
      */
     val conf = new SparkConf()
       .setAppName("StatisticsRecommender")
-      .setMaster(config("spark.cores"))
+      .setMaster(params("spark.cores").asInstanceOf[String])
       .set("spark.executor.memory","2G")
 
     /**
@@ -42,7 +36,7 @@ object StatisticsRecommender {
     /**
      * 使用mongdodb数据库
      */
-    implicit val mongoConfig = MongoConfig(config("mongo.uri"), config("mongo.db"))
+    implicit val mongoConfig = MongoConfig(params("mongo.uri").asInstanceOf[String], params("mongo.db").asInstanceOf[String])
     /**
      * 加载需要用到的所有数据
      */
