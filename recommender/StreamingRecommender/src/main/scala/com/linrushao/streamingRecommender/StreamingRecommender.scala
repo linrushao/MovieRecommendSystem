@@ -20,7 +20,7 @@ import com.linrushao.scalamodel.ConfigParams.params
 // 连接助手对象
 object ConnHelper extends Serializable {
   lazy val jedis = new Jedis("master")
-  lazy val mongoClient = MongoClient(MongoClientURI("mongodb://localhost:27017/movierecommendsystem"))
+  lazy val mongoClient = MongoClient(MongoClientURI(params("mongo.uri").asInstanceOf[String]))
 }
 
 object StreamingRecommender {
