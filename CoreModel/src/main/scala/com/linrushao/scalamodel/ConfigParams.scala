@@ -10,13 +10,10 @@ object ConfigParams {
   //创建全局配置
   val params = scala.collection.mutable.Map[String, Any]()
   //**********Spark配置参数**********
-  //  params += "spark.cores" -> "spark://hadoop201:7077"
-  //  params += "spark.cores" -> "spark://master:7077"
   params += "spark.cores" -> "local[*]"
 
   //**********MongoDB配置参数**********
   params += "mongo.uri" -> "mongodb://localhost:27017/movierecommendsystem"
-//  params += "mongo.uri" -> "mongodb://hadoop201:27017/movierecommendsystem"
   params += "mongo.db" -> "movierecommendsystem"
 
 
@@ -24,7 +21,6 @@ object ConfigParams {
   params += "es.httpHosts" -> "localhost:9200"
   params += "es.transportHosts" -> "localhost:9300"
   params += "es.index" -> "movierecommendsystemdata"
-  //    params += "es.index" -> "englishmovierecommendsystemdata"
   params += "es.cluster.name" -> "es-cluster"
 
   //**********Kafka配置参数**********
