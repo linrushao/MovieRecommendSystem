@@ -12,6 +12,7 @@ import org.elasticsearch.common.settings.Settings
 import org.elasticsearch.common.transport.TransportAddress
 import org.elasticsearch.transport.client.PreBuiltTransportClient
 import com.linrushao.javamodel.Constant._
+import com.linrushao.javamodel.SQLUtils
 import com.linrushao.scalamodel.ConfigParams.params
 
 import java.math.BigInteger
@@ -48,7 +49,7 @@ object DataLoader {
       .option("uri", mongoConf.uri)
       .option("collection", MONGODB_MOVIE_COLLECTION)
       .mode("overwrite")
-      .format("com.mongodb.spark.sql")
+      .format(SQLUtils.SPARK_MONGODB_SQL)
       .save()
 
     //将Ratings数据集写入到MongoDB
@@ -56,7 +57,7 @@ object DataLoader {
       .write.option("uri", mongoConf.uri)
       .option("collection", MONGODB_RATING_COLLECTION)
       .mode("overwrite")
-      .format("com.mongodb.spark.sql")
+      .format(SQLUtils.SPARK_MONGODB_SQL)
       .save()
 
     //创建索引
@@ -137,7 +138,7 @@ object DataLoader {
     movies
       .write
       .options(movieOptions)
-      .format("org.elasticsearch.spark.sql")
+      .format(SQLUtils.SPARK_ELASTICSEARCH_SQL)
       .mode("overwrite")
       .save(movieTypeName)
     esClient.close()

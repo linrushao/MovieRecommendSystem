@@ -10,6 +10,7 @@ import org.apache.spark.streaming.kafka010.{ConsumerStrategies, KafkaUtils, Loca
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 import redis.clients.jedis.Jedis
 import com.linrushao.javamodel.Constant._
+import com.linrushao.javamodel.SQLUtils
 import com.linrushao.scalamodel.ConfigParams.params
 
 /**
@@ -47,7 +48,7 @@ object StreamingRecommender {
     val simMovieMatrix = spark.read
       .option("uri", mongoConfig.uri)
       .option("collection", MONGODB_MOVIE_RECS_COLLECTION)
-      .format("com.mongodb.spark.sql")
+      .format(SQLUtils.SPARK_MONGODB_SQL)
       .load()
       .as[MovieRecs]
       .rdd

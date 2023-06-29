@@ -7,6 +7,7 @@ import org.apache.spark.mllib.recommendation.{ALS, MatrixFactorizationModel, Rat
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.SparkSession
 import com.linrushao.javamodel.Constant._
+import com.linrushao.javamodel.SQLUtils
 import com.linrushao.scalamodel.ConfigParams.params
 
 /**
@@ -76,7 +77,7 @@ object ALSTrainerApp {
     val ratings = spark.read
       .option("uri", mongoConf.uri)
       .option("collection", MONGODB_RATING_COLLECTION)
-      .format("com.mongodb.spark.sql")
+      .format(SQLUtils.SPARK_MONGODB_SQL)
       .load()
       .select($"mid", $"uid", $"score")
       .cache
@@ -90,7 +91,7 @@ object ALSTrainerApp {
     val movies = spark.read
       .option("uri", mongoConf.uri)
       .option("collection", MONGODB_MOVIE_COLLECTION)
-      .format("com.mongodb.spark.sql")
+      .format(SQLUtils.SPARK_MONGODB_SQL)
       .load()
       .select($"mid")
       .distinct

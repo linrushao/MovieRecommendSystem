@@ -8,6 +8,7 @@ import org.apache.spark.mllib.recommendation.{ALS, MatrixFactorizationModel, Rat
 import org.apache.spark.sql.{Dataset, SparkSession}
 import org.jblas.DoubleMatrix
 import com.linrushao.javamodel.Constant._
+import com.linrushao.javamodel.SQLUtils
 
 /**
  * @Author LRS
@@ -38,7 +39,7 @@ object ALSTrainer extends Serializable {
     val ratings = spark.read
       .option("uri", mongoConf.uri)
       .option("collection", MONGODB_RATING_COLLECTION)
-      .format("com.mongodb.spark.sql")
+      .format(SQLUtils.SPARK_MONGODB_SQL)
       .load()
       .select($"mid", $"uid", $"score")
       .cache
@@ -58,7 +59,7 @@ object ALSTrainer extends Serializable {
     val movies = spark.read
       .option("uri", mongoConf.uri)
       .option("collection", MONGODB_MOVIE_COLLECTION)
-      .format("com.mongodb.spark.sql")
+      .format(SQLUtils.SPARK_MONGODB_SQL)
       .load()
       .select($"mid")
       .distinct
@@ -158,7 +159,7 @@ object ALSTrainer extends Serializable {
       .option("uri", mongoConf.uri)
       .option("collection", MONGODB_USER_RECS_COLLECTION)
       .mode("overwrite")
-      .format("com.mongodb.spark.sql")
+      .format(SQLUtils.SPARK_MONGODB_SQL)
       .save
     //这是下标由1开始
     mongoClient(mongoConf.db)(MONGODB_USER_RECS_COLLECTION).createIndex(MongoDBObject("uid" -> 1))
@@ -226,7 +227,7 @@ object ALSTrainer extends Serializable {
       .option("uri", mongoConf.uri)
       .option("collection", MONGODB_MOVIE_RECS_COLLECTION)
       .mode("overwrite")
-      .format("com.mongodb.spark.sql")
+      .format(SQLUtils.SPARK_MONGODB_SQL)
       .save
     //这是下标由1开始
     mongoClient(mongoConf.db)(MONGODB_MOVIE_RECS_COLLECTION).createIndex(MongoDBObject("mid" -> 1))
