@@ -1,6 +1,5 @@
 package com.linrushao.scalamodel
 
-import com.linrushao.javamodel.Constant.MAX_RECOMMENDATIONS
 
 /**
  * @Author linrushao
@@ -8,6 +7,7 @@ import com.linrushao.javamodel.Constant.MAX_RECOMMENDATIONS
  */
 object ConfigParams {
   //创建全局配置
+  //mutable 可变集合
   val params = scala.collection.mutable.Map[String, Any]()
   //**********Spark配置参数**********
   params += "spark.cores" -> "local[*]"
@@ -26,4 +26,7 @@ object ConfigParams {
   //**********Kafka配置参数**********
   params += "kafka.topic" -> "recommender"
 
+  //**********Zookeeper集群参数**********
+  params += "bootstrap.servers" -> "master:9092"
+  params += "zookeeper.connect" -> "master:2181"
 }

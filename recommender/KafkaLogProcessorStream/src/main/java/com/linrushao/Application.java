@@ -13,7 +13,6 @@ import org.apache.kafka.streams.processor.TopologyBuilder;
 
 
 import java.util.Properties;
-import java.util.logging.Logger;
 
 /**
  * kafka过滤程序
