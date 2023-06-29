@@ -1,5 +1,6 @@
 package com.linrushao.scalamodel
 
+import com.linrushao.javamodel.Constant.MAX_RECOMMENDATIONS
 
 /**
  * @Author linrushao
@@ -26,7 +27,4 @@ object ConfigParams {
   //**********Kafka配置参数**********
   params += "kafka.topic" -> "recommender"
 
-  //**********Zookeeper集群参数**********
-  params += "bootstrap.servers" -> "master:9092"
-  params += "zookeeper.connect" -> "master:2181"
 }
