@@ -48,7 +48,7 @@ public class Constant {
 
     //************** FOR MOVIE RATING ******************
     // 日志前缀
-    public static final String MOVIE_RATING_PREFIX = "MOVIE_RATING_PREFIX";
+    public static final String MOVIE_RATING_PREFIX = "MOVIE_RATING_PREFIX:";
 
     //*************** MOVIES 推荐数目 ****************
     // 最大推荐数目
