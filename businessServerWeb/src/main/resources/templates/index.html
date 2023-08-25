@@ -92,31 +92,31 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="carousel-inner" >
 			<div class="item  active">
 				<a th:href="@{'/single/'+${hotMovies.get(0).getMid()}}">
-					<img th:src="'../../imagesData/'+${hotMovies.get(0).getMid()}+'.jpg'"  style="height: 500px"  alt="First slide">
+					<img th:src="'../../images/'+${hotMovies.get(0).getMid()}+'.jpg'"  style="height: 500px"  alt="First slide">
 				</a>
 				<div class="carousel-caption" th:text="${hotMovies.get(0).getName()}">标题 1</div>
 			</div>
 			<div class="item">
 				<a th:href="@{'/single/'+${hotMovies.get(1).getMid()}}">
-					<img th:src="'../../imagesData/'+${hotMovies.get(1).getMid()}+'.jpg'"  style="height: 500px"  alt="First slide">
+					<img th:src="'../../images/'+${hotMovies.get(1).getMid()}+'.jpg'"  style="height: 500px"  alt="First slide">
 				</a>
 				<div class="carousel-caption" th:text="${hotMovies.get(1).getName()}">标题 2</div>
 			</div>
 			<div class="item">
 				<a th:href="@{'/single/'+${hotMovies.get(2).getMid()}}">
-					<img th:src="'../../imagesData/'+${hotMovies.get(2).getMid()}+'.jpg'"  style="height: 500px" alt="First slide">
+					<img th:src="'../../images/'+${hotMovies.get(2).getMid()}+'.jpg'"  style="height: 500px" alt="First slide">
 				</a>
 				<div class="carousel-caption" th:text="${hotMovies.get(2).getName()}">标题 1</div>
 			</div>
 			<div class="item">
 				<a th:href="@{'/single/'+${hotMovies.get(3).getMid()}}">
-					<img th:src="'../../imagesData/'+${hotMovies.get(3).getMid()}+'.jpg'"  style="height: 500px" alt="First slide">
+					<img th:src="'../../images/'+${hotMovies.get(3).getMid()}+'.jpg'"  style="height: 500px" alt="First slide">
 				</a>
 				<div class="carousel-caption" th:text="${hotMovies.get(3).getName()}">标题 1</div>
 			</div>
 			<div class="item">
 				<a th:href="@{'/single/'+${hotMovies.get(4).getMid()}}">
-					<img th:src="'../../imagesData/'+${hotMovies.get(4).getMid()}+'.jpg'" style="height: 500px"  alt="First slide">
+					<img th:src="'../../images/'+${hotMovies.get(4).getMid()}+'.jpg'" style="height: 500px"  alt="First slide">
 				</a>
 				<div class="carousel-caption" th:text="${hotMovies.get(4).getName()}">标题 1</div>
 			</div>
@@ -145,7 +145,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-md-2 w3l-movie-gride-agile requested-movies">
 					<a th:href="@{'/single/'+${moviedata.getMid()}}" class="hvr-sweep-to-bottom">
 						<img
-								th:src="'../../imagesData/'+${moviedata.getMid()}+'.jpg'" title="Movies Pro"
+								th:src="'../../images/'+${moviedata.getMid()}+'.jpg'" title="Movies Pro"
 								class="img-responsive" alt=" ">
 						<div class="w3l-action-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></div>
 					</a>
