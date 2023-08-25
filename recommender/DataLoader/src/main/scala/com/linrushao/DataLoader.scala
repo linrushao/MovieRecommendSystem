@@ -77,6 +77,7 @@ object DataLoader {
    * @param esConf ElasticSearch的配置对象
    */
   def storeMoiveDataInES(movies: DataFrame)(implicit esConf: ESConfig): Unit = {
+    // 新建一个es客户端
     System.setProperty("es.set.netty.runtime.available.processors", "false")
 
     // 需要操作的Index名称
@@ -117,6 +118,7 @@ object DataLoader {
     // 声明写出时的ES配置信息
     val movieOptions = Map(
       "es.nodes" -> esConf.httpHosts,
+      "es.http.timeout"-> "4m",
       "es.mapping.date.rich" -> "false", //在命令行提交时设置spark.es.mapping.date.rich为false生效，可以不解析为date，直接返回string
       "es.http.timeout" -> "100m",
       "es.mapping.id" -> "mid")
@@ -151,6 +153,10 @@ object DataLoader {
     // 声明Spark的配置信息
     val conf = new SparkConf().setAppName("DataLoader")
       .setMaster(params("spark.cores").asInstanceOf[String])
+      .set("es.http.timeout", "5m")
+      .set("es.read.timeout", "5m")
+      //如果运行的spark程序和你的elasitcsearch是在同一个网段的时候，不加这个是没有问题的。但是如果不在同一个网段比如是在公网上面的话，则会报请求失败的错误。
+    .set("es.nodes.wan.only","true")
 
     /**
      * 创建一个sparkSession
@@ -203,7 +209,7 @@ object DataLoader {
     storeDataInMongo(moviesDF, ratingsDF)
 
     // 保存数据到ES
-    storeMoiveDataInES(moviesDF)
+//    storeMoiveDataInES(moviesDF)
 
     //去除缓存
     moviesDF.unpersist()

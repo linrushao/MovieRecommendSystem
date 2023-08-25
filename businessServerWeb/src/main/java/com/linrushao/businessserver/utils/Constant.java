@@ -7,7 +7,8 @@ package com.linrushao.businessserver.utils;
  */
 public class Constant {
     //**************拦截器中的图片路径****************
-    public static final String INTERCEPTIR_IMAGES_PATH="file:E:/movieSystemImages/imagesData/";
+//    public static final String INTERCEPTIR_IMAGES_PATH="file:E:/movieSystemImages/imagesData/";
+    public static final String INTERCEPTIR_IMAGES_PATH="file:///root/moviesRecommend/images/";
 
     //************** MONGODB 表集合【表】****************
     //（英文电影）数据库名

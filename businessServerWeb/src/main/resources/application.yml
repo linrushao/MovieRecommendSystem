@@ -5,20 +5,20 @@ spring:
     name: spirng-boot-mongodb
   data:
     mongodb:
-      host: localhost  #同127.0.0.1
+      host: 120.79.35.91  #同127.0.0.1
       port: 27017
       database: movierecommendsystem    #指定操作的数据库(中文电影)
 #  MySQL连接
   datasource:
     username: root
     password: linrushao
-    url: jdbc:mysql://localhost:3306/bigdata?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://120.79.35.91:3306/bigdata?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
     driver-class-name: com.mysql.jdbc.Driver
 #   Redis连接
   redis:
-    host: master
+    host: 120.79.35.91
     port: 6379
-    password:
+    password: linrushao
     jedis:
       pool:
         max-active: 8
@@ -30,6 +30,6 @@ spring:
 #  elasticsearch连接
   elasticsearch:
     rest:
-      uris: localhost:9200
+      uris: 120.79.35.91:9200
       connection-timeout: 600s
       read-timeout: 600s

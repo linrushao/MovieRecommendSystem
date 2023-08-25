@@ -12,7 +12,7 @@
     <appender name="flume" class="com.teambytes.logback.flume.FlumeLogstashV1Appender">
         <flumeAgents>
 <!--            //配置flume所在服务器的ip地址以及端口号。如果配置了主机名映射，可以填写主机名.-->
-            master:44444
+            120.79.35.91:44444
         </flumeAgents>
         <flumeProperties>
             connect-timeout=4000;
