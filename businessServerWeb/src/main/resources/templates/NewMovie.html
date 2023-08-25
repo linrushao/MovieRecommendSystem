@@ -4,7 +4,7 @@
             xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>我喜欢的</title>
+    <title>最新发布</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="keywords" content="My Play Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
@@ -52,12 +52,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
             <div class="wthree_agile-requested-movies" th:each="moviedata:${newmovies}">
                 <div class="col-md-2 w3l-movie-gride-agile requested-movies">
+                    <div class="mid-1 agileits_w3layouts_mid_1_home">
                     <a th:href="@{'/single/'+${moviedata.getMid()}}" class="hvr-sweep-to-bottom">
                     <img
                             th:src="'../../images/'+${moviedata.getMid()}+'.jpg'" title="Movies Pro"
                             class="img-responsive" alt=" ">
                         <div class="w3l-action-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></div>
                     </a>
+                    </div>
                     <div class="zidingyi mid-1 agileits_w3layouts_mid_1_home">
                         <div class="w3l-movie-text">
                             <h6><a th:href="@{'/single/'+${moviedata.getMid()}}" th:text="${moviedata.getName()}">Swiss Army Man</a></h6>

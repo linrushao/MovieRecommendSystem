@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <!--suppress ALL-->
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-            xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <title>武侠</title>
@@ -48,15 +48,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
             <div class="wthree_agile-requested-movies" th:each="moviedata:${Swordsmen}">
                 <div class="w3l-movie-gride-agile  col-md-3  recommended-grid">
-                    <a th:href="@{'/single/'+${moviedata.getMid()}}" class="hvr-sweep-to-bottom">
-                        <img
-                                th:src="'../../images/'+${moviedata.getMid()}+'.jpg'" title="Movies Pro"
-                                class="img-responsive" alt=" ">
-                        <div class="w3l-action-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></div>
-                    </a>
+                    <div class="mid-1 agileits_w3layouts_mid_1_home">
+                        <a th:href="@{'/single/'+${moviedata.getMid()}}" class="hvr-sweep-to-bottom">
+                            <img
+                                    th:src="'../../images/'+${moviedata.getMid()}+'.jpg'" title="Movies Pro"
+                                    class="img-responsive" alt=" ">
+                            <div class="w3l-action-icon"><i class="fa fa-play-circle-o" aria-hidden="true"></i></div>
+                        </a>
+                    </div>
                     <div class="zidingyi mid-1 agileits_w3layouts_mid_1_home">
                         <div class="w3l-movie-text">
-                            <h6><a  th:href="@{'/single/'+${moviedata.getMid()}}" th:text="${moviedata.getName()}">Swiss Army Man</a></h6>
+                            <h6><a th:href="@{'/single/'+${moviedata.getMid()}}" th:text="${moviedata.getName()}">Swiss
+                                Army Man</a></h6>
                         </div>
                         <div class=" mid-2 agile_mid_2_home">
                             <p class="zidingyi2" th:text="${moviedata.getShoot()}">2016</p>
@@ -70,7 +73,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </div>
     <!--快速通道-->
     <div th:replace="common/moviesGenres :: moviesGenres"></div>
-    <div class="clearfix"> </div>
+    <div class="clearfix"></div>
 </div>
 <!--底部footer start-->
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
