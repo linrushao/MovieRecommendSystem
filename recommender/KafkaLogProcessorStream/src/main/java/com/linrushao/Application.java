@@ -20,8 +20,8 @@ import java.util.Properties;
 public class Application {
 
     public static void main(String[] args) {
-        String brokers = "master:9092";
-        String zookeepers = "master:2181";
+        String brokers = "120.79.35.91:9092";
+        String zookeepers = "120.79.35.91:2181";
         // 输入和输出的topic
         String from = "log";//product
         String to = "recommender";//consume

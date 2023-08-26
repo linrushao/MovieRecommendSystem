@@ -1,7 +1,5 @@
 package com.linrushao.scalamodel
 
-import com.linrushao.javamodel.Constant.MAX_RECOMMENDATIONS
-
 /**
  * @Author linrushao
  * @Date 2023-06-24
@@ -11,6 +9,7 @@ object ConfigParams {
   //mutable 可变集合
   val params = scala.collection.mutable.Map[String, Any]()
   //**********Spark配置参数**********
+//  params += "spark.cores" -> "spark://120.79.35.91:7077"
   params += "spark.cores" -> "local[*]"
 
   //**********MongoDB配置参数**********

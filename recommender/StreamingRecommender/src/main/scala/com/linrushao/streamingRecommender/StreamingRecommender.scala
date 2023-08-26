@@ -20,7 +20,15 @@ import com.linrushao.scalamodel.ConfigParams.params
  */
 // 连接助手对象
 object ConnHelper extends Serializable {
-  lazy val jedis = new Jedis("master")
+  lazy val jedis: Jedis = {
+    val redisHost = "120.79.35.91"
+    val redisPort = 6379
+    val redisPassword = "linrushao"
+
+    val jedis = new Jedis(redisHost, redisPort)
+    jedis.auth(redisPassword)
+    jedis
+  }
   lazy val mongoClient = MongoClient(MongoClientURI(params("mongo.uri").asInstanceOf[String]))
 }
 
@@ -31,7 +39,11 @@ object StreamingRecommender {
 
     //Logger.getLogger("org.apache.spark").setLevel(Level.ERROR)
 
-    val sparkConf = new SparkConf().setMaster(params("spark.cores").asInstanceOf[String]).setAppName("StreamingRecommender")
+    val sparkConf = new SparkConf()
+      .setMaster(params("spark.cores")
+        .asInstanceOf[String])
+      .setAppName("StreamingRecommender")
+
 
     // 创建一个SparkSession
     val spark = SparkSession.builder().config(sparkConf).getOrCreate()
@@ -61,7 +73,7 @@ object StreamingRecommender {
 
     // 定义kafka连接参数
     val kafkaParam = Map(
-      "bootstrap.servers" -> "master:9092",
+      "bootstrap.servers" -> "120.79.35.91:9092",
       "key.deserializer" -> classOf[StringDeserializer],
       "value.deserializer" -> classOf[StringDeserializer],
       "group.id" -> "recommender",
